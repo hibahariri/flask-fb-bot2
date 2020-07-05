@@ -21,7 +21,6 @@ def receive_message():
             messaging = event['messaging']
             for message in messaging:
                 if message.get('message'):
-                    # Facebook Messenger ID for user so we know where to send response back to
                     recipient_id = message['sender']['id']
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']  # take message
@@ -43,9 +42,9 @@ def verify_fb_token(token_sent):
 
 def get_message(message_sent):
     ai = apiai.ApiAI("5c09984323f1437682ce9c679eb5828f")
-    request = ai.text_request()
-    request.query = message_sent
-    response = request.getresponse()
+    request_api = ai.text_request()
+    request_api.query = message_sent
+    response = request_api.getresponse()
     json_response = json.loads(response.read().decode('utf-8'))
     user_response = json_response['result']['fulfillment']['s55peech']
     return user_response
