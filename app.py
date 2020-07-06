@@ -5,6 +5,7 @@ from pymessenger.bot import Bot
 import apiai
 
 app = Flask(__name__)  # Initializing our Flask application
+app.config['PROPAGATE_EXCEPTIONS'] = True
 ACCESS_TOKEN = 'EAAjWhObmBKgBAK3U2gBhclZB1fEZBPKZBEWbbJNksbzC9dthq8pPWnZBAFj6K8CZAifTm2jnYvwKFiZBh8C2SyfbscCWiYeUlCQ5PXzO8kwu7xZAer00rRdbgWVQFoFoPxYnXxWYkehZBMLhApJitqbKixaUNAtoq1c9jpik8SyZBOpgDxDUhpJPysuciGyxcsfAZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
