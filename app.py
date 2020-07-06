@@ -42,12 +42,7 @@ def verify_fb_token(token_sent):
 
 
 def get_message(message_sent):
-    ai = apiai.ApiAI("5c09984323f1437682ce9c679eb5828f")
-    request_api = ai.text_request()
-    request_api.query = message_sent
-    response = request_api.getresponse()
-    json_response = json.loads(response.read().decode('utf-8'))
-    user_response = json_response['result']['fulfillment']['s55peech']
+    user_response = 'Hi'
     return user_response
 
 
