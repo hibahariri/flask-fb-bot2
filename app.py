@@ -28,11 +28,11 @@ def receive_message():
                             recipient_id, ACCESS_TOKEN)).json()
                     f_name = r['first_name']
                     l_name = r['last_name']
-                    print(f_name)
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']  # take message
                         response_sent_text = get_message(messaging_text)
                         send_message(recipient_id, response_sent_text)
+                        send_message(recipient_id, f_name)
                     # if user send us a GIF, photo, video or any other non-text item
                     if message['message'].get('attachments'):
                         messaging_text = 'None'
