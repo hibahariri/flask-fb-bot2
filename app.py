@@ -1,5 +1,6 @@
 import random
 import json
+import requests
 from flask import Flask, request
 from pymessenger.bot import Bot
 import apiai
@@ -22,6 +23,11 @@ def receive_message():
             for message in messaging:
                 if message.get('message'):
                     recipient_id = message['sender']['id']
+                    r = requests.get(
+                        'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
+                            recipient_id, VERIFY_TOKEN)).json()
+                    first_name = r['first_name']
+                    last_name = r['last_name']
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']  # take message
                         response_sent_text = get_message(messaging_text)
