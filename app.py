@@ -26,8 +26,9 @@ def receive_message():
                     r = requests.get(
                         'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                             recipient_id, VERIFY_TOKEN)).json()
-                    f_name = r['first_name']
-                    l_name = r['last_name']
+                    user_info = r.get_json()
+                    f_name = user_info['first_name']
+                    l_name = user_info['last_name']
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']  # take message
                         response_sent_text = get_message(messaging_text)
@@ -44,11 +45,6 @@ def verify_fb_token(token_sent):
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
     return 'Invalid verification token'
-
-
-
-
-
 
 
 def get_message(message_sent):
