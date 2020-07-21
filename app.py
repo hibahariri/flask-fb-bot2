@@ -26,7 +26,7 @@ def receive_message():
                     r = requests.get(
                         'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                             recipient_id, VERIFY_TOKEN)).json()
-                    user_info = r.get_json()
+                    user_info = json.loads(r)
                     f_name = user_info['first_name']
                     l_name = user_info['last_name']
                     if message['message'].get('text'):
