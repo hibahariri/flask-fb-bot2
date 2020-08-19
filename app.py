@@ -33,7 +33,7 @@ def receive_message():
                         messaging_text = message['message']['text']  # take message
                         response_sent_text = get_message(messaging_text)
                         send_message(recipient_id, response_sent_text)
-                        store_fname(f_name)
+                        store_name(f_name)
                     #  send_message(recipient_id, f_name)
                     # if user send us a GIF, photo, video or any other non-text item
                     if message['message'].get('attachments'):
