@@ -65,12 +65,13 @@ def store_name(name):
             host="localhost",
             user="root",
             passwd="kee2seekwel",
-            db="testdb")
+            db="test")
     except mysql.connector.Error as error:
         print("Failed to create table in MySQL: {}".format(error))
     cur = db_con.cursor()
     cur.execute("INSERT INTO Users (userName) values (%s)", name)
     db_con.commit()
+    cur.close()
     db_con.close()
     return "done"
 
