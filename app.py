@@ -60,11 +60,14 @@ def get_message(message_sent):
 
 
 def store_name(name):
-    db_con = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd="",
-        db="testdb")
+    try:
+        db_con = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            passwd="",
+            db="testdb")
+    except mysql.connector.Error as error:
+        print("Failed to create table in MySQL: {}".format(error))
     cur = db_con.cursor()
     cur.execute("INSERT INTO Users (userName) values (%s)", name)
     db_con.commit()
