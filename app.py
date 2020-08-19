@@ -4,6 +4,7 @@ import requests
 from flask import Flask, request
 from pymessenger.bot import Bot
 import apiai
+import mysql.connector
 
 app = Flask(__name__)  # Initializing our Flask application
 ACCESS_TOKEN = 'EAAjWhObmBKgBAK3U2gBhclZB1fEZBPKZBEWbbJNksbzC9dthq8pPWnZBAFj6K8CZAifTm2jnYvwKFiZBh8C2SyfbscCWiYeUlCQ5PXzO8kwu7xZAer00rRdbgWVQFoFoPxYnXxWYkehZBMLhApJitqbKixaUNAtoq1c9jpik8SyZBOpgDxDUhpJPysuciGyxcsfAZD'
@@ -32,7 +33,8 @@ def receive_message():
                         messaging_text = message['message']['text']  # take message
                         response_sent_text = get_message(messaging_text)
                         send_message(recipient_id, response_sent_text)
-                        send_message(recipient_id, f_name)
+                        store_fname(f_name)
+                    #  send_message(recipient_id, f_name)
                     # if user send us a GIF, photo, video or any other non-text item
                     if message['message'].get('attachments'):
                         messaging_text = 'None'
@@ -55,6 +57,18 @@ def get_message(message_sent):
     json_response = json.loads(response.read().decode('utf-8'))
     user_response = json_response['result']['fulfillment']['speech']
     return user_response
+
+
+def store_name(name):
+    db_con = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        db="testdb")
+    cur = db_con.cursor()
+    cur.execute("INSERT INTO Users (userName) values (%s)", name)
+    db_con.commit()
+    db_con.close()
+    return "done"
 
 
 def send_message(recipient_id, response):
