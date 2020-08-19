@@ -64,7 +64,7 @@ def store_name(name):
         db_con = mysql.connector.connect(
             host="localhost",
             user="root",
-            passwd="",
+            passwd="kee2seekwel",
             db="testdb")
     except mysql.connector.Error as error:
         print("Failed to create table in MySQL: {}".format(error))
