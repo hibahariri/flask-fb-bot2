@@ -66,13 +66,17 @@ def store_name(name):
             user="root",
             passwd="kee2seekwel",
             db="test")
+        cur = db_con.cursor()
+        cur.execute("INSERT INTO Users (userName) values ('hiba')")
+        db_con.commit()
+        cur.close()
     except mysql.connector.Error as error:
         print("Failed to create table in MySQL: {}".format(error))
-    cur = db_con.cursor()
-    cur.execute("INSERT INTO Users (userName) values (%s)", name)
-    db_con.commit()
-    cur.close()
-    db_con.close()
+    finally:
+        if db_con.is_connected():
+            print("connected")
+            db_con.close()
+            print("MySQL connection is closed")
     return "done"
 
 
