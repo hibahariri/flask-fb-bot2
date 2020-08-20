@@ -33,7 +33,7 @@ def receive_message():
                         messaging_text = message['message']['text']  # take message
                         response_sent_text = get_message(messaging_text)
                         send_message(recipient_id, response_sent_text)
-                        store_name(f_name)
+                        store_name()
                     #  send_message(recipient_id, f_name)
                     # if user send us a GIF, photo, video or any other non-text item
                     if message['message'].get('attachments'):
@@ -59,22 +59,21 @@ def get_message(message_sent):
     return user_response
 
 
-def store_name(name):
+def store_name():
     try:
         db_con = mysql.connector.connect(
             host="localhost",
             user="root",
             passwd="kee2seekwel",
             db="test")
-        cur = db_con.cursor()
-        cur.execute("INSERT INTO Users (userName) values ('hiba')")
-        db_con.commit()
-        cur.close()
     except mysql.connector.Error as error:
         print("Failed to create table in MySQL: {}".format(error))
     finally:
         if db_con.is_connected():
-            print("connected")
+            cur = db_con.cursor()
+            cur.execute("INSERT INTO Users (userName) values ('hiba')")
+            db_con.commit()
+            cur.close()
             db_con.close()
             print("MySQL connection is closed")
     return "done"
