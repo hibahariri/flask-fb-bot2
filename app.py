@@ -23,8 +23,9 @@ def receive_message():
             messaging = event['messaging']
             for message in messaging:
                 if message.get('message'):
-                  #  recipient_id = message['sender']['id']
+                  #recipient_id = message['sender']['id']
                     recipient_id = '107916127621944'
+                    print(recipient_id)
                     r = requests.get(
                       'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                            recipient_id, ACCESS_TOKEN)).json()
