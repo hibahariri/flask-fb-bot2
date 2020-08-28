@@ -24,10 +24,11 @@ def receive_message():
             for message in messaging:
                 if message.get('message'):
                     recipient_id = message['sender']['id']
-                    r = requests.get('https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
-                           recipient_id, ACCESS_TOKEN)).json()
-                    f_name = r['first_name']
-                    l_name = r['last_name']
+                    # r = requests.get(
+                    #    'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
+                    #        recipient_id, ACCESS_TOKEN)).json()
+                    # f_name = r['first_name']
+                    # l_name = r['last_name']
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']  # take message
                         response_sent_text = get_message(messaging_text)
@@ -69,8 +70,9 @@ def store_name():
         print("Failed to create table in MySQL: {}".format(error))
     finally:
         if db_con.is_connected():
+            name = 'hiba'
             cur = db_con.cursor()
-            cur.execute("INSERT INTO user (username) values ('hiba')")
+            cur.execute("INSERT INTO user (username) values (%s)", name)
             db_con.commit()
             cur.close()
             db_con.close()
