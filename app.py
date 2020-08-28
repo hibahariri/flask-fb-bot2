@@ -63,7 +63,7 @@ def store_name():
     try:
         db_con = mysql.connector.connect(
             host="us-cdbr-east-02.cleardb.com",
-            user="rb3b214d3762ef4",
+            user="b3b214d3762ef4",
             passwd="4a2970a9",
             db="heroku_ff6cdbed3d2eb70")
     except mysql.connector.Error as error:
