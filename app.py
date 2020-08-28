@@ -26,11 +26,10 @@ def receive_message():
                     recipient_id = message['sender']['id']
                     print(recipient_id)
                     r = requests.get(
-                        'https://graph.facebook.com/{}?fields=id,last_name,profile_pic&access_token={}'.format(
+                        'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                             recipient_id, ACCESS_TOKEN)).json()
-                    # f_name = r['first_name']
-                    user_id = r['id']
-                    print(user_id)
+                    f_name = r['first_name']
+                    print(f_name)
                     l_name = r['last_name']
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']  # take message
