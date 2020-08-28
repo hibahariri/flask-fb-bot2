@@ -57,6 +57,7 @@ def get_message(message_sent):
     json_response = json.loads(response.read().decode('utf-8'))
     # user_response = json_response['result']['fulfillment']['speech']
     user_response = 'hi'
+    print(user_response)
     return user_response
 
 
