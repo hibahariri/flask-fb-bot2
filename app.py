@@ -55,7 +55,8 @@ def get_message(message_sent):
     request_api.query = message_sent
     response = request_api.getresponse()
     json_response = json.loads(response.read().decode('utf-8'))
-    user_response = json_response['result']['fulfillment']['speech']
+    # user_response = json_response['result']['fulfillment']['speech']
+    user_response = 'hi'
     return user_response
 
 
