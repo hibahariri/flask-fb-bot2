@@ -72,7 +72,7 @@ def store_name():
         if db_con.is_connected():
             name = 'hiba'
             cur = db_con.cursor()
-            cur.execute("INSERT INTO user (username) values (%s)", name)
+            cur.execute("INSERT INTO user (username) values (%s)", (name,))
             db_con.commit()
             cur.close()
             db_con.close()
