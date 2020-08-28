@@ -23,14 +23,14 @@ def receive_message():
             messaging = event['messaging']
             for message in messaging:
                 if message.get('message'):
-                  #recipient_id = message['sender']['id']
-                    recipient_id = '107916127621944'
+                    recipient_id = message['sender']['id']
                     print(recipient_id)
                     r = requests.get(
-                      'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
-                           recipient_id, ACCESS_TOKEN)).json()
-                    f_name = r['first_name']
-                    print(f_name)
+                        'https://graph.facebook.com/{}?fields=id,last_name,profile_pic&access_token={}'.format(
+                            recipient_id, ACCESS_TOKEN)).json()
+                    # f_name = r['first_name']
+                    user_id = r['id']
+                    print(user_id)
                     l_name = r['last_name']
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']  # take message
