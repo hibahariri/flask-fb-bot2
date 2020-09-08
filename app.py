@@ -24,7 +24,6 @@ def receive_message():
             for message in messaging:
                 if message.get('message'):
                     recipient_id = message['sender']['id']
-                    # recipient_id = '116279663453514'
                     print(recipient_id)
                     #  r = requests.get(
                     #     'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
@@ -87,8 +86,8 @@ def store_name():
 def send_message(recipient_id, response):
     # sends user the text message provided via input response parameter
     bot.send_text_message(recipient_id, response)
-    # image_url = "https://uploads.tapatalk-cdn.com/20180925/22c15c7ccc0fc977d07fd67fd424ff8d.jpg"
-    # bot.send_image_url(recipient_id, image_url)
+    image_url = "https://uploads.tapatalk-cdn.com/20180925/22c15c7ccc0fc977d07fd67fd424ff8d.jpg"
+    bot.send_image_url(recipient_id, image_url)
     print(response)
     print(recipient_id)
     return "success"
