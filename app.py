@@ -7,7 +7,7 @@ import apiai
 import mysql.connector
 
 app = Flask(__name__)  # Initializing our Flask application
-ACCESS_TOKEN = 'EAAjWhObmBKgBAK3U2gBhclZB1fEZBPKZBEWbbJNksbzC9dthq8pPWnZBAFj6K8CZAifTm2jnYvwKFiZBh8C2SyfbscCWiYeUlCQ5PXzO8kwu7xZAer00rRdbgWVQFoFoPxYnXxWYkehZBMLhApJitqbKixaUNAtoq1c9jpik8SyZBOpgDxDUhpJPysuciGyxcsfAZD'
+ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
 
