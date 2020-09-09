@@ -105,20 +105,19 @@ def send_message(recipient_id, response):
     ]
     bot.send_button_message(recipient_id, "choose your favourite type", buttons)
 
-    quickrply = json.dumps({"recipient": {"id": recipient_id}, "messaging_type": "RESPONSE",
-                            "message": {"text": "Pick a color:",
-                                        "quick_replies": [{"content_type": "text", "title": "Red", "payload": "Red", },
-                                                          {"content_type": "text", "title": "Green",
-                                                           "payload": "Green", }]}})
-
     quick_replies = [{"content_type": "text", "title": "Red", "payload": "Red", },
-                                                          {"content_type": "text", "title": "Green",
-                                                           "payload": "Green", }]
-    bot.send_raw(quickrply)
+                     {"content_type": "text", "title": "Green",
+                      "payload": "Green", }]
+    location_quick = [{"content_type": "location"}]
+
     bot.send_message(recipient_id, {
-            "text": "Pick a color:",
-            "quick_replies": quick_replies
-        })
+        "text": "Pick a color:",
+        "quick_replies": quick_replies
+    })
+    bot.send_message(recipient_id, {
+        "text": "Please send your location",
+        "quick_replies": location_quick
+    })
     return "success"
 
 
