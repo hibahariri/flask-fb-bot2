@@ -35,11 +35,16 @@ def receive_message():
                         send_message(recipient_id, response_sent_text)
                         store_name()
                     #  send_message(recipient_id, f_name)
-
                     if message['message'].get('attachments'):
                         messaging_text = 'None'
                         response_sent_text = get_message(messaging_text)
                         send_message(recipient_id, response_sent_text)
+            for postback in messaging:
+                recipient_id = postback['sender']['id']
+                if postback['postback'].get('payload'):
+                    messaging_text = postback['postback']['payload']
+                    response_sent_text = get_message(messaging_text)
+                    send_message(recipient_id, response_sent_text)
     return "Message Processed"
 
 
