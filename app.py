@@ -102,9 +102,7 @@ def send_message(recipient_id, response):
         }
     ]
     bot.send_button_message(recipient_id, "choose your favourite type", buttons)
-    reply_message = "Choose any number"
-    reply_options = (["one", "shirts"], ["two", "shirts"])
-    bot.send_quickreply(recipient_id, reply_message, reply_options)
+
     return "success"
 
 
