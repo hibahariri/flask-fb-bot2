@@ -87,8 +87,10 @@ def store_name():
 
 def send_message(recipient_id, response):
     bot.send_text_message(recipient_id, response)
+
     # image_url = "https://uploads.tapatalk-cdn.com/20180925/22c15c7ccc0fc977d07fd67fd424ff8d.jpg"
     # bot.send_image_url(recipient_id, image_url)
+
     buttons = [
         {
             "type": "postback",
@@ -102,12 +104,21 @@ def send_message(recipient_id, response):
         }
     ]
     bot.send_button_message(recipient_id, "choose your favourite type", buttons)
+
     quickrply = json.dumps({"recipient": {"id": recipient_id}, "messaging_type": "RESPONSE",
                             "message": {"text": "Pick a color:",
                                         "quick_replies": [{"content_type": "text", "title": "Red", "payload": "Red", },
                                                           {"content_type": "text", "title": "Green",
                                                            "payload": "Green", }]}})
+
+    quick_replies = [{"content_type": "text", "title": "Red", "payload": "Red", },
+                                                          {"content_type": "text", "title": "Green",
+                                                           "payload": "Green", }]
     bot.send_raw(quickrply)
+    bot.send_message(recipient_id, {
+            "text": "Pick a color:",
+            "quick_replies": quick_replies
+        })
     return "success"
 
 
