@@ -39,6 +39,12 @@ def receive_message():
                         messaging_text = 'None'
                         response_sent_text = get_message(messaging_text)
                         send_message(recipient_id, response_sent_text)
+                if message.get('postback'):
+                    recipient_id = message['sender']['id']
+                    print(recipient_id)
+                    messaging_text = message['postback']['payload']
+                    response_sent_text = get_message(messaging_text)
+                    send_message(recipient_id, response_sent_text)
     return "Message Processed"
 
 
