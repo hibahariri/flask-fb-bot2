@@ -31,12 +31,15 @@ def receive_message():
                     # l_name = r['last_name']
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']  # take message
-                        print(messaging_text)
                         response_sent_text = get_message(messaging_text)
                         send_message(recipient_id, response_sent_text)
                         store_name()
                     #  send_message(recipient_id, f_name)
                     # if user send us a GIF, photo, video or any other non-text item
+                    if message['message'].get('payload'):
+                        messaging_text = message['message']['payload']
+                        response_sent_text = get_message(messaging_text)
+                        send_message(recipient_id, response_sent_text)
                     if message['message'].get('attachments'):
                         messaging_text = 'None'
                         response_sent_text = get_message(messaging_text)
@@ -89,12 +92,12 @@ def send_message(recipient_id, response):
         {
             "type": "postback",
             "title": "Plain shirts",
-            "payload": "so you are interested in plain shirts"
+            "payload": "Plain shirts"
         },
         {
             "type": "postback",
             "title": "tie-die shirts",
-            "payload": "so you are interested in tie-die shirts"
+            "payload": "tie-die"
         }
     ]
     bot.send_button_message(recipient_id, "choose your favourite type", buttons)
