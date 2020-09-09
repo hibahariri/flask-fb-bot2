@@ -89,12 +89,12 @@ def send_message(recipient_id, response):
         {
             "type": "postback",
             "title": "Plain shirts",
-            "payload": "plain shirts"
+            "payload": "so you are interested in plain shirts"
         },
         {
             "type": "postback",
             "title": "tie-die shirts",
-            "payload": "tie-die shirts"
+            "payload": "so you are interested in tie-die shirts"
         }
     ]
     bot.send_button_message(recipient_id, "choose your favourite type", buttons)
