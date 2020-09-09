@@ -24,12 +24,10 @@ def receive_message():
             for message in messaging:
                 if message.get('message'):
                     recipient_id = message['sender']['id']
-                    print(recipient_id)
                     #  r = requests.get(
                     #     'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                     #          recipient_id, ACCESS_TOKEN)).json()
                     #  f_name = r['first_name']
-                    #  print(f_name)
                     # l_name = r['last_name']
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']  # take message
@@ -70,7 +68,7 @@ def store_name():
             passwd="4a2970a9",
             db="heroku_ff6cdbed3d2eb70")
     except mysql.connector.Error as error:
-        print("Failed to create table in MySQL: {}".format(error))
+        print("Failed to connect to database in MySQL: {}".format(error))
     finally:
         if db_con.is_connected():
             name = 'hiba'
@@ -84,12 +82,17 @@ def store_name():
 
 
 def send_message(recipient_id, response):
-    # sends user the text message provided via input response parameter
     bot.send_text_message(recipient_id, response)
-    image_url = "https://uploads.tapatalk-cdn.com/20180925/22c15c7ccc0fc977d07fd67fd424ff8d.jpg"
-    bot.send_image_url(recipient_id, image_url)
-    print(response)
-    print(recipient_id)
+    # image_url = "https://uploads.tapatalk-cdn.com/20180925/22c15c7ccc0fc977d07fd67fd424ff8d.jpg"
+    # bot.send_image_url(recipient_id, image_url)
+    buttons = [
+        {
+            "type": "postback",
+            "title": "Plain shirts",
+            "payload": "plain shirts"
+        }
+    ]
+    bot.send_button_message(recipient_id, "choose your favourite type", buttons)
     return "success"
 
 
