@@ -35,10 +35,7 @@ def receive_message():
                         send_message(recipient_id, response_sent_text)
                         store_name()
                     #  send_message(recipient_id, f_name)
-                    if message['postback'].get('payload'):
-                        messaging_text = message['postback']['payload']
-                        response_sent_text = get_message(messaging_text)
-                        send_message(recipient_id, response_sent_text)
+
                     if message['message'].get('attachments'):
                         messaging_text = 'None'
                         response_sent_text = get_message(messaging_text)
