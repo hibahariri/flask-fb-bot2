@@ -10,6 +10,16 @@ app = Flask(__name__)  # Initializing our Flask application
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
+fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
+data = {
+    "get_started": {
+        "payload": "<GET_STARTED_PAYLOAD>"
+    }
+}
+headers = {
+    'content-type': 'application/json'
+}
+gsreq = requests.post(fb_url, headers=headers, data=json.dumps(data))
 
 
 @app.route('/', methods=['GET', 'POST'])
