@@ -13,7 +13,7 @@ bot = Bot(ACCESS_TOKEN)
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
     "get_started": {
-        "payload": "<GET_STARTED_PAYLOAD>"
+        "payload": "Hi"
     }
 }
 headers = {
