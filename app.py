@@ -46,17 +46,10 @@ def receive_message():
             for message in messaging:
                 if message.get('message'):
                     recipient_id = message['sender']['id']
-                    r = requests.get(
-                        'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
-                            recipient_id, ACCESS_TOKEN)).json()
-                    f_name = r['first_name']
-                    print(f_name)
-                    # l_name = r['last_name']
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']  # take message
                         response_sent_text = get_message(messaging_text)
                         send_message(recipient_id, response_sent_text)
-                        store_name(f_name)
                     #  send_message(recipient_id, f_name)
                     if message['message'].get('attachments'):
                         messaging_text = 'None'
@@ -65,6 +58,13 @@ def receive_message():
                 if message.get('postback'):
                     recipient_id = message['sender']['id']
                     messaging_text = message['postback']['payload']
+                    if messaging_text == 'Hi':
+                        r = requests.get(
+                            'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
+                                recipient_id, ACCESS_TOKEN)).json()
+                        f_name = r['first_name']
+                        print(f_name)
+                        store_name(f_name)
                     response_sent_text = get_message(messaging_text)
                     send_message(recipient_id, response_sent_text)
     return "Message Processed"
