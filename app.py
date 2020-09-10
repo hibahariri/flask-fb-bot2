@@ -56,7 +56,7 @@ def receive_message():
                         messaging_text = message['message']['text']  # take message
                         response_sent_text = get_message(messaging_text)
                         send_message(recipient_id, response_sent_text)
-                        store_name()
+                        store_name(f_name)
                     #  send_message(recipient_id, f_name)
                     if message['message'].get('attachments'):
                         messaging_text = 'None'
@@ -86,7 +86,7 @@ def get_message(message_sent):
     return user_response
 
 
-def store_name():
+def store_name(first_name):
     try:
         db_con = mysql.connector.connect(
             host="us-cdbr-east-02.cleardb.com",
@@ -97,9 +97,8 @@ def store_name():
         print("Failed to connect to database in MySQL: {}".format(error))
     finally:
         if db_con.is_connected():
-            name = 'hiba'
             cur = db_con.cursor()
-            cur.execute("INSERT INTO user (username) values (%s)", (name,))
+            cur.execute("INSERT INTO user (username) values (%s)", (first_name,))
             db_con.commit()
             cur.close()
             db_con.close()
