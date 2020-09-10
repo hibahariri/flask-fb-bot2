@@ -16,15 +16,22 @@ data = {
         "payload": "Hi"
     }
 }
-data2 = {"greeting": {
-    "locale": "en_US",
-    "text": "Timeless apparel for the masses."
-}}
+data2 = {
+    "greeting": [
+        {
+            "locale": "default",
+            "text": "Hello!"
+        }, {
+            "locale": "en_US",
+            "text": "Timeless apparel for the masses."
+        }
+    ]
+}
 headers = {
     'content-type': 'application/json'
 }
-gsreq = requests.post(fb_url, headers=headers, data=json.dumps(data))
-grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2))
+gsreq = requests.post(fb_url, headers=headers, data=json.dumps(data)).json()
+grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 
 
 @app.route('/', methods=['GET', 'POST'])
