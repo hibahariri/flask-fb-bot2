@@ -108,9 +108,12 @@ def send_message(recipient_id, response):
     quick_replies = [{"content_type": "text", "title": "Red", "payload": "Red", },
                      {"content_type": "text", "title": "Green",
                       "payload": "Green", }]
-    location_quick = [{"content_type": "location"}]
+    location_quick = [{"content_type": "location", }]
 
-
+    bot.send_message(recipient_id, {
+        "text": "Pick a color:",
+        "quick_replies": quick_replies
+    })
     bot.send_message(recipient_id, {
         "text": "Please send your location",
         "quick_replies": location_quick
