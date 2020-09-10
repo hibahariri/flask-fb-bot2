@@ -16,10 +16,15 @@ data = {
         "payload": "Hi"
     }
 }
+data2 = {"greeting": {
+    "locale": "en_US",
+    "text": "Timeless apparel for the masses."
+}}
 headers = {
     'content-type': 'application/json'
 }
 gsreq = requests.post(fb_url, headers=headers, data=json.dumps(data))
+grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2))
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -51,7 +56,6 @@ def receive_message():
                         send_message(recipient_id, response_sent_text)
                 if message.get('postback'):
                     recipient_id = message['sender']['id']
-                    print(recipient_id)
                     messaging_text = message['postback']['payload']
                     response_sent_text = get_message(messaging_text)
                     send_message(recipient_id, response_sent_text)
