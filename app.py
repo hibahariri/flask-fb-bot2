@@ -13,13 +13,13 @@ bot = Bot(ACCESS_TOKEN)
 
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
-        "get_started": {
-            "payload": "help"
-        }
+    "get_started": {
+        "payload": "help"
     }
+}
 headers = {
-        'content-type': 'application/json'
-    }
+    'content-type': 'application/json'
+}
 
 gsresp = requests.post(fb_url, headers=headers, data=json.dumps(data)).json()
 
@@ -35,8 +35,7 @@ data2 = {
     ]
 }
 
-
-grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
+#grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -63,7 +62,7 @@ def receive_message():
                             'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                                 recipient_id, ACCESS_TOKEN)).json()
                         f_name = r['first_name']
-                        greeting_text1 = "hello"
+                        greeting_text1 = "hello " + f_name
                         send_message(recipient_id, greeting_text1)
                         store_name(f_name)
             response_sent_text = get_message(messaging_text)
