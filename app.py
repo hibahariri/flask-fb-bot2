@@ -36,9 +36,7 @@ data2 = {
 }
 
 data3 = {
-    "fields": [
-        "ice_breakers",
-    ]
+    "fields": "ice_breakers"
 }
 # grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data3)).json()
