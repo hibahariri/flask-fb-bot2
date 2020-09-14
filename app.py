@@ -10,12 +10,19 @@ app = Flask(__name__)  # Initializing our Flask application
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
+
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
-    "get_started": {
-        "payload": "Hi"
+        "get_started": {
+            "payload": "help"
+        }
     }
-}
+headers = {
+        'content-type': 'application/json'
+    }
+
+gsresp = requests.post(fb_url, headers=headers, data=json.dumps(data)).json()
+
 data2 = {
     "greeting": [
         {
@@ -27,10 +34,8 @@ data2 = {
         }
     ]
 }
-headers = {
-    'content-type': 'application/json'
-}
-gsreq = requests.post(fb_url, headers=headers, data=json.dumps(data)).json()
+
+
 grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 
 
@@ -45,29 +50,24 @@ def receive_message():
         for event in output['entry']:
             messaging = event['messaging']
             for message in messaging:
+                recipient_id = message['sender']['id']
                 if message.get('message'):
-                    recipient_id = message['sender']['id']
                     if message['message'].get('text'):
-                        messaging_text = message['message']['text']  # take message
-                        response_sent_text = get_message(messaging_text)
-                        send_message(recipient_id, response_sent_text)
-                    #  send_message(recipient_id, f_name)
+                        messaging_text = message['message']['text']
                     if message['message'].get('attachments'):
                         messaging_text = 'None'
-                        response_sent_text = get_message(messaging_text)
-                        send_message(recipient_id, response_sent_text)
                 if message.get('postback'):
-                    recipient_id = message['sender']['id']
                     messaging_text = message['postback']['payload']
-                    if messaging_text == 'Hi':
+                    if messaging_text == 'help':
                         r = requests.get(
                             'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                                 recipient_id, ACCESS_TOKEN)).json()
                         f_name = r['first_name']
-                        print(f_name)
+                        greeting_text1 = "hello"
+                        send_message(recipient_id, greeting_text1)
                         store_name(f_name)
-                    response_sent_text = get_message(messaging_text)
-                    send_message(recipient_id, response_sent_text)
+            response_sent_text = get_message(messaging_text)
+            send_message(recipient_id, response_sent_text)
     return "Message Processed"
 
 
