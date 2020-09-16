@@ -41,35 +41,9 @@ data3 = {
     ]
 }
 
-data4 = {
-    "persistent_menu": [
-        {
-            "locale": "default",
-            "composer_input_disabled": "false",
-            "call_to_actions": [
-                {
-                    "type": "postback",
-                    "title": "Talk to an agent",
-                    "payload": "None"
-                },
-                {
-                    "type": "postback",
-                    "title": "Outfit suggestions",
-                    "payload": "None"
-                },
-                {
-                    "type": "postback",
-                    "title": "Outfit suggestions",
-                    "payload": "None"
-                }
-            ]
-        }
-    ]
-}
+
 # grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 # del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data3)).json()
-per_req = requests.post(fb_url, headers=headers, data=json.dumps(data4)).json()
-print(per_req)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -99,7 +73,7 @@ def receive_message():
                         greeting_text1 = "hello " + f_name
                         send_message(recipient_id, greeting_text1)
                         store_name(f_name)
-            response_sent_text = get_message(messaging_text)
+            response_sent_text = get_message(messaging_text, recipient_id)
             send_message(recipient_id, response_sent_text)
     return "Message Processed"
 
@@ -110,14 +84,18 @@ def verify_fb_token(token_sent):
     return 'Invalid verification token'
 
 
-def get_message(message_sent):
+def get_message(message_sent,recipient_id):
     ai = apiai.ApiAI("5c09984323f1437682ce9c679eb5828f")
     request_api = ai.text_request()
     request_api.query = message_sent
     response = request_api.getresponse()
     json_response = json.loads(response.read().decode('utf-8'))
     user_response = json_response['result']['fulfillment']['speech']
-    return user_response
+    pay_response = json_response['result']['fulfillment']['messages']['payload']
+    if pay_response:
+        bot.send_message(recipient_id, pay_response)
+    else:
+        return user_response
 
 
 def store_name(first_name):
