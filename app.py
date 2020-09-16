@@ -40,9 +40,36 @@ data3 = {
         "ice_breakers",
     ]
 }
+
+data4 = {
+    "persistent_menu": [
+        {
+            "locale": "default",
+            "composer_input_disabled": "false",
+            "call_to_actions": [
+                {
+                    "type": "postback",
+                    "title": "Talk to an agent",
+                    "payload": "None"
+                },
+                {
+                    "type": "postback",
+                    "title": "Outfit suggestions",
+                    "payload": "None"
+                },
+                {
+                    "type": "postback",
+                    "title": "Outfit suggestions",
+                    "payload": "None"
+                }
+            ]
+        }
+    ]
+}
 # grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
-del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data3)).json()
-print(del_icbr)
+# del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data3)).json()
+per_req = requests.post(fb_url, headers=headers, data=json.dumps(data4)).json()
+# print(del_icbr)
 
 
 @app.route('/', methods=['GET', 'POST'])
