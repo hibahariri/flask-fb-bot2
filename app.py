@@ -93,7 +93,7 @@ def get_message(message_sent,recipient_id):
     user_response = json_response['result']['fulfillment']['speech']
     pay_response = json_response['result']['fulfillment']['messages']['payload']
     if pay_response:
-        bot.send_message(recipient_id, pay_response)
+        print(pay_response)
     else:
         return user_response
 
