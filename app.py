@@ -69,7 +69,7 @@ data4 = {
 # grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 # del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data3)).json()
 per_req = requests.post(fb_url, headers=headers, data=json.dumps(data4)).json()
-# print(del_icbr)
+print(per_req)
 
 
 @app.route('/', methods=['GET', 'POST'])
