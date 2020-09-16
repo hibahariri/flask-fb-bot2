@@ -91,7 +91,7 @@ def get_message(message_sent,recipient_id):
     response = request_api.getresponse()
     json_response = json.loads(response.read().decode('utf-8'))
     user_response = json_response['result']['fulfillment']['speech']
-    pay_response = json_response['result']['fulfillment']['messages']['payload']
+    pay_response = json.dumps(json_response['result']['fulfillment']['messages']['payload'])
     if pay_response:
         print(pay_response)
     else:
