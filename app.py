@@ -23,21 +23,9 @@ headers = {
 
 gsresp = requests.post(fb_url, headers=headers, data=json.dumps(data)).json()
 
-data2 = {
-    "greeting": [
-        {
-            "locale": "default",
-            "text": "Hello!"
-        }, {
-            "locale": "en_US",
-            "text": "Hello!"
-        }
-    ]
-}
-
 data3 = {
     "fields": [
-        "ice_breakers",
+        "ice_breakers"
     ]
 }
 
@@ -48,8 +36,10 @@ data4 = {
 }
 
 # grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
-# del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data3)).json()
-del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data4)).json()
+del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data3)).json()
+
+
+# del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data4)).json()
 
 @app.route('/', methods=['GET', 'POST'])
 def receive_message():
