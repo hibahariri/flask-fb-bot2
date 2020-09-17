@@ -43,13 +43,13 @@ data3 = {
 
 data4 = {
     "fields": [
-        "persistent_menu",
+        "persistent_menu"
     ]
 }
 
 # grtreq = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 # del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data3)).json()
-
+del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data4)).json()
 
 @app.route('/', methods=['GET', 'POST'])
 def receive_message():
