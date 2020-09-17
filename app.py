@@ -73,7 +73,7 @@ def receive_message():
                         greeting_text1 = "hello " + f_name
                         send_message(recipient_id, greeting_text1)
                         store_name(f_name)
-            response_sent_text = get_message(messaging_text, recipient_id)
+            response_sent_text = get_message(messaging_text)
             send_message(recipient_id, response_sent_text)
     return "Message Processed"
 
@@ -84,18 +84,17 @@ def verify_fb_token(token_sent):
     return 'Invalid verification token'
 
 
-def get_message(message_sent,recipient_id):
+def get_message(message_sent):
     ai = apiai.ApiAI("5c09984323f1437682ce9c679eb5828f")
     request_api = ai.text_request()
     request_api.query = message_sent
     response = request_api.getresponse()
     json_response = json.loads(response.read().decode('utf-8'))
-    user_response = json_response['result']['fulfillment']['speech']
-    pay_response = json.dumps(json_response['result']['fulfillment']['messages']['payload'])
-    if pay_response:
-        print(pay_response)
-    else:
-        return user_response
+    if json_response['result']['fulfillment']['speech']:
+        user_response = json_response['result']['fulfillment']['speech']
+    elif json_response['alternateResult']['fulfillment']['speech']:
+        user_response = json_response['alternateResult']['fulfillment']['speech']
+    return user_response
 
 
 def store_name(first_name):
