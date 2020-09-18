@@ -78,6 +78,7 @@ def get_message(message_sent):
     json_response = json.loads(response.read().decode('utf-8'))
     result = json_response['result']
     action = result.get('action')
+    payload = result.get('payload')
     if json_response['result']['fulfillment']['speech']:
         user_response = json_response['result']['fulfillment']['speech']
     elif action is not None:
@@ -86,6 +87,9 @@ def get_message(message_sent):
         shirt = parameters.get('T-shirt')
         print(shirt)
         user_response = "I didnt understand"
+    elif payload is not None:
+        print(payload)
+        user_response = "This is a payload "
     return user_response
 
 
