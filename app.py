@@ -48,7 +48,7 @@ def receive_message():
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']
                     if message['message'].get('attachments'):
-                        messaging_text = 'None'
+                        messaging_text = 'payload'
                 if message.get('postback'):
                     messaging_text = message['postback']['payload']
                     if messaging_text == 'help':
