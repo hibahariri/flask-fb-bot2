@@ -83,6 +83,7 @@ def get_message(message_sent):
         user_response = json_response['result']['fulfillment']['speech']
     else:
         user_response = "There is no response"
+    print("Hi")
     print(payload)
     return user_response
 
