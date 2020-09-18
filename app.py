@@ -81,8 +81,9 @@ def get_message(message_sent):
     messages = json_response['result']['fulfillment']['messages']
     if messages is not None:
         messages_list = {k: v for d in messages for k, v in d.items()}
-        custom_payload: dict = messages_list['payload']
-        print(custom_payload)
+        if messages_list['payload'] is not None:
+            custom_payload: dict = messages_list['payload']
+            print(custom_payload)
     if json_response['result']['fulfillment']['speech']:
         user_response = json_response['result']['fulfillment']['speech']
     else:
