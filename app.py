@@ -79,14 +79,14 @@ def get_message(message_sent):
     result = json_response['result']
     action = result.get('action')
     messages = json_response['result']['fulfillment']['messages']
-    messages_list = {k: v for d in messages for k, v in d.items()}
-    custom_payload: dict = messages_list['payload']
+    if messages is not None:
+        messages_list = {k: v for d in messages for k, v in d.items()}
+        custom_payload: dict = messages_list['payload']
+        print(custom_payload)
     if json_response['result']['fulfillment']['speech']:
         user_response = json_response['result']['fulfillment']['speech']
     else:
         user_response = "There is no response"
-    print("Hi")
-    print(custom_payload)
     return user_response
 
 
