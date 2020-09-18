@@ -78,7 +78,7 @@ def get_message(message_sent):
     json_response = json.loads(response.read().decode('utf-8'))
     result = json_response['result']
     action = result.get('action')
-    messages = result.get('messages')
+    messages = json_response['result']['fulfillment']['messages']
     # messages_list = {k: v for d in messages for k, v in d.items()}
     # custom_payload: dict = messages_list['payload']
     if json_response['result']['fulfillment']['speech']:
