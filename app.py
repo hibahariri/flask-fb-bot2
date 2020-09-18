@@ -84,7 +84,7 @@ def get_message(message_sent):
     else:
         user_response = "There is no response"
     print("Hi")
-    print(messages)
+    print(result)
     return user_response
 
 
