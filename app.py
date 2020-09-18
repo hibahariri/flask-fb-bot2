@@ -79,7 +79,7 @@ def get_message(message_sent):
     result = json_response['result']
     action = result.get('action')
     fulfillment = result.get('fulfillment')
-    payload = fulfillment['payload']
+    payload = fulfillment['messages']['payload']
     if json_response['result']['fulfillment']['speech']:
         user_response = json_response['result']['fulfillment']['speech']
     else:
