@@ -48,7 +48,7 @@ def receive_message():
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']
                     if message['message'].get('attachments'):
-                        messaging_text = 'payload'
+                        messaging_text = 'None'
                 if message.get('postback'):
                     messaging_text = message['postback']['payload']
                     if messaging_text == 'help':
@@ -84,7 +84,6 @@ def get_message(message_sent):
     else:
         user_response = "There is no response"
     print("Hi")
-    print(payload)
     return user_response
 
 
