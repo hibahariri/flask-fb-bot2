@@ -80,9 +80,11 @@ def get_message(message_sent):
     action = result.get('action')
     if json_response['result']['fulfillment']['speech']:
         user_response = json_response['result']['fulfillment']['speech']
-    elif action is not None :
-        if action == "get-categories" :
+    elif action is not None:
+        if action == "get-categories":
             user_response = "we will show yo our categories"
+        else:
+            user_response = "we will show yo our categories 2"
     else:
         messages = json_response['result']['fulfillment']['messages']
         if messages is not None:
