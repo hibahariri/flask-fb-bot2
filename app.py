@@ -116,6 +116,24 @@ def store_name(first_name):
     return "done"
 
 
+def get_categories():
+    try:
+        db_con = mysql.connector.connect(
+            host="us-cdbr-east-02.cleardb.com",
+            user="b3b214d3762ef4",
+            passwd="4a2970a9",
+            db="heroku_ff6cdbed3d2eb70")
+    except mysql.connector.Error as error:
+        print("Failed to connect to database in MySQL: {}".format(error))
+    finally:
+        if db_con.is_connected():
+            cur = db_con.cursor()
+            cur.execute("Select cat_name from category")
+            records = cur.fetchall()
+    print("Total number of rows in Laptop is: ", cur.rowcount)
+    return "done"
+
+
 def send_message(recipient_id, response):
     bot.send_text_message(recipient_id, response)
 
@@ -149,6 +167,7 @@ def send_message(recipient_id, response):
         "text": "Please send your location",
         "quick_replies": location_quick
     })
+    get_categories()
     return "success"
 
 
