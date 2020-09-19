@@ -131,12 +131,15 @@ def get_categories():
             cur.execute("Select cat_name from category")
             records = cur.fetchall()
     print("Total number of rows in Laptop is: ", cur.rowcount)
-    return "done"
+    return records
 
 
 def send_message(recipient_id, response):
     bot.send_text_message(recipient_id, response)
-
+    quick_replies1 = []
+    categories = get_categories()
+    for row in categories:
+        quick_replies1.append({"content_type": "text", "title": row[0], "payload": row[0], })
     # image_url = "https://uploads.tapatalk-cdn.com/20180925/22c15c7ccc0fc977d07fd67fd424ff8d.jpg"
     # bot.send_image_url(recipient_id, image_url)
 
@@ -161,13 +164,12 @@ def send_message(recipient_id, response):
 
     bot.send_message(recipient_id, {
         "text": "Pick a color:",
-        "quick_replies": quick_replies
+        "quick_replies": quick_replies1
     })
     bot.send_message(recipient_id, {
         "text": "Please send your location",
         "quick_replies": location_quick
     })
-    get_categories()
     return "success"
 
 
