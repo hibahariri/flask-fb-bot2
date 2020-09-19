@@ -59,8 +59,8 @@ def receive_message():
                         greeting_text1 = "hello " + f_name
                         send_message(recipient_id, greeting_text1)
                         store_name(f_name)
-            response_sent_text = get_message(messaging_text)
-            send_message(recipient_id, response_sent_text)
+            response_message = get_message(messaging_text)
+            send_message(recipient_id, response_message)
     return "Message Processed"
 
 
@@ -87,21 +87,28 @@ def connect_todb():
     return conn
 
 
+def get_response(action, parameters):
+    if action == "get-categories":
+        records = get_categories()
+        user_response = [records, "quick replies"]
+    else:
+        user_response = ["we will show yo our categories 2", "text"]
+    return user_response
+
+
 def get_message(message_sent):
     ai = apiai.ApiAI("5c09984323f1437682ce9c679eb5828f")
     request_api = ai.text_request()
     request_api.query = message_sent
-    response = request_api.getresponse()
-    json_response = json.loads(response.read().decode('utf-8'))
+    json_response = json.loads(request_api.getresponse().read().decode('utf-8'))
     result = json_response['result']
     action = result.get('action')
     if json_response['result']['fulfillment']['speech']:
-        user_response = json_response['result']['fulfillment']['speech']
+        real_response = json_response['result']['fulfillment']['speech']
+        user_response = [real_response, "text"]
     elif action is not None:
-        if action == "get-categories":
-            user_response = "we will show yo our categories"
-        else:
-            user_response = "we will show yo our categories 2"
+        parameters = []
+        user_response = get_response(action, parameters)
     else:
         messages = json_response['result']['fulfillment']['messages']
         if messages is not None:
@@ -109,7 +116,7 @@ def get_message(message_sent):
             if messages_list['payload'] is not None:
                 custom_payload: dict = messages_list['payload']
                 print(custom_payload)
-        user_response = "There is no response"
+        user_response = [custom_payload, "quick replies"]
     return user_response
 
 
@@ -136,14 +143,19 @@ def get_categories():
 
 
 def send_message(recipient_id, response):
-    bot.send_text_message(recipient_id, response)
-    quick_replies1 = []
-    categories = get_categories()
-    for row in categories:
-        quick_replies1.append({"content_type": "text", "title": row[0], "payload": row[0], })
-    # image_url = "https://uploads.tapatalk-cdn.com/20180925/22c15c7ccc0fc977d07fd67fd424ff8d.jpg"
-    # bot.send_image_url(recipient_id, image_url)
-
+    if response[1] == "text":
+        bot.send_text_message(recipient_id, response[0])
+    elif response[1] == "quick replies":
+        quick_replies = []
+        records = response[0]
+        for row in records:
+            quick_replies.append({"content_type": "text", "title": row[0], "payload": row[0], })
+        bot.send_message(recipient_id, {
+            "text": "Pick a category:",
+            "quick_replies": quick_replies
+        })
+    else:
+        bot.send_message(recipient_id, response[0])
     buttons = [
         {
             "type": "postback",
@@ -157,20 +169,6 @@ def send_message(recipient_id, response):
         }
     ]
     bot.send_button_message(recipient_id, "choose your favourite type", buttons)
-
-    quick_replies = [{"content_type": "text", "title": "Red", "payload": "Red", },
-                     {"content_type": "text", "title": "Green",
-                      "payload": "Green", }]
-    location_quick = [{"content_type": "location", }]
-
-    bot.send_message(recipient_id, {
-        "text": "Pick a color:",
-        "quick_replies": quick_replies1
-    })
-    bot.send_message(recipient_id, {
-        "text": "Please send your location",
-        "quick_replies": location_quick
-    })
     return "success"
 
 
