@@ -57,7 +57,8 @@ def receive_message():
                                 recipient_id, ACCESS_TOKEN)).json()
                         f_name = r['first_name']
                         greeting_text1 = "hello " + f_name
-                        send_message(recipient_id, greeting_text1)
+                        response_message = [greeting_text1 , "text"]
+                        send_message(recipient_id, response_message)
                         store_name(f_name)
             response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
