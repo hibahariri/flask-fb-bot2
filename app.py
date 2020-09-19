@@ -70,6 +70,23 @@ def verify_fb_token(token_sent):
     return 'Invalid verification token'
 
 
+def connect_todb():
+    try:
+        db_con = mysql.connector.connect(
+            host="us-cdbr-east-02.cleardb.com",
+            user="b3b214d3762ef4",
+            passwd="4a2970a9",
+            db="heroku_ff6cdbed3d2eb70")
+    except mysql.connector.Error as error:
+        print("Failed to connect to database in MySQL: {}".format(error))
+    finally:
+        if db_con.is_connected():
+            conn = [db_con]
+        else:
+            conn = ["no connection"]
+    return conn
+
+
 def get_message(message_sent):
     ai = apiai.ApiAI("5c09984323f1437682ce9c679eb5828f")
     request_api = ai.text_request()
@@ -97,39 +114,23 @@ def get_message(message_sent):
 
 
 def store_name(first_name):
-    try:
-        db_con = mysql.connector.connect(
-            host="us-cdbr-east-02.cleardb.com",
-            user="b3b214d3762ef4",
-            passwd="4a2970a9",
-            db="heroku_ff6cdbed3d2eb70")
-    except mysql.connector.Error as error:
-        print("Failed to connect to database in MySQL: {}".format(error))
-    finally:
-        if db_con.is_connected():
-            cur = db_con.cursor()
-            cur.execute("INSERT INTO user (username) values (%s)", (first_name,))
-            db_con.commit()
-            cur.close()
-            db_con.close()
-            print("MySQL connection is closed")
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute("INSERT INTO user (username) values (%s)", (first_name,))
+    con[0].commit()
+    cur.close()
+    con[0].close()
+    print("MySQL connection is closed")
     return "done"
 
 
 def get_categories():
-    try:
-        db_con = mysql.connector.connect(
-            host="us-cdbr-east-02.cleardb.com",
-            user="b3b214d3762ef4",
-            passwd="4a2970a9",
-            db="heroku_ff6cdbed3d2eb70")
-    except mysql.connector.Error as error:
-        print("Failed to connect to database in MySQL: {}".format(error))
-    finally:
-        if db_con.is_connected():
-            cur = db_con.cursor()
-            cur.execute("Select cat_name from category")
-            records = cur.fetchall()
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute("Select cat_name from category")
+    records = cur.fetchall()
+    cur.close()
+    con[0].close()
     print("Total number of rows in Laptop is: ", cur.rowcount)
     return records
 
