@@ -156,19 +156,19 @@ def send_message(recipient_id, response):
         })
     else:
         bot.send_message(recipient_id, response[0])
-    buttons = [
-        {
-            "type": "postback",
-            "title": "Plain shirts",
-            "payload": "Plain shirts"
-        },
-        {
-            "type": "postback",
-            "title": "tie-die shirts",
-            "payload": "tie-die"
-        }
-    ]
-    bot.send_button_message(recipient_id, "choose your favourite type", buttons)
+        buttons = [
+            {
+                "type": "postback",
+                "title": "Plain shirts",
+                "payload": "Plain shirts"
+            },
+            {
+                "type": "postback",
+                "title": "tie-die shirts",
+                "payload": "tie-die"
+            }
+        ]
+        bot.send_button_message(recipient_id, "choose your favourite type", buttons)
     return "success"
 
 
