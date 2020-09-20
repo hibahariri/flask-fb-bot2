@@ -170,14 +170,15 @@ def send_message(recipient_id, response):
             }
         ]
         bot.send_button_message(recipient_id, "choose your favourite type", buttons)
-    URL_button = {
+    URL_button = [{
         "type": "web_url",
         "title": "Webview example",
         "webview_height_ratio": "compact",
         "messenger_extensions": "true",
         "url": "https://sites.google.com/view/mybotapp/home"
-    }
-    bot.send_button_message(recipient_id,"choose your favourite type" ,URL_button)
+    }, ]
+    print(URL_button)
+    bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
     return "success"
 
 
