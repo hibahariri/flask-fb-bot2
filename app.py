@@ -175,7 +175,7 @@ def send_message(recipient_id, response):
         "title": "Webview example",
         "webview_height_ratio": "compact",
         "messenger_extensions": "true",
-        "url": "https://sites.google.com/view/mybotapp/home"
+        "url": "http://www.chargrilled.co.uk/t-shirts/I-See-Dumb-People-t-shirt.m"
     }, ]
     print(URL_button)
     bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
