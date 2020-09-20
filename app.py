@@ -173,7 +173,7 @@ def send_message(recipient_id, response):
     URL_button = [{
         "type": "web_url",
         "title": "Webview example",
-        "webview_height_ratio": "compact",
+        "webview_height_ratio": "tall",
         "url": "http://www.chargrilled.co.uk/t-shirts/I-See-Dumb-People-t-shirt.m"
     }, ]
     print(URL_button)
