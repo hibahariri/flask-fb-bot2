@@ -176,8 +176,7 @@ def send_message(recipient_id, response):
         "webview_height_ratio": "tall",
         "url": "http://www.chargrilled.co.uk/t-shirts/I-See-Dumb-People-t-shirt.m"
     }, ]
-    print(URL_button)
-    bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
+#    bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
     return "success"
 
 
