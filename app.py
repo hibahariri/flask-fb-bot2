@@ -39,7 +39,6 @@ def receive_message():
         return verify_fb_token(token_sent)
     else:
         output = request.get_json()
-        print(output)
         for event in output['entry']:
             messaging = event['messaging']
             for message in messaging:
@@ -145,7 +144,7 @@ def get_categories():
 
 def send_message(recipient_id, response):
     if response[1] == "text":
-        # bot.send_text_message(recipient_id, response[0])
+        bot.send_text_message(recipient_id, response[0])
         fburl = "https://graph.facebook.com/v2.6/me/messages?access_token={}".format(ACCESS_TOKEN)
         loc_butt = {
             "recipient": {
@@ -162,7 +161,7 @@ def send_message(recipient_id, response):
         header = {
             'content-type': 'application/json'
         }
-        requests.post(fburl, headers=header, data=json.dumps(loc_butt)).json()
+        abc = requests.post(fburl, headers=header, data=json.dumps(loc_butt)).json()
     elif response[1] == "quick replies":
         quick_replies = []
         records = response[0]
