@@ -146,6 +146,11 @@ def get_categories():
 def send_message(recipient_id, response):
     if response[1] == "text":
         bot.send_text_message(recipient_id, response[0])
+        location_quick = [{"content_type": "location", }]
+        bot.send_message(recipient_id, {
+            "text": "Please send your location",
+            "quick_replies": location_quick
+        })
     elif response[1] == "quick replies":
         quick_replies = []
         records = response[0]
