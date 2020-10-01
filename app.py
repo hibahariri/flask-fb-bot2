@@ -146,10 +146,12 @@ def get_categories():
 def send_message(recipient_id, response):
     if response[1] == "text":
         bot.send_text_message(recipient_id, response[0])
-        location_quick = [{"content_type": "location"}]
+        location_quick = [{"content_type": "location", }, ]
         bot.send_message(recipient_id, {
+            "text": "Pick a category:",
             "quick_replies": location_quick
         })
+        print(location_quick)
     elif response[1] == "quick replies":
         quick_replies = []
         records = response[0]
@@ -180,7 +182,7 @@ def send_message(recipient_id, response):
         "webview_height_ratio": "tall",
         "url": "http://www.chargrilled.co.uk/t-shirts/I-See-Dumb-People-t-shirt.m"
     }, ]
-#    bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
+    #    bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
     return "success"
 
 
