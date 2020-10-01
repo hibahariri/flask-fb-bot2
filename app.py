@@ -146,12 +146,20 @@ def get_categories():
 def send_message(recipient_id, response):
     if response[1] == "text":
         bot.send_text_message(recipient_id, response[0])
-        location_quick = [{"content_type": "location", }, ]
-        bot.send_message(recipient_id, {
-            "text": "Pick a category:",
-            "quick_replies": location_quick
-        })
-        print(location_quick)
+        fburl = "https://graph.facebook.com/v2.6/me/messages?access_token={}".format(ACCESS_TOKEN)
+        loc_butt = {
+            "recipient": {
+                "id": recipient_id
+            },
+            "message": {
+                "text": "Please share your location:",
+                "quick_replies": [
+                    {
+                        "content_type": "location",
+                    }
+                ]
+            }}
+        loc_req = requests.post(fburl, headers=headers, data=json.dumps(loc_butt)).json()
     elif response[1] == "quick replies":
         quick_replies = []
         records = response[0]
