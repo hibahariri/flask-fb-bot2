@@ -149,7 +149,7 @@ def send_message(recipient_id, response):
         fburl = "https://graph.facebook.com/v2.6/me/messages?access_token={}".format(ACCESS_TOKEN)
         loc_butt = {
             "recipient": {
-                "id": {{recipient_id}}
+                "id": "{{recipient_id}}"
             },
             "message": {
                 "text": "Please share your location:",
