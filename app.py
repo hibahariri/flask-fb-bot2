@@ -170,9 +170,8 @@ def send_message(recipient_id, response):
                             "payload": row[0],
                         },
                     ]})
-        # bot.send_generic_message(recipient_id, Generic_replies)
-        print(row[0])
-        bot.send_text_message(recipient_id,"text")
+        bot.send_generic_message(recipient_id, Generic_replies)
+        # bot.send_text_message(recipient_id,"text")
     else:
         bot.send_message(recipient_id, response[0])
         buttons = [
