@@ -138,6 +138,7 @@ def get_categories():
     records = cur.fetchall()
     cur.close()
     con[0].close()
+    print(records)
     print("Total number of rows in Laptop is: ", cur.rowcount)
     return records
 
@@ -159,7 +160,7 @@ def send_message(recipient_id, response):
         records = response[0]
         for row in records:
             Generic_replies.append({
-                "title": row[0][0],
+                "title": row[0],
                 "image_url": row[0][2],
                 "buttons":
                     [
@@ -170,7 +171,7 @@ def send_message(recipient_id, response):
                         },
                     ]})
         # bot.send_generic_message(recipient_id, Generic_replies)
-        print(row[0][0])
+        print(row[0])
         bot.send_text_message(recipient_id,"text")
     else:
         bot.send_message(recipient_id, response[0])
