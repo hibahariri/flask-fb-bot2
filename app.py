@@ -134,7 +134,7 @@ def store_name(first_name):
 def get_categories():
     con = connect_todb()
     cur = con[0].cursor()
-    cur.execute("Select cat_name from category")
+    cur.execute("Select cat_name,cat_description,cat_image from category")
     records = cur.fetchall()
     cur.close()
     con[0].close()
@@ -159,14 +159,14 @@ def send_message(recipient_id, response):
         records = response[0]
         for row in records:
             Generic_replies.append({
-                "title": row[0],
-                "image_url": "https://maps.googleapis.com/maps/api/staticmap?center=40.714%2c%20-73.998&zoom=12&size=100x70&key=AIzaSyB16ffMqfvPJ4cgTFyyNpllAbq3f-V1q-o",
+                "title": row[0][0],
+                "image_url": row[0][2],
                 "buttons":
                     [
                         {
                             "type": "postback",
                             "title": "show more",
-                            "payload": row[0]
+                            "payload": row[0][0]
                         },
                     ]})
         bot.send_generic_message(recipient_id, Generic_replies)
