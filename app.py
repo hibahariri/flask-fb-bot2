@@ -90,7 +90,7 @@ def connect_todb():
 def get_response(action, parameters):
     if action == "get-categories":
         records = get_categories()
-        user_response = [records, "quick replies"]
+        user_response = [records, "Generic template"]
     else:
         user_response = ["we will show yo our categories 2", "text"]
     return user_response
@@ -192,6 +192,22 @@ def send_message(recipient_id, response):
             "text": "Pick a category:",
             "quick_replies": quick_replies
         })
+    elif response[1] == "Generic template":
+        Generic_replies = []
+        records = response[0]
+        for row in records:
+            Generic_replies.append({
+                "title": row[0],
+                "image_url": "https://maps.googleapis.com/maps/api/staticmap?center=40.714%2c%20-73.998&zoom=12&size=100x70&key=AIzaSyB16ffMqfvPJ4cgTFyyNpllAbq3f-V1q-o",
+                "buttons":
+                    [
+                        {
+                            "type": "postback",
+                            "title": "show more",
+                            "payload": row[0]
+                        },
+                    ]})
+            bot.send_generic_message(recipient_id, Generic_replies)
     else:
         bot.send_message(recipient_id, response[0])
         buttons = [
@@ -207,13 +223,7 @@ def send_message(recipient_id, response):
             }
         ]
         bot.send_button_message(recipient_id, "choose your favourite type", buttons)
-    URL_button = [{
-        "type": "web_url",
-        "title": "Webview example",
-        "webview_height_ratio": "tall",
-        "url": "http://www.chargrilled.co.uk/t-shirts/I-See-Dumb-People-t-shirt.m"
-    }, ]
-    #    bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
+
     return "success"
 
 
