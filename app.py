@@ -161,7 +161,28 @@ def send_message(recipient_id, response):
         header = {
             'content-type': 'application/json'
         }
-        abc = requests.post(fburl, headers=header, data=json.dumps(loc_butt)).json()
+        # abc = requests.post(fburl, headers=header, data=json.dumps(loc_butt)).json()
+        address = "center = 40.714728,-73.998672"
+        bot.send_generic_message(recipient_id, [
+            {
+                "title": "Is this your address?",
+                "image_url": "https://maps.googleapis.com/maps/api/staticmap?size=400x400&markers=color:blue%7Clabel:S%7C" + address + "&key=AIzaSyB16ffMqfvPJ4cgTFyyNpllAbq3f-V1q-o",
+                "subtitle": "address",
+                "buttons":
+                    [
+                        {
+                            "type": "postback",
+                            "title": "Yes",
+                            "payload": "address"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "No",
+                            "payload": "googlemapwrong"
+                        }
+                    ]
+            }
+        ])
     elif response[1] == "quick replies":
         quick_replies = []
         records = response[0]
