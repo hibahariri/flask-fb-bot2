@@ -161,13 +161,13 @@ def send_message(recipient_id, response):
         for row in records:
             Generic_replies.append({
                 "title": row[0],
-                "image_url": row[0][2],
+                "image_url": row[2],
                 "buttons":
                     [
                         {
                             "type": "postback",
                             "title": "show more",
-                            "payload": row[0][0]
+                            "payload": row[0],
                         },
                     ]})
         # bot.send_generic_message(recipient_id, Generic_replies)
