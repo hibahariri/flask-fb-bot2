@@ -145,44 +145,6 @@ def get_categories():
 def send_message(recipient_id, response):
     if response[1] == "text":
         bot.send_text_message(recipient_id, response[0])
-        bot.send_generic_message(recipient_id, [
-            {
-                "title": "Is this your address?",
-                "image_url": "https://maps.googleapis.com/maps/api/staticmap?center=40.714%2c%20-73.998&zoom=12&size=100x70&key=AIzaSyB16ffMqfvPJ4cgTFyyNpllAbq3f-V1q-o",
-                "buttons":
-                    [
-                        {
-                            "type": "postback",
-                            "title": "Yes",
-                            "payload": "address"
-                        },
-                        {
-                            "type": "postback",
-                            "title": "No",
-                            "payload": "googlemapwrong"
-                        }
-                    ]
-            },
-            {
-                "title": "Is this your address?",
-                "image_url": "https://maps.googleapis.com/maps/api/staticmap?center=40.714%2c%20-73.998&zoom=12&size=100x70&key=AIzaSyB16ffMqfvPJ4cgTFyyNpllAbq3f-V1q-o",
-                "buttons":
-                    [
-                        {
-                            "type": "postback",
-                            "title": "Yes",
-                            "payload": "address"
-                        },
-                        {
-                            "type": "postback",
-                            "title": "No",
-                            "payload": "googlemapwrong"
-                        }
-                    ]
-            }
-
-        ])
-
     elif response[1] == "quick replies":
         quick_replies = []
         records = response[0]
