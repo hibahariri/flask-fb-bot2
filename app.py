@@ -145,29 +145,27 @@ def get_categories():
 def send_message(recipient_id, response):
     if response[1] == "text":
         bot.send_text_message(recipient_id, response[0])
-        fburl = "https://graph.facebook.com/v2.6/me/messages?access_token={}".format(ACCESS_TOKEN)
-        loc_butt = {
-            "recipient": {
-                "id": "{{recipient_id}}"
-            },
-            "message": {
-                "text": "Please share your location:",
-                "quick_replies": [
-                    {
-                        "content_type": "location",
-                    }
-                ]
-            }}
-        header = {
-            'content-type': 'application/json'
-        }
-        # abc = requests.post(fburl, headers=header, data=json.dumps(loc_butt)).json()
-        address = "center=40.714728%2c%20-73.998672"
         bot.send_generic_message(recipient_id, [
             {
                 "title": "Is this your address?",
                 "image_url": "https://maps.googleapis.com/maps/api/staticmap?center=40.714%2c%20-73.998&zoom=12&size=100x70&key=AIzaSyB16ffMqfvPJ4cgTFyyNpllAbq3f-V1q-o",
-                "subtitle": "address",
+                "buttons":
+                    [
+                        {
+                            "type": "postback",
+                            "title": "Yes",
+                            "payload": "address"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "No",
+                            "payload": "googlemapwrong"
+                        }
+                    ]
+            },
+            {
+                "title": "Is this your address?",
+                "image_url": "https://maps.googleapis.com/maps/api/staticmap?center=40.714%2c%20-73.998&zoom=12&size=100x70&key=AIzaSyB16ffMqfvPJ4cgTFyyNpllAbq3f-V1q-o",
                 "buttons":
                     [
                         {
@@ -182,7 +180,9 @@ def send_message(recipient_id, response):
                         }
                     ]
             }
+
         ])
+
     elif response[1] == "quick replies":
         quick_replies = []
         records = response[0]
