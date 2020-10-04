@@ -166,7 +166,7 @@ def send_message(recipient_id, response):
         bot.send_generic_message(recipient_id, [
             {
                 "title": "Is this your address?",
-                "image_url": "https://maps.googleapis.com/maps/api/staticmap?size=570x300&markers=color:blue%7Clabel:S%7C&" + address + "&key=AIzaSyB16ffMqfvPJ4cgTFyyNpllAbq3f-V1q-o",
+                "image_url": "https://maps.googleapis.com/maps/api/staticmap?size=170x80&markers=color:blue%7Clabel:S%7C&" + address + "&key=AIzaSyB16ffMqfvPJ4cgTFyyNpllAbq3f-V1q-o",
                 "subtitle": "address",
                 "buttons":
                     [
