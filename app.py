@@ -162,7 +162,7 @@ def send_message(recipient_id, response):
             'content-type': 'application/json'
         }
         # abc = requests.post(fburl, headers=header, data=json.dumps(loc_butt)).json()
-        address = "center=40.714728,-73.998672"
+        address = "center=40.714728%2c%20-73.998672"
         bot.send_generic_message(recipient_id, [
             {
                 "title": "Is this your address?",
