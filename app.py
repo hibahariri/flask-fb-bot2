@@ -62,6 +62,7 @@ def receive_message():
             if messaging_text == "Grocery":
                 print(messaging_text)
                 response_message = get_response("Get_subcat", messaging_text)
+                print(response_message)
             else:
                 response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
@@ -96,6 +97,7 @@ def get_response(action, parameters):
         records = get_categories()
         user_response = [records, "Generic template"]
     elif action == "Get_subcat":
+        print(action)
         records = get_subcat()
         user_response = [records, "Button"]
     else:
@@ -188,6 +190,7 @@ def send_message(recipient_id, response):
                     ]})
         bot.send_generic_message(recipient_id, Generic_replies)
     else:
+
         buttons = []
         records = response[0]
         for row in records:
@@ -197,6 +200,7 @@ def send_message(recipient_id, response):
                     "title": row[0],
                     "payload": row[0]
                 })
+        print(buttons)
         bot.send_button_message(recipient_id, "choose your favourite type", buttons)
     return "success"
 
