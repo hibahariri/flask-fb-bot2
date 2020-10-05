@@ -60,6 +60,7 @@ def receive_message():
                         send_message(recipient_id, response_message)
                         store_name(f_name)
             if messaging_text == "Grocery":
+                print(messaging_text)
                 response_message = get_response("Get_subcat", messaging_text)
             else:
                 response_message = get_message(messaging_text)
