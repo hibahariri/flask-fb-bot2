@@ -59,7 +59,10 @@ def receive_message():
                         response_message = [greeting_text1, "text"]
                         send_message(recipient_id, response_message)
                         store_name(f_name)
-            response_message = get_message(messaging_text)
+            if messaging_text == "Grocery":
+                response_message = get_response("Get_subcat", messaging_text)
+            else:
+                response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
     return "Message Processed"
 
@@ -91,6 +94,9 @@ def get_response(action, parameters):
     if action == "get-categories":
         records = get_categories()
         user_response = [records, "Generic template"]
+    elif action == "Get_subcat":
+        records = get_subcat()
+        user_response = [records, "Button"]
     else:
         user_response = ["we will show yo our categories 2", "text"]
     return user_response
@@ -138,8 +144,17 @@ def get_categories():
     records = cur.fetchall()
     cur.close()
     con[0].close()
-    print(records)
     print("Total number of rows in Laptop is: ", cur.rowcount)
+    return records
+
+
+def get_subcat():
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute("Select subcatName from subcategory where catID = 1 ")
+    records = cur.fetchall()
+    cur.close()
+    con[0].close()
     return records
 
 
@@ -171,23 +186,17 @@ def send_message(recipient_id, response):
                         },
                     ]})
         bot.send_generic_message(recipient_id, Generic_replies)
-        # bot.send_text_message(recipient_id,"text")
     else:
-        bot.send_message(recipient_id, response[0])
-        buttons = [
-            {
-                "type": "postback",
-                "title": "Plain shirts",
-                "payload": "Plain shirts"
-            },
-            {
-                "type": "postback",
-                "title": "tie-die shirts",
-                "payload": "tie-die"
-            }
-        ]
+        buttons = []
+        records = response[0]
+        for row in records:
+            buttons.append(
+                {
+                    "type": "postback",
+                    "title": row[0],
+                    "payload": row[0]
+                })
         bot.send_button_message(recipient_id, "choose your favourite type", buttons)
-
     return "success"
 
 
