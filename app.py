@@ -190,7 +190,6 @@ def send_message(recipient_id, response):
                     ]})
         bot.send_generic_message(recipient_id, Generic_replies)
     else:
-
         buttons = []
         records = response[0]
         for row in records:
@@ -202,6 +201,8 @@ def send_message(recipient_id, response):
                 })
         print(buttons)
         bot.send_button_message(recipient_id, "choose your favourite type", buttons)
+        bot.send_text_message(recipient_id, "test")
+
     return "success"
 
 
