@@ -190,8 +190,22 @@ def send_message(recipient_id, response):
                     ]})
         bot.send_generic_message(recipient_id, Generic_replies)
     else:
-        buttons = []
+        Generic_replies = []
         records = response[0]
+        for row in records:
+            Generic_replies.append({
+                "title": row[0],
+                "buttons":
+                    [
+                        {
+                            "type": "postback",
+                            "title": "show more",
+                            "payload": row[0],
+                        },
+                    ]})
+        bot.send_generic_message(recipient_id, Generic_replies)
+        buttons = []
+        # records = response[0]
         for row in records:
             buttons.append(
                 {
@@ -200,7 +214,7 @@ def send_message(recipient_id, response):
                     "payload": row[0],
                 })
         print(buttons)
-        bot.send_button_message(recipient_id, "choose your favourite type", buttons)
+        # bot.send_button_message(recipient_id, "choose your favourite type", buttons)
     return "success"
 
 
