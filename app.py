@@ -197,10 +197,15 @@ def send_message(recipient_id, response):
                 {
                     "type": "postback",
                     "title": row[0],
-                    "payload": row[0]
+                    "payload": row[0],
                 })
         print(buttons)
         bot.send_button_message(recipient_id, "choose your favourite type", buttons)
+        bot.send_button_message(recipient_id, "hi", [{
+            "type": "postback",
+            "title": "hi",
+            "payload": "hi",
+        }])
         bot.send_text_message(recipient_id, "test")
 
     return "success"
