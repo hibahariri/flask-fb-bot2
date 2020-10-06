@@ -51,6 +51,28 @@ data2 = {
                     "webview_height_ratio": "full"
                 }
             ]
+        },
+        {
+            "locale": "en_us",
+            "composer_input_disabled": "false",
+            "call_to_actions": [
+                {
+                    "type": "postback",
+                    "title": "Our Departments",
+                    "payload": "Categories"
+                },
+                {
+                    "type": "postback",
+                    "title": "Opening Hours",
+                    "payload": "Opening Hours"
+                },
+                {
+                    "type": "web_url",
+                    "title": "My Profile",
+                    "url": "https://www.originalcoastclothing.com/",
+                    "webview_height_ratio": "full"
+                }
+            ]
         }
     ]
 }
