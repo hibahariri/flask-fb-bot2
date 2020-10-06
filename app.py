@@ -5,6 +5,7 @@ from flask import Flask, request
 from pymessenger.bot import Bot
 import apiai
 import mysql.connector
+import DatabaseResponse
 
 
 app = Flask(__name__)  # Initializing our Flask application
@@ -93,11 +94,11 @@ def connect_todb():
 
 def get_response(action, parameters):
     if action == "get-categories":
-        records = get_categories()
+        records = DatabaseResponse.get_categories()
         user_response = [records, "Generic template"]
     elif action == "Get_subcat":
         print(action)
-        records = get_subcat()
+        records = DatabaseResponse.get_subcat()
         user_response = [records, "Button"]
     else:
         user_response = ["we will show yo our categories 2", "text"]
@@ -129,7 +130,7 @@ def get_message(message_sent):
 
 
 def store_name(first_name):
-    con = connect_todb()
+    con = DatabaseResponse.connect_todb()
     cur = con[0].cursor()
     cur.execute("INSERT INTO user (username) values (%s)", (first_name,))
     con[0].commit()
