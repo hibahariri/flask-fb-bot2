@@ -190,6 +190,11 @@ def send_message(recipient_id, response):
             Generic_replies.append({
                 "title": row[0],
                 "image_url": row[2],
+                "default_action": {"type": "web_url",
+                                   "url": "https://stackoverflow.com/questions/54326329/how-to-adjust-wkwebviews-container-content-height-to-the-webview-content",
+                                   "messenger_extensions": "TRUE",
+                                   "webview_height_ratio": "COMPACT"
+                                   },
                 "buttons":
                     [
                         {
