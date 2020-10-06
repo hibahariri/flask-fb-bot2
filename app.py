@@ -190,11 +190,6 @@ def send_message(recipient_id, response):
             Generic_replies.append({
                 "title": row[0],
                 "image_url": row[2],
-                "default_action": {
-                    "type": "web_url",
-                    "url": "https://petersfancybrownhats.com/view?item=103",
-                    "webview_height_ratio": "tall",
-                },
                 "buttons":
                     [
                         {
