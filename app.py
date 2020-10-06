@@ -6,6 +6,7 @@ from pymessenger.bot import Bot
 import apiai
 import mysql.connector
 
+
 app = Flask(__name__)  # Initializing our Flask application
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
@@ -60,9 +61,7 @@ def receive_message():
                         send_message(recipient_id, response_message)
                         store_name(f_name)
             if messaging_text == "Grocery":
-                print(messaging_text)
                 response_message = get_response("Get_subcat", messaging_text)
-                print(response_message)
             else:
                 response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
@@ -204,17 +203,6 @@ def send_message(recipient_id, response):
                         },
                     ]})
         bot.send_generic_message(recipient_id, Generic_replies)
-        buttons = []
-        # records = response[0]
-        for row in records:
-            buttons.append(
-                {
-                    "type": "postback",
-                    "title": row[0],
-                    "payload": row[0],
-                })
-        print(buttons)
-        # bot.send_button_message(recipient_id, "choose your favourite type", buttons)
     return "success"
 
 
