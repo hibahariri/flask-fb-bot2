@@ -1,12 +1,9 @@
-import random
 import json
 import requests
 from flask import Flask, request
 from pymessenger.bot import Bot
 import apiai
-import mysql.connector
 import DatabaseResponse
-
 
 app = Flask(__name__)  # Initializing our Flask application
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
@@ -30,6 +27,35 @@ data4 = {
         "persistent_menu"
     ]
 }
+
+data2 = {
+    "persistent_menu": [
+        {
+            "locale": "default",
+            "composer_input_disabled": "false",
+            "call_to_actions": [
+                {
+                    "type": "postback",
+                    "title": "Our Departments",
+                    "payload": "Categories"
+                },
+                {
+                    "type": "postback",
+                    "title": "Opening Hours",
+                    "payload": "Opening Hours"
+                },
+                {
+                    "type": "web_url",
+                    "title": "My Profile",
+                    "url": "https://www.originalcoastclothing.com/",
+                    "webview_height_ratio": "full"
+                }
+            ]
+        }
+    ]
+}
+
+pmresp = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 
 
 # del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data4)).json()
@@ -73,23 +99,6 @@ def verify_fb_token(token_sent):
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
     return 'Invalid verification token'
-
-
-def connect_todb():
-    try:
-        db_con = mysql.connector.connect(
-            host="us-cdbr-east-02.cleardb.com",
-            user="b3b214d3762ef4",
-            passwd="4a2970a9",
-            db="heroku_ff6cdbed3d2eb70")
-    except mysql.connector.Error as error:
-        print("Failed to connect to database in MySQL: {}".format(error))
-    finally:
-        if db_con.is_connected():
-            conn = [db_con]
-        else:
-            conn = ["no connection"]
-    return conn
 
 
 def get_response(action, parameters):
@@ -138,27 +147,6 @@ def store_name(first_name):
     con[0].close()
     print("MySQL connection is closed")
     return "done"
-
-
-def get_categories():
-    con = connect_todb()
-    cur = con[0].cursor()
-    cur.execute("Select cat_name,cat_description,cat_image from category")
-    records = cur.fetchall()
-    cur.close()
-    con[0].close()
-    print("Total number of rows in Laptop is: ", cur.rowcount)
-    return records
-
-
-def get_subcat():
-    con = connect_todb()
-    cur = con[0].cursor()
-    cur.execute("Select subcatName from subcategory where catID = 1 ")
-    records = cur.fetchall()
-    cur.close()
-    con[0].close()
-    return records
 
 
 def send_message(recipient_id, response):
