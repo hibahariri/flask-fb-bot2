@@ -194,7 +194,7 @@ def send_message(recipient_id, response):
                     [
                         {
                             "type": "postback",
-                            "title": "show more",
+                            "title": row[3],
                             "payload": row[0],
                         },
                     ]})

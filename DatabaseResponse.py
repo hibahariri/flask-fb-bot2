@@ -21,7 +21,7 @@ def connect_todb():
 def get_categories():
     con = connect_todb()
     cur = con[0].cursor()
-    cur.execute("Select cat_name,cat_description,cat_image from category")
+    cur.execute("Select cat_name,cat_description,cat_image, (select GROUP_CONCAT(subcatName SEPARATOR ', ') from subcategory where catID = cat_id) from category")
     records = cur.fetchall()
     cur.close()
     con[0].close()
