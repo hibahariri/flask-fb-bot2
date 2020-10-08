@@ -216,11 +216,14 @@ def send_message(recipient_id, response):
         records = response[0]
         for row in records:
             Buttons.append({
-                            "type": "postback",
-                            "title": row[0],
-                            "payload": row[0],
-                        },)
-        bot.send_button_message(recipient_id,Buttons)
+                "text": "What do you want to do next?",
+                "buttons": [{
+                    "type": "postback",
+                    "title": row[0],
+                    "payload": row[0],
+                }, ]
+            }, )
+        bot.send_button_message(recipient_id, Buttons)
     else:
         Generic_replies = []
         records = response[0]
