@@ -186,7 +186,6 @@ def send_message(recipient_id, response):
     elif response[1] == "Generic template":
         Generic_replies = []
         records = response[0]
-        print(records)
         for row in records:
             Generic_replies.append({
                 "title": row[0],
@@ -195,7 +194,7 @@ def send_message(recipient_id, response):
                     [
                         {
                             "type": "postback",
-                            "title": row[3][0],
+                            "title": list(row[3].split(','))[0],
                             "payload": row[0],
                         },
                     ]})
