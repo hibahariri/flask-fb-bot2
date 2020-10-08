@@ -109,8 +109,8 @@ def receive_message():
                         response_message = [greeting_text1, "text"]
                         send_message(recipient_id, response_message)
                         store_name(f_name)
-            if messaging_text == "Grocery":
-                response_message = get_response("Get_subcat", messaging_text)
+            if messaging_text[0:9] == "Products:":
+                response_message = get_response("get_products", messaging_text[9:])
             else:
                 response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
@@ -128,8 +128,10 @@ def get_response(action, parameters):
         records = DatabaseResponse.get_categories()
         user_response = [records, "Generic template"]
     elif action == "Get_subcat":
-        print(action)
         records = DatabaseResponse.get_subcat()
+        user_response = [records, "Button"]
+    elif action == "get_products":
+        records = DatabaseResponse.get_products(parameters)
         user_response = [records, "Button"]
     else:
         user_response = ["we will show yo our categories 2", "text"]
@@ -195,20 +197,30 @@ def send_message(recipient_id, response):
                         {
                             "type": "postback",
                             "title": list(row[3].split(','))[0],
-                            "payload": row[0],
+                            "payload": "Products:" + list(row[3].split(','))[0],
                         },
                         {
                             "type": "postback",
                             "title": list(row[3].split(','))[1],
-                            "payload": row[0],
+                            "payload": "Products:" + list(row[3].split(','))[0],
                         },
                         {
                             "type": "postback",
                             "title": list(row[3].split(','))[2],
-                            "payload": row[0],
+                            "payload": "Products:" + list(row[3].split(','))[0],
                         }
                     ]})
         bot.send_generic_message(recipient_id, Generic_replies)
+    elif response[1] == "Button":
+        Buttons = []
+        records = response[0]
+        for row in records:
+            Buttons.append({
+                            "type": "postback",
+                            "title": row[0],
+                            "payload": row[0],
+                        },)
+        bot.send_button_message(recipient_id,Buttons)
     else:
         Generic_replies = []
         records = response[0]
