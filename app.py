@@ -186,6 +186,7 @@ def send_message(recipient_id, response):
     elif response[1] == "Generic template":
         Generic_replies = []
         records = response[0]
+        print(records)
         for row in records:
             Generic_replies.append({
                 "title": row[0],
