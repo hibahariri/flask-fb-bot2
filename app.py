@@ -197,6 +197,16 @@ def send_message(recipient_id, response):
                             "title": list(row[3].split(','))[0],
                             "payload": row[0],
                         },
+                        {
+                            "type": "postback",
+                            "title": list(row[3].split(','))[1],
+                            "payload": row[0],
+                        },
+                        {
+                            "type": "postback",
+                            "title": list(row[3].split(','))[2],
+                            "payload": row[0],
+                        }
                     ]})
         bot.send_generic_message(recipient_id, Generic_replies)
     else:
