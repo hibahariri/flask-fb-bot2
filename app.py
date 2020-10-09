@@ -226,7 +226,7 @@ def send_message(recipient_id, response):
                    "title": "A1",
                    "payload": "A1",
                    }, ]
-        bot.send_button_message(recipient_id, "CHOOSE", button)
+        bot.send_button_message(recipient_id, "", button)
     else:
         Generic_replies = []
         records = response[0]
