@@ -214,6 +214,7 @@ def send_message(recipient_id, response):
     elif response[1] == "Button":
         Buttons = []
         records = response[0]
+        print(records)
         row1 = records.row_slice(0)
         #   for row in records:
         #      Buttons.append({
