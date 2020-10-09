@@ -222,11 +222,11 @@ def send_message(recipient_id, response):
         #    "title": row[0],
         #     "payload": row[0],
         #  }, )
-        button = {"type": "postback",
-                   "title": "row1[0]",
-                   "payload": "row1[0]",
-                   }
-        bot.send_button_message(recipient_id, "", button)
+        button = [{"type": "postback",
+                   "title": "A1",
+                   "payload": "A1",
+                   }, ]
+        bot.send_button_message(recipient_id, "CHOOSE", button)
     else:
         Generic_replies = []
         records = response[0]
