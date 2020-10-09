@@ -223,10 +223,10 @@ def send_message(recipient_id, response):
         #     "payload": row[0],
         #  }, )
         button = [{"type": "postback",
-                   "title": "A1",
-                   "payload": "A1",
+                   "title": " ",
+                   "payload": " ",
                    }, ]
-        bot.send_button_message(recipient_id, "  ", button)
+        bot.send_button_message(recipient_id, " a ", button)
     else:
         Generic_replies = []
         records = response[0]
