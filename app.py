@@ -202,12 +202,12 @@ def send_message(recipient_id, response):
                         {
                             "type": "postback",
                             "title": list(row[3].split(','))[1],
-                            "payload": "Products:" + list(row[3].split(','))[0],
+                            "payload": "Products:" + list(row[3].split(','))[1],
                         },
                         {
                             "type": "postback",
                             "title": list(row[3].split(','))[2],
-                            "payload": "Products:" + list(row[3].split(','))[0],
+                            "payload": "Products:" + list(row[3].split(','))[2],
                         }
                     ]})
         bot.send_generic_message(recipient_id, Generic_replies)
