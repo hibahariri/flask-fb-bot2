@@ -132,7 +132,7 @@ def get_response(action, parameters):
         user_response = [records, "Button"]
     elif action == "get_products":
         records = DatabaseResponse.get_products(parameters)
-        user_response = [records, "Button"]
+        user_response = [records, "quick replies"]
     else:
         user_response = ["we will show yo our categories 2", "text"]
     return user_response
