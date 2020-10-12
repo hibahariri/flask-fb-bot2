@@ -43,14 +43,12 @@ def get_subcat():
 def get_products(subcatID):
     con = connect_todb()
     cur = con[0].cursor()
-    try:
-        cur.execute(
-            "Select productsname from product where product.subcatid = ( select subcategory.subcatID from subcategory where subcatName = %s)",
-            (subcatID,))
-        print(subcatID)
-        records = cur.fetchall()
-    except (mysql.connector.Error, mysql.connector.DatabaseError, mysql.connector.DataError, mysql.connector.OperationalError, mysql.connector.PoolError, mysql.connector.InternalError) as e:
-        print(e)
+    cur.execute("select subcategory.subcatID from subcategory where subcatName = %s", (subcatID,))
+    subcat = cur.fetchall()
+    print(subcatID)
+    print(subcat[0])
+    cur.execute("Select productsname from product where product.subcatid =%s'", (subcat[0],))
+    records = cur.fetchall()
     print(records)
     cur.close()
     con[0].close()
