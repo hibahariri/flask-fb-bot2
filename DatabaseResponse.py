@@ -48,9 +48,9 @@ def get_products(subcatID):
             "Select productsname from product inner join subcategory where product.subcatid = subcategory.subcatID and subcatName = %s",
             (subcatID,))
         print(subcatID)
+        records = cur.fetchall()
     except (mysql.connector.Error, mysql.connector.Warning) as e:
         print(e)
-    records = cur.fetchall()
     print(records)
     cur.close()
     con[0].close()
