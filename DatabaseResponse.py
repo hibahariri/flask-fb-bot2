@@ -47,6 +47,7 @@ def get_products(subcatID):
                 (subcatID,))
     print(subcatID)
     records = cur.fetchall()
+    print(records)
     cur.close()
     con[0].close()
     return records
