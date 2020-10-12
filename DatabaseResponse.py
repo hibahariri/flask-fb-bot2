@@ -45,7 +45,7 @@ def get_products(subcatID):
     cur = con[0].cursor()
     try:
         cur.execute(
-            "Select productsname from product inner join subcategory where product.subcatid = subcategory.subcatID and subcatName = %s",
+            "Select productsname from product where product.subcatid = ( select subcategory.subcatID from subcategory where subcatName = %s)",
             (subcatID,))
         print(subcatID)
         records = cur.fetchall()
