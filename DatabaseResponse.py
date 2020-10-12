@@ -49,7 +49,7 @@ def get_products(subcatID):
             (subcatID,))
         print(subcatID)
         records = cur.fetchall()
-    except (mysql.connector.Error, mysql.connector.DatabaseError, mysql.connector.DataError, mysql.connector.OperationalError) as e:
+    except (mysql.connector.Error, mysql.connector.DatabaseError, mysql.connector.DataError, mysql.connector.OperationalError, mysql.connector.PoolError, mysql.connector.InternalError) as e:
         print(e)
     print(records)
     cur.close()
