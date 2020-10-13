@@ -122,12 +122,6 @@ def receive_message():
     return "Message Processed"
 
 
-@app.route('/Test', methods=['GET'])
-def Test():
-    print("done")
-    return "list of accounts"
-
-
 @Test.route('Test/', methods=['GET'])
 def Test():
     print("done")
