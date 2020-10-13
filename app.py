@@ -122,7 +122,7 @@ def receive_message():
     return "Message Processed"
 
 
-@Test.route('Test/', methods=['GET'])
+@Test.route('/Test/', methods=['GET'])
 def Test():
     print("done")
     return "list of accounts"
@@ -191,7 +191,7 @@ def send_message(recipient_id, response):
             "type": "web_url",
             "title": "Webview example",
             "webview_height_ratio": "tall",
-            "url": "https://fb-botapp2.herokuapp.com/"
+            "url": "https://fb-botapp2.herokuapp.com/Test/"
         }, ]
         bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
     elif response[1] == "quick replies":
