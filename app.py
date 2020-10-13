@@ -122,7 +122,7 @@ def receive_message():
     return "Message Processed"
 
 
-@Test_api.route('/Test', methods=['GET'])
+@Test_api.route('/', methods=['GET'])
 def Test():
     print("done")
     return "list of accounts"
