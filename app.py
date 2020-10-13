@@ -1,8 +1,8 @@
 import json
 import requests
 from flask import Flask, request
+from flask import Blueprint
 from pymessenger.bot import Bot
-from Test import Test_api
 import apiai
 import DatabaseResponse
 
@@ -10,6 +10,8 @@ app = Flask(__name__)  # Initializing our Flask application
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
+
+Test_api = Blueprint('Test_api', __name__)
 
 app.register_blueprint(Test_api, url_prefix='/Test')
 
@@ -118,6 +120,12 @@ def receive_message():
                 response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
     return "Message Processed"
+
+
+@Test_api.route("/Test")
+def Test():
+    print("done")
+    return "list of accounts"
 
 
 def verify_fb_token(token_sent):
