@@ -50,7 +50,7 @@ def get_products(subcatID):
     cur.execute(str1)
     records = cur.fetchall()
     print(records)
-    cur.reset()
+    cur.reset(True)
     cur.close()
     con[0].close()
     return records
