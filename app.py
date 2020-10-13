@@ -13,7 +13,7 @@ bot = Bot(ACCESS_TOKEN)
 
 Test = Blueprint('Test', __name__)
 
-app.register_blueprint(Test)
+app.register_blueprint(Test, url_prefix='/Test')
 
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
