@@ -11,9 +11,9 @@ ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
 
-Test_api = Blueprint('Test_api', __name__)
+Test = Blueprint('Test', __name__)
 
-app.register_blueprint(Test_api)
+app.register_blueprint(Test)
 
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
@@ -122,7 +122,7 @@ def receive_message():
     return "Message Processed"
 
 
-@Test_api.route('/', methods=['GET'])
+@Test.route('/', methods=['GET'])
 def Test():
     print("done")
     return "list of accounts"
