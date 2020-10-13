@@ -44,14 +44,13 @@ def get_products(subcatID):
     con = connect_todb()
     cur = con[0].cursor()
     print(subcatID)
-    str1 = "Select productsname from product inner join subcategory where product.subcatid = subcategory.subcatID and subcatName ='" + subcatID.strip() + "'"
-    print(str1)
-    # cur.execute("Select productsname from product inner join subcategory where product.subcatid = subcategory.subcatID and subcatName ='Cleaning & Grooming'")
-    cur.execute(str1)
+    # str1 = "Select productsname from product inner join subcategory where product.subcatid = subcategory.subcatID and subcatName ='" + subcatID.strip() + "'"
+    cur.execute(
+        "Select productsname from product inner join subcategory where product.subcatid = subcategory.subcatID and subcatName = %s",
+        (subcatID.strip(),))
+    # cur.execute(str1)
     records = cur.fetchall()
     print(records)
-    con[0].commit()
-    # cur.reset(free=False)
     cur.close()
     con[0].close()
     return records
