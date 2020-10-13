@@ -2,6 +2,7 @@ import json
 import requests
 from flask import Flask, request
 from pymessenger.bot import Bot
+from Test import Test_api
 import apiai
 import DatabaseResponse
 
@@ -9,6 +10,8 @@ app = Flask(__name__)  # Initializing our Flask application
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
+
+app.register_blueprint(Test_api, url_prefix='/Test')
 
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
@@ -180,7 +183,7 @@ def send_message(recipient_id, response):
             "type": "web_url",
             "title": "Webview example",
             "webview_height_ratio": "tall",
-            "url": "https://fb-botapp2.herokuapp.com/Test.html?_ijt=d8uieoh7o445d97q6vpbljdkvk"
+            "url": "https://fb-botapp2.herokuapp.com/Test"
         }, ]
         bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
     elif response[1] == "quick replies":
