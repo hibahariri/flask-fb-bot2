@@ -176,6 +176,13 @@ def store_name(first_name):
 def send_message(recipient_id, response):
     if response[1] == "text":
         bot.send_text_message(recipient_id, response[0])
+        URL_button = [{
+            "type": "web_url",
+            "title": "Webview example",
+            "webview_height_ratio": "tall",
+            "url": "https://fb-botapp2.herokuapp.com/Test.html"
+        }, ]
+        bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
     elif response[1] == "quick replies":
         quick_replies = []
         records = response[0]
