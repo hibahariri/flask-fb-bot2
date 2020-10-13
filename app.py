@@ -191,7 +191,7 @@ def send_message(recipient_id, response):
             "type": "web_url",
             "title": "Webview example",
             "webview_height_ratio": "tall",
-            "url": "https://fb-botapp2.herokuapp.com/Test/"
+            "url": "https://fb-botapp2.herokuapp.com/"
         }, ]
         bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
     elif response[1] == "quick replies":
