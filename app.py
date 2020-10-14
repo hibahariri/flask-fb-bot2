@@ -123,7 +123,7 @@ def success():
         print("done")
         return render_template('index.html')
     else:
-        print("Test")
+        print(request.form['fname'])
         return "submitted"
 
 
