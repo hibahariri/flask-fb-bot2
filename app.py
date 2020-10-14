@@ -120,7 +120,13 @@ def receive_message():
 @app.route('/index', methods=['GET'])
 def success():
     print("done")
-    return render_template('PaymentDetails.html')
+    return render_template('index.html')
+
+
+@app.route('/DatabaseResponse', methods=['GET'])
+def success():
+    print("done")
+    return render_template('index.html')
 
 
 def verify_fb_token(token_sent):
