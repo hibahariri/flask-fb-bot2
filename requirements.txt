@@ -1,7 +1,0 @@
-
-Flask==1.1.1
-gunicorn==20.0.4
-pymessenger==0.0.7.0
-apiai~=1.2.3
-requests~=2.23.0
-mysql-connector-python~=8.0.21
