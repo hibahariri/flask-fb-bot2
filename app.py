@@ -123,7 +123,7 @@ def success():
     return render_template('index.html')
 
 
-@app.route('/PaymentDetails', methods=['GET'])
+@app.route('/templates/PaymentDetails', methods=['GET'])
 def success():
     print("done")
     return render_template('PaymentDetails.html')
