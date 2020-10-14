@@ -123,6 +123,12 @@ def success():
     return render_template('index.html')
 
 
+@app.route('/PaymentDetails', methods=['GET'])
+def success():
+    print("done")
+    return render_template('PaymentDetails.html')
+
+
 def verify_fb_token(token_sent):
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
@@ -226,16 +232,8 @@ def send_message(recipient_id, response):
                     ]})
         bot.send_generic_message(recipient_id, Generic_replies)
     elif response[1] == "Button":
-        Buttons = []
         records = response[0]
         print(records)
-        # row1 = records.row_slice(0)
-        #   for row in records:
-        #      Buttons.append({
-        #     "type": "postback",
-        #    "title": row[0],
-        #     "payload": row[0],
-        #  }, )
         button = [{"type": "postback",
                    "title": " ",
                    "payload": " ",
