@@ -5,7 +5,7 @@ from pymessenger.bot import Bot
 import apiai
 import DatabaseResponse
 
-app = Flask(__name__)  # Initializing our Flask application
+app = Flask(__name__, template_folder="templates")  # Initializing our Flask application
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
@@ -123,10 +123,10 @@ def success():
     return render_template('index.html')
 
 
-@app.route('/DatabaseResponse', methods=['GET'])
+@app.route('/PaymentDetails', methods=['GET'])
 def success():
     print("done")
-    return render_template('index.html')
+    return render_template('PaymentDetails.html')
 
 
 def verify_fb_token(token_sent):
