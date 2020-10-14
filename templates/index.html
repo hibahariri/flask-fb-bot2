@@ -10,7 +10,7 @@
       <fieldset>
         <legend>Text input</legend>
         <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname"><br>
+        <input type="text" id="fname" name="fname" size="30"><br>
           <label for="lname">Last name:</label><br>
   <input type="text" id="lname" name="lname"><br>
           <input type="radio" id="male" name="gender" value="male">
@@ -19,8 +19,9 @@
   <label for="female">Female</label><br>
           <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
   <label for="vehicle1"> I have a bike</label><br>
-  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-  <label for="vehicle2"> I have a car</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" min="1" max="5">
+          <label for="vehicle2"> I have a car</label><br>
+          <input type="number" id="quantity" name="quantity" >
           <input type="submit" value="Submit">
           <input type="button" value="Submit">
       </fieldset>
