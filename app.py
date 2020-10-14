@@ -120,11 +120,12 @@ def receive_message():
 @app.route('/index', methods=['GET', 'POST'])
 def success():
     if request.method == 'GET':
-      print("done")
-      return render_template('index.html')
+        print("done")
+        return render_template('index.html')
     else:
         print("submitted")
         return "submitted"
+
 
 @app.route('/PaymentDetails', methods=['GET'])
 def openPayments():
@@ -194,7 +195,7 @@ def send_message(recipient_id, response):
         URL_button = [{
             "type": "web_url",
             "title": "Webview example",
-            "webview_height_ratio": "compact",
+            "webview_height_ratio": "tall",
             "url": "https://fb-botapp2.herokuapp.com/index",
             "messenger_extensions": True
         }, ]
