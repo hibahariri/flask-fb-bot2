@@ -124,7 +124,7 @@ def success():
 
 
 @app.route('/PaymentDetails', methods=['GET'])
-def success():
+def openPayments():
     print("done")
     return render_template('PaymentDetails.html')
 
