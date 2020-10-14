@@ -123,7 +123,7 @@ def success():
         print("done")
         return render_template('index.html')
     else:
-        print("submitted")
+        print("Test")
         return "submitted"
 
 
