@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <h1>Form Demo</h1>
+    <form action="/index" method="post">
+      <fieldset>
+        <legend>Text input</legend>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+          <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname"><br>
+          <input type="radio" id="male" name="gender" value="male">
+  <label for="male">Male</label><br>
+  <input type="radio" id="female" name="gender" value="female">
+  <label for="female">Female</label><br>
+          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> I have a car</label><br>
+          <input type="submit" value="Submit">
+          <input type="button" value="Submit">
+      </fieldset>
+    </form>
+ <script>
+     (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'Messenger'));
+ </script>
+</body>
+</html>
