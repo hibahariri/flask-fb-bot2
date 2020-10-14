@@ -191,7 +191,7 @@ def send_message(recipient_id, response):
         URL_button = [{
             "type": "web_url",
             "title": "Webview example",
-            "webview_height_ratio": "tall",
+            "webview_height_ratio": "compact",
             "url": "https://fb-botapp2.herokuapp.com/index",
             "messenger_extensions": True
         }, ]
