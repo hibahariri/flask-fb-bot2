@@ -123,12 +123,6 @@ def success():
     return render_template('index.html')
 
 
-@app.route('/templates/PaymentDetails', methods=['GET'])
-def success():
-    print("done")
-    return render_template('PaymentDetails.html')
-
-
 def verify_fb_token(token_sent):
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
