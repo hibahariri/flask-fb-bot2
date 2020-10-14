@@ -28,9 +28,14 @@
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: groove;
+  background-color:white;
 }
 .text-input:focus {
   outline: none;
+}
+.text-input:active {
+  outline: none;
+  background-color:white;
 }
 </style>
 </head>
@@ -40,9 +45,9 @@
       <fieldset>
         <legend>Text input</legend>
         <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname" size="30" required autofocus class="text-input"><br>
+        <input type="text" id="fname" name="fname" size="30" required autofocus class="text-input" placeholder="Card Number"><br><br>
           <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" size="30" required class="text-input"><br>
+  <input type="text" id="lname" name="lname" size="30" required class="text-input" placeholder="Expiry Data"><br><br>
           <input type="radio" id="male" name="gender" value="male">
   <label for="male">Male</label><br>
   <input type="radio" id="female" name="gender" value="female">
