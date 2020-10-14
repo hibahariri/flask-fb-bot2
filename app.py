@@ -128,6 +128,12 @@ def success():
     return "success"
 
 
+@app.route('/template/Hiba', methods=['GET'])
+def success():
+    print("done")
+    return "success"
+
+
 # @Test.route('/Test/', methods=['GET'])
 # def Test():
 #    print("done")
