@@ -1,6 +1,6 @@
 import json
 import requests
-from flask import Flask, request
+from flask import Flask, request, render_template
 from pymessenger.bot import Bot
 import apiai
 import DatabaseResponse
@@ -120,7 +120,7 @@ def receive_message():
 @app.route('/index', methods=['GET'])
 def success():
     print("done")
-    return "<h1 style='color: red;'>I'm a red H1 heading!</h1>"
+    return render_template('index.html')
 
 
 def verify_fb_token(token_sent):
