@@ -117,11 +117,14 @@ def receive_message():
     return "Message Processed"
 
 
-@app.route('/index', methods=['GET'])
+@app.route('/index', methods=['GET', 'POST'])
 def success():
-    print("done")
-    return render_template('index.html')
-
+    if request.method == 'GET':
+      print("done")
+      return render_template('index.html')
+    else:
+        print("submitted")
+        return "submitted"
 
 @app.route('/PaymentDetails', methods=['GET'])
 def openPayments():
