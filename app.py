@@ -1,7 +1,6 @@
 import json
 import requests
 from flask import Flask, request
-# from flask import Blueprint
 from pymessenger.bot import Bot
 import apiai
 import DatabaseResponse
@@ -10,10 +9,6 @@ app = Flask(__name__)  # Initializing our Flask application
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
-
-# Test = Blueprint('Test', __name__)
-
-# app.register_blueprint(Test, url_prefix='/Test')
 
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
@@ -125,12 +120,7 @@ def receive_message():
 @app.route('/index', methods=['GET'])
 def success():
     print("done")
-    return "success"
-
-# @Test.route('/Test/', methods=['GET'])
-# def Test():
-#    print("done")
-#   return "list of accounts"
+    return "<h1 style='color: red;'>I'm a red H1 heading!</h1>"
 
 
 def verify_fb_token(token_sent):
