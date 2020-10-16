@@ -13,7 +13,7 @@ bot = Bot(ACCESS_TOKEN)
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
     "get_started": {
-        "payload": "help"
+        "payload": "Get-Started"
     }
 }
 headers = {
@@ -100,7 +100,8 @@ def receive_message():
                         messaging_text = 'None'
                 if message.get('postback'):
                     messaging_text = message['postback']['payload']
-                    if messaging_text == 'help':
+                    if messaging_text == 'Get-Started':
+                        print(messaging_text)
                         r = requests.get(
                             'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                                 recipient_id, ACCESS_TOKEN)).json()
