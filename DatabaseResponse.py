@@ -18,6 +18,16 @@ def connect_todb():
     return conn
 
 
+def store_name(first_name):
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute("INSERT INTO user (username) values (%s)", (first_name,))
+    con[0].commit()
+    cur.close()
+    con[0].close()
+    print("MySQL connection is closed")
+    return "done"
+
 def get_categories():
     con = connect_todb()
     cur = con[0].cursor()

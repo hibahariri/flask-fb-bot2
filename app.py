@@ -108,7 +108,7 @@ def receive_message():
                         greeting_text1 = "hello " + f_name
                         response_message = [greeting_text1, "text"]
                         send_message(recipient_id, response_message)
-                        store_name(f_name)
+                        DatabaseResponse.store_name(f_name)
             if messaging_text[0:9] == "Products:":
                 response_message = get_response("get_products", messaging_text[9:])
             else:
@@ -176,17 +176,6 @@ def get_message(message_sent):
                 print(custom_payload)
         user_response = [custom_payload, "quick replies"]
     return user_response
-
-
-def store_name(first_name):
-    con = DatabaseResponse.connect_todb()
-    cur = con[0].cursor()
-    cur.execute("INSERT INTO user (username) values (%s)", (first_name,))
-    con[0].commit()
-    cur.close()
-    con[0].close()
-    print("MySQL connection is closed")
-    return "done"
 
 
 def send_message(recipient_id, response):
