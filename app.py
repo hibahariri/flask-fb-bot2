@@ -99,9 +99,7 @@ def receive_message():
                     if message['message'].get('attachments'):
                         messaging_text = 'None'
                 if message.get('postback'):
-                    messaging_text = message['postback']['payload']
-                    if messaging_text == 'Get-Started':
-                        print(messaging_text)
+                    if message['postback']['payload'] == 'Get-Started':
                         r = requests.get(
                             'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                                 recipient_id, ACCESS_TOKEN)).json()
@@ -110,6 +108,9 @@ def receive_message():
                         response_message = [greeting_text1, "text"]
                         send_message(recipient_id, response_message)
                         DatabaseResponse.store_name(f_name,recipient_id)
+                        messaging_text = 'None'
+                    else:
+                        messaging_text = message['postback']['payload']
             if messaging_text[0:9] == "Products:":
                 response_message = get_response("get_products", messaging_text[9:])
             else:
