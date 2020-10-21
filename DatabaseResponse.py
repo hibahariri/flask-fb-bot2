@@ -18,15 +18,16 @@ def connect_todb():
     return conn
 
 
-def store_name(first_name):
+def store_name(first_name, recipientID):
     con = connect_todb()
     cur = con[0].cursor()
-    cur.execute("INSERT INTO user (username) values (%s)", (first_name,))
+    cur.execute("INSERT INTO user (recipientID,username) values (%s,%d) ON DUPLICATE KEY UPDATE username = %a", (first_name,recipientID,first_name))
     con[0].commit()
     cur.close()
     con[0].close()
     print("MySQL connection is closed")
     return "done"
+
 
 def get_categories():
     con = connect_todb()
