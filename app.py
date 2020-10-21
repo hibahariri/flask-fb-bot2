@@ -108,7 +108,7 @@ def receive_message():
                         response_message = [greeting_text1, "text"]
                         send_message(recipient_id, response_message)
                         DatabaseResponse.store_name(f_name,recipient_id)
-                        messaging_text = 'None'
+                        messaging_text = ''
                     else:
                         messaging_text = message['postback']['payload']
             if messaging_text[0:9] == "Products:":
