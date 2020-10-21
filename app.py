@@ -100,7 +100,7 @@ def receive_message():
                         messaging_text = 'None'
                 if message.get('postback'):
                     messaging_text = message['postback']['payload']
-                    if messaging_text == 'Get-Started ':
+                    if messaging_text == 'Get-Started':
                         print(messaging_text)
                         r = requests.get(
                             'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
