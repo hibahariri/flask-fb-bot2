@@ -21,7 +21,7 @@ def connect_todb():
 def store_name(first_name, recipientID):
     con = connect_todb()
     cur = con[0].cursor()
-    cur.execute("INSERT INTO user (recipientID,username) values (%s,%s) ON DUPLICATE KEY UPDATE username = %s", (first_name,recipientID,first_name))
+    cur.execute("INSERT INTO user (recipientID,username) values (%s,%s) ON DUPLICATE KEY UPDATE username = %s", (recipientID,first_name,first_name))
     con[0].commit()
     cur.close()
     con[0].close()
