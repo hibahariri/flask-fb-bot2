@@ -47,8 +47,9 @@ data2 = {
                 {
                     "type": "web_url",
                     "title": "My Profile",
-                    "url": "https://www.originalcoastclothing.com/",
-                    "webview_height_ratio": "full"
+                    "webview_height_ratio": "tall",
+                    "url": "https://fb-botapp2.herokuapp.com/index",
+                    "messenger_extensions": True
                 }
             ]
         },
@@ -69,8 +70,9 @@ data2 = {
                 {
                     "type": "web_url",
                     "title": "My Profile",
-                    "url": "https://www.originalcoastclothing.com/",
-                    "webview_height_ratio": "full"
+                    "webview_height_ratio": "tall",
+                    "url": "https://fb-botapp2.herokuapp.com/index",
+                    "messenger_extensions": True
                 }
             ]
         }
@@ -181,14 +183,6 @@ def get_message(message_sent):
 def send_message(recipient_id, response):
     if response[1] == "text":
         bot.send_text_message(recipient_id, response[0])
-        URL_button = [{
-            "type": "web_url",
-            "title": "Webview example",
-            "webview_height_ratio": "tall",
-            "url": "https://fb-botapp2.herokuapp.com/index",
-            "messenger_extensions": True
-        }, ]
-        bot.send_button_message(recipient_id, "choose your favourite type", URL_button)
     elif response[1] == "quick replies":
         quick_replies = []
         records = response[0]
