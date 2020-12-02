@@ -100,16 +100,16 @@ def receive_message():
                         messaging_text = 'None'
                 if message.get('postback'):
                     messaging_text = message['postback']['payload']
-                    if messaging_text == 'Get-Started':
-                        r = requests.get(
-                            'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
-                                recipient_id, ACCESS_TOKEN)).json()
-                        f_name = r['first_name']
-                        greeting_text1 = "hello " + f_name
-                        response_message = [greeting_text1, "text"]
-                        send_message(recipient_id, response_message)
-                        DatabaseResponse.store_name(f_name,recipient_id)
-            if messaging_text[0:9] == "Products:":
+            if messaging_text == 'Get-Started':
+                r = requests.get(
+                    'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
+                        recipient_id, ACCESS_TOKEN)).json()
+                f_name = r['first_name']
+                greeting_text1 = "hello " + f_name
+                response_message = [greeting_text1, "text"]
+                send_message(recipient_id, response_message)
+                DatabaseResponse.store_name(f_name, recipient_id)
+            elif messaging_text[0:9] == "Products:":
                 response_message = get_response("get_products", messaging_text[9:])
             else:
                 response_message = get_message(messaging_text)
