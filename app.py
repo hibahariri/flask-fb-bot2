@@ -99,9 +99,9 @@ def receive_message():
                     if message['message'].get('quick_reply'):
                         messaging_text = message['message']['quick_reply']['payload']
                         print(messaging_text)
-                    if message['message'].get('text'):
+                    elif message['message'].get('text'):
                         messaging_text = message['message']['text']
-                    if message['message'].get('attachments'):
+                    elif message['message'].get('attachments'):
                         messaging_text = 'None'
                 if message.get('postback'):
                     messaging_text = message['postback']['payload']
