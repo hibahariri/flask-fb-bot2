@@ -96,14 +96,14 @@ def receive_message():
             for message in messaging:
                 recipient_id = message['sender']['id']
                 if message.get('message'):
+                    if message.get('quick_reply'):
+                        messaging_text = message['quick_reply']['payload']
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']
                     if message['message'].get('attachments'):
                         messaging_text = 'None'
                 if message.get('postback'):
                     messaging_text = message['postback']['payload']
-                if message.get('quick_reply'):
-                    messaging_text = message['quick_reply']['payload']
             if messaging_text == 'Get-Started':
                 r = requests.get(
                     'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
