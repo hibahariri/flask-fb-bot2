@@ -97,8 +97,8 @@ def receive_message():
                 recipient_id = message['sender']['id']
                 if message.get('message'):
                     if message['message'].get('quick_reply'):
-                        print("Quickreply")
                         messaging_text = message['message']['quick_reply']['payload']
+                        print(messaging_text)
                     if message['message'].get('text'):
                         messaging_text = message['message']['text']
                     if message['message'].get('attachments'):
