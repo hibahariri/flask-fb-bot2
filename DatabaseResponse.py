@@ -21,7 +21,8 @@ def connect_todb():
 def store_name(first_name, recipientID):
     con = connect_todb()
     cur = con[0].cursor()
-    cur.execute("INSERT INTO user (recipientID,username) values (%s,%s) ON DUPLICATE KEY UPDATE username = %s", (recipientID,first_name,first_name))
+    cur.execute("INSERT INTO user (recipientID,username) values (%s,%s) ON DUPLICATE KEY UPDATE username = %s",
+                (recipientID, first_name, first_name))
     con[0].commit()
     cur.close()
     con[0].close()
@@ -57,6 +58,17 @@ def get_products(subcatID):
     cur.execute(
         "Select productsname from product inner join subcategory where product.subcatid = subcategory.subcatID and subcatName = %s",
         (subcatID.strip(),))
+    records = cur.fetchall()
+    cur.close()
+    con[0].close()
+    return records
+
+
+def get_brands(ProductID):
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute(
+        "Select BrandName from brand ",)
     records = cur.fetchall()
     cur.close()
     con[0].close()

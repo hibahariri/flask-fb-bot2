@@ -115,6 +115,8 @@ def receive_message():
                 DatabaseResponse.store_name(f_name, recipient_id)
             elif messaging_text[0:9] == "Products:":
                 response_message = get_response("get_products", messaging_text[9:])
+            elif messaging_text[0:7] == "Brands:":
+                response_message = get_response("get_brands", messaging_text[7:])
             else:
                 response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
@@ -153,6 +155,9 @@ def get_response(action, parameters):
     elif action == "get_products":
         records = DatabaseResponse.get_products(parameters)
         user_response = [records, "quick replies"]
+    elif action == "get_brands":
+        records = DatabaseResponse.get_brands(parameters)
+        user_response = [records, "quick replies"]
     else:
         user_response = ["we will show yo our categories 2", "text"]
     return user_response
@@ -189,7 +194,7 @@ def send_message(recipient_id, response):
         quick_replies = []
         records = response[0]
         for row in records:
-            quick_replies.append({"content_type": "text", "title": row[0], "payload": "hi", })
+            quick_replies.append({"content_type": "text", "title": row[0], "payload": "Brands:" + row[0], })
         bot.send_message(recipient_id, {
             "text": "Pick a category:",
             "quick_replies": quick_replies
