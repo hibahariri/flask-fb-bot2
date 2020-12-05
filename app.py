@@ -102,6 +102,8 @@ def receive_message():
                         messaging_text = 'None'
                 if message.get('postback'):
                     messaging_text = message['postback']['payload']
+                if message.get('quick_reply'):
+                    messaging_text = message['quick_reply']['payload']
             if messaging_text == 'Get-Started':
                 r = requests.get(
                     'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
@@ -186,7 +188,7 @@ def send_message(recipient_id, response):
         quick_replies = []
         records = response[0]
         for row in records:
-            quick_replies.append({"content_type": "text", "title": row[0], "payload": "help", })
+            quick_replies.append({"content_type": "text", "title": row[0], "payload": "Help", })
         bot.send_message(recipient_id, {
             "text": "Pick a category:",
             "quick_replies": quick_replies
