@@ -189,7 +189,7 @@ def send_message(recipient_id, response):
         quick_replies = []
         records = response[0]
         for row in records:
-            quick_replies.append({"content_type": "text", "title": row[0], "payload": "Department", })
+            quick_replies.append({"content_type": "text", "title": row[0], "payload": "hi", })
         bot.send_message(recipient_id, {
             "text": "Pick a category:",
             "quick_replies": quick_replies
