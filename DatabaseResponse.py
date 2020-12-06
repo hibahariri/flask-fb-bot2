@@ -77,6 +77,7 @@ def get_brands(ProductID):
 
 
 def get_items(BrandId):
+    print(BrandId)
     a, b = BrandId.split(',', 1)
     con = connect_todb()
     cur = con[0].cursor()
