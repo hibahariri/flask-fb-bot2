@@ -91,6 +91,8 @@ def get_items(BrandId):
 
 def Add_ToCart(CartItem):
     a, b = CartItem.split(',', 1)
+    print(a)
+    print(b)
     con = connect_todb()
     cur = con[0].cursor()
     r = cur.execute("Insert into Cart(ItemID, userID, Quantity)  values ((select ItemID from item where itemDesc = %s),%s,1)",
