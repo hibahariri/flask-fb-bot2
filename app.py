@@ -156,7 +156,7 @@ def get_response(action, parameters):
         user_response = [records, "Button"]
     elif action == "get_products":
         records = DatabaseResponse.get_products(parameters)
-        user_response = [records, "quick replies", "Brands(", ]
+        user_response = [records, "quick replies", "Brands(", ""]
     elif action == "get_brands":
         records = DatabaseResponse.get_brands(parameters)
         user_response = [records, "quick replies", "Items(", parameters]
@@ -202,7 +202,7 @@ def send_message(recipient_id, response):
             if response[3] is not None:
                 payload = response[2] + row[0] + ")"
             else:
-                payload = response[2] + row[0] + "," + response[2] + ")"
+                payload = response[2] + row[0] + "," + response[3] + ")"
             quick_replies.append({"content_type": "text", "title": row[0], "payload": payload, })
         bot.send_message(recipient_id, {
             "text": "Pick a category:",
