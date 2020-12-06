@@ -205,7 +205,6 @@ def send_message(recipient_id, response):
                 payload = response[2] + row[0] + "," + response[3] + ")"
             else:
                 payload = response[2] + row[0] + ")"
-
             print(payload)
             quick_replies.append({"content_type": "text", "title": row[0], "payload": payload, })
         bot.send_message(recipient_id, {
