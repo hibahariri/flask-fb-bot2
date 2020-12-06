@@ -156,7 +156,7 @@ def get_response(action, parameters):
         user_response = [records, "Button"]
     elif action == "get_products":
         records = DatabaseResponse.get_products(parameters)
-        user_response = [records, "quick replies", "Brands("]
+        user_response = [records, "quick replies", "Brands(", ]
     elif action == "get_brands":
         records = DatabaseResponse.get_brands(parameters)
         user_response = [records, "quick replies", "Items(", parameters]
