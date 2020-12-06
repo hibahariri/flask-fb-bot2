@@ -101,5 +101,8 @@ def Add_ToCart(CartItem):
     cur.close()
     con[0].close()
     if r == 1:
-        response = "Item has been added to your cart"
-    return response
+        return "Item has been added to your cart"
+    else:
+        return "cannot insert"
+
+
