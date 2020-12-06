@@ -118,7 +118,7 @@ def receive_message():
             elif messaging_text[0:7] == "Brands(":
                 response_message = get_response("get_brands", messaging_text[7:-1])
             elif messaging_text[0:6] == "Items(":
-                response_message = get_response("get_Items", messaging_text[6:])
+                response_message = get_response("get_Items", messaging_text[6:-1])
             else:
                 response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
