@@ -115,9 +115,9 @@ def receive_message():
                 DatabaseResponse.store_name(f_name, recipient_id)
             elif messaging_text[0:9] == "Products:":
                 response_message = get_response("get_products", messaging_text[9:])
-            elif messaging_text[0:7] == "Brands:":
-                response_message = get_response("get_brands", messaging_text[7:])
-            elif messaging_text[0:6] == "Items:":
+            elif messaging_text[0:7] == "Brands(":
+                response_message = get_response("get_brands", messaging_text[7:-1])
+            elif messaging_text[0:6] == "Items(":
                 response_message = get_response("get_Items", messaging_text[6:])
             else:
                 response_message = get_message(messaging_text)
@@ -156,10 +156,10 @@ def get_response(action, parameters):
         user_response = [records, "Button"]
     elif action == "get_products":
         records = DatabaseResponse.get_products(parameters)
-        user_response = [records, "quick replies", "Brands:"]
+        user_response = [records, "quick replies", "Brands("]
     elif action == "get_brands":
         records = DatabaseResponse.get_brands(parameters)
-        user_response = [records, "quick replies", "Items:"]
+        user_response = [records, "quick replies", "Items(", parameters]
     elif action == "get_Items":
         records = DatabaseResponse.get_items(parameters)
         user_response = [records, "Generic template", "Items"]
@@ -199,7 +199,11 @@ def send_message(recipient_id, response):
         quick_replies = []
         records = response[0]
         for row in records:
-            quick_replies.append({"content_type": "text", "title": row[0], "payload": response[2] + row[0], })
+            if response[3] is not None:
+                payload = response[2] + row[0] + ")"
+            else:
+                payload = response[2] + row[0] + "," + response[2] + ")"
+            quick_replies.append({"content_type": "text", "title": row[0], "payload": payload, })
         bot.send_message(recipient_id, {
             "text": "Pick a category:",
             "quick_replies": quick_replies
