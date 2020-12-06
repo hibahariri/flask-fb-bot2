@@ -154,10 +154,10 @@ def get_response(action, parameters):
         user_response = [records, "Button"]
     elif action == "get_products":
         records = DatabaseResponse.get_products(parameters)
-        user_response = [records, "quick replies"]
+        user_response = [records, "quick replies", "Brands:"]
     elif action == "get_brands":
         records = DatabaseResponse.get_brands(parameters)
-        user_response = [records, "quick replies"]
+        user_response = [records, "quick replies", "Items:"]
     else:
         user_response = ["we will show yo our categories 2", "text"]
     return user_response
@@ -194,7 +194,7 @@ def send_message(recipient_id, response):
         quick_replies = []
         records = response[0]
         for row in records:
-            quick_replies.append({"content_type": "text", "title": row[0], "payload": "Brands:" + row[0], })
+            quick_replies.append({"content_type": "text", "title": row[0], "payload": response[2] + row[0], })
         bot.send_message(recipient_id, {
             "text": "Pick a category:",
             "quick_replies": quick_replies
