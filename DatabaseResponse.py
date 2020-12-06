@@ -95,7 +95,7 @@ def Add_ToCart(CartItem):
     print(b)
     con = connect_todb()
     cur = con[0].cursor()
-    r = cur.execute("Insert into Cart(ItemID, userID, Quantity)  values ((select ItemID from item where itemDesc = %s),%s,1)",
+    r = cur.execute("Insert into Cart(ItemID, userID, Quantity)  values ((select ItemID from item where itemDesc = %s),(Select userID from user where recipientID = %s),1)",
                     (a.strip(), b.strip()))
     con[0].commit()
     cur.close()
