@@ -212,7 +212,7 @@ def send_message(recipient_id, response):
                 Generic_replies.append({
                     "title": row[0],
                     "image_url": row[1],
-                    "subtitle": row[2] + "\n" + row[3],
+                    "subtitle": row[2] + "     " + row[3],
                     "buttons":
                         [
                             {
