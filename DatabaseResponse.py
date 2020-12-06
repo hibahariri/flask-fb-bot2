@@ -79,12 +79,12 @@ def get_brands(ProductID):
 def get_items(BrandId):
     a, b = BrandId.split(',', 1)
     print(a)
-    print(BrandId)
+    print(b)
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "Select ItemDesc, Itemimage, CONCAT(size,' ',sizeunit), CONCAT(price,' LBP') from item where brandID = (select BrandID from brand where BrandName = %s) ",
-        (a.strip(),))
+        "Select ItemDesc, Itemimage, CONCAT(size,' ',sizeunit), CONCAT(price,' LBP') from item where brandID = (select BrandID from brand where BrandName = %s) and productID = (select productID from product where productsname = %s) ",
+        (a.strip(),b.strip()))
     records = cur.fetchall()
     cur.close()
     con[0].close()
