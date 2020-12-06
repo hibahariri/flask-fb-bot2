@@ -201,10 +201,10 @@ def send_message(recipient_id, response):
         quick_replies = []
         records = response[0]
         for row in records:
-            if response[3] is not None:
-                payload = response[2] + row[0] + "," + response[3] + ")"
-            else:
+            if not response[3]:
                 payload = response[2] + row[0] + ")"
+            else:
+                payload = response[2] + row[0] + "," + response[3] + ")"
             print(payload)
             quick_replies.append({"content_type": "text", "title": row[0], "payload": payload, })
         bot.send_message(recipient_id, {
