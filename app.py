@@ -159,8 +159,10 @@ def get_response(action, parameters):
         user_response = [records, "quick replies", "Brands(", ""]
     elif action == "get_brands":
         records = DatabaseResponse.get_brands(parameters)
+        print(parameters)
         user_response = [records, "quick replies", "Items(", parameters]
     elif action == "get_Items":
+        print(parameters)
         records = DatabaseResponse.get_items(parameters)
         user_response = [records, "Generic template", "Items"]
     else:
