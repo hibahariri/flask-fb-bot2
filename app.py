@@ -117,6 +117,8 @@ def receive_message():
                 response_message = get_response("get_products", messaging_text[9:])
             elif messaging_text[0:7] == "Brands:":
                 response_message = get_response("get_brands", messaging_text[7:])
+            elif messaging_text[0:6] == "Items:":
+                response_message = get_response("get_Items", messaging_text[6:])
             else:
                 response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
@@ -148,7 +150,7 @@ def verify_fb_token(token_sent):
 def get_response(action, parameters):
     if action == "get-categories":
         records = DatabaseResponse.get_categories()
-        user_response = [records, "Generic template"]
+        user_response = [records, "Generic template", "Categories"]
     elif action == "Get_subcat":
         records = DatabaseResponse.get_subcat()
         user_response = [records, "Button"]
@@ -158,6 +160,9 @@ def get_response(action, parameters):
     elif action == "get_brands":
         records = DatabaseResponse.get_brands(parameters)
         user_response = [records, "quick replies", "Items:"]
+    elif action == "get_Items":
+        records = DatabaseResponse.get_items(parameters)
+        user_response = [records, "Generic template", "Items"]
     else:
         user_response = ["we will show yo our categories 2", "text"]
     return user_response
@@ -200,30 +205,47 @@ def send_message(recipient_id, response):
             "quick_replies": quick_replies
         })
     elif response[1] == "Generic template":
-        Generic_replies = []
-        records = response[0]
-        for row in records:
-            Generic_replies.append({
-                "title": row[0],
-                "image_url": row[2],
-                "buttons":
-                    [
-                        {
-                            "type": "postback",
-                            "title": list(row[3].split(','))[0],
-                            "payload": "Products:" + list(row[3].split(','))[0],
-                        },
-                        {
-                            "type": "postback",
-                            "title": list(row[3].split(','))[1],
-                            "payload": "Products:" + list(row[3].split(','))[1],
-                        },
-                        {
-                            "type": "postback",
-                            "title": list(row[3].split(','))[2],
-                            "payload": "Products:" + list(row[3].split(','))[2],
-                        }
-                    ]})
+        if response[2] == "Items":
+            Generic_replies = []
+            records = response[0]
+            for row in records:
+                Generic_replies.append({
+                    "title": row[0],
+                    "image_url": row[1],
+                    "subtitle": row[2] + "--" + row[3],
+                    "buttons":
+                        [
+                            {
+                                "type": "postback",
+                                "title": "Add to cart",
+                                "payload": "Add to cart",
+                            },
+                        ]})
+        else:
+            Generic_replies = []
+            records = response[0]
+            for row in records:
+                Generic_replies.append({
+                    "title": row[0],
+                    "image_url": row[2],
+                    "buttons":
+                        [
+                            {
+                                "type": "postback",
+                                "title": list(row[3].split(','))[0],
+                                "payload": "Products:" + list(row[3].split(','))[0],
+                            },
+                            {
+                                "type": "postback",
+                                "title": list(row[3].split(','))[1],
+                                "payload": "Products:" + list(row[3].split(','))[1],
+                            },
+                            {
+                                "type": "postback",
+                                "title": list(row[3].split(','))[2],
+                                "payload": "Products:" + list(row[3].split(','))[2],
+                            }
+                        ]})
         bot.send_generic_message(recipient_id, Generic_replies)
     elif response[1] == "Button":
         records = response[0]

@@ -74,3 +74,15 @@ def get_brands(ProductID):
     cur.close()
     con[0].close()
     return records
+
+
+def get_items():
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute(
+        "Select ItemDesc, Itemimage, CONCAT(size,' ',sizeunit), CONCAT(price,' LBP') from item where brandID = 71",
+        )
+    records = cur.fetchall()
+    cur.close()
+    con[0].close()
+    return records
