@@ -80,7 +80,7 @@ def get_items(BrandId):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "Select ItemDesc, Itemimage, CONCAT(size,' ',sizeunit), CONCAT(price,' LBP') from item where brandID = (select BrandID from from brand where BrandName = %s))",
+        "Select ItemDesc, Itemimage, CONCAT(size,' ',sizeunit), CONCAT(price,' LBP') from item where brandID = (select BrandID from brand where BrandName = %s))",
         (BrandId.strip(),))
     records = cur.fetchall()
     cur.close()
