@@ -166,8 +166,9 @@ def get_response(action, parameters):
         records = DatabaseResponse.get_items(parameters)
         user_response = [records, "Generic template", "Items"]
     elif action == "Add_ToCart":
+        print("aa")
         records = DatabaseResponse.Add_ToCart(parameters)
-        user_response = [records, "Text",]
+        user_response = [records, "Text"]
     else:
         user_response = ["we will show yo our categories 2", "text"]
     return user_response
