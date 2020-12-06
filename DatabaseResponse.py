@@ -76,7 +76,7 @@ def get_brands(ProductID):
     return records
 
 
-def get_items():
+def get_items(BrandId):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
