@@ -119,6 +119,8 @@ def receive_message():
                 response_message = get_response("get_brands", messaging_text[7:-1])
             elif messaging_text[0:6] == "Items(":
                 response_message = get_response("get_Items", messaging_text[6:-1])
+            elif messaging_text[0:12] == "Add-to-cart(":
+                response_message = get_response("Add_ToCart", messaging_text[12:-1])
             else:
                 response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
@@ -163,6 +165,9 @@ def get_response(action, parameters):
     elif action == "get_Items":
         records = DatabaseResponse.get_items(parameters)
         user_response = [records, "Generic template", "Items"]
+    elif action == "Add_ToCart":
+        records = DatabaseResponse.Add_ToCart(parameters)
+        user_response = [records, "Text",]
     else:
         user_response = ["we will show yo our categories 2", "text"]
     return user_response
@@ -222,7 +227,7 @@ def send_message(recipient_id, response):
                             {
                                 "type": "postback",
                                 "title": "Add to cart",
-                                "payload": "Add to cart",
+                                "payload": "Add-to-cart(" + row[0] + "," + recipient_id + ")",
                             },
                         ]})
         else:
