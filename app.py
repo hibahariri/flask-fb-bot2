@@ -1,6 +1,6 @@
 import json
 import requests
-from flask import Flask, request, render_template, jinja
+from flask import Flask, request, render_template
 from pymessenger.bot import Bot
 import apiai
 import DatabaseResponse
