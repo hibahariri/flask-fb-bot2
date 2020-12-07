@@ -143,11 +143,11 @@ def openPayments():
     return render_template('PaymentDetails.html')
 
 
-@app.route('/Cart', methods=['GET'])
+@app.route('/Carts', methods=['GET'])
 def openPayments():
     items = DatabaseResponse.get_CartItem('3908221662585673')
     print(items[0])
-    return render_template('Cart.html', items=items)
+    return render_template('Carts.html', items=items)
 
 
 def verify_fb_token(token_sent):
