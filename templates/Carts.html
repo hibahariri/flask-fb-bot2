@@ -154,8 +154,8 @@ input:focus {
       <button class="plus-btn" type="button" name="button"  onclick="Addone()">
         <img src="plus_icon.png" alt="" />
       </button>
-      <input type="number" name="name" value="1" id="quantity">
-      <button class="minus-btn" type="button" name="button">
+      <input type="number" name="name" value="1" id="quantity" >
+      <button class="minus-btn" type="button" name="button" onclick="minusone()">
         <img src="minus.svg" alt="" />
       </button>
     </div>
@@ -164,8 +164,12 @@ input:focus {
 <script>
     function Addone() {
     var qty = document.getElementById("quantity").value;
-    var stc = "1";
-    qty = +qty + +stc;
+    qty = +qty + 1;
+    document.getElementById("quantity").value = qty;
+    }
+    function minusone() {
+    var qty = document.getElementById("quantity").value;
+    qty = +qty - 1;
     document.getElementById("quantity").value = qty;
     }
    (function (d, s, id) {
