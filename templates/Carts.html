@@ -178,7 +178,7 @@ input:focus {
   </div>
 {% endfor %}
 <script>
-    $('.minus-btn').on('click', function(e) {
+    ('.minus-btn').on('click', function(e) {
     e.preventDefault();
     var $this = $(this);
     var $input = $this.closest('div').find('input');
@@ -193,7 +193,7 @@ input:focus {
   $input.val(value);
 
 });
-$('.plus-btn').on('click', function(e) {
+('.plus-btn').on('click', function(e) {
     e.preventDefault();
     var $this = $(this);
     var $input = $this.closest('div').find('input');
@@ -207,6 +207,16 @@ $('.plus-btn').on('click', function(e) {
 
     $input.val(value);
 });
+(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'Messenger'));
 </script>
 </body>
 </html>
