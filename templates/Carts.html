@@ -143,9 +143,6 @@ input:focus {
 <body>
 {% for item in items %}
   <div class="item">
-    <div class="buttons">
-      <span class="delete-btn"></span>
-    </div>
      <div class="description">
        <span>{{ item[0] }}</span>
        <span>{{ item[1] }}</span>
@@ -159,8 +156,6 @@ input:focus {
         <img src="minus.svg" alt="" />
       </button>
     </div>
-
-    <div class="total-price"><span>{{ item[2] }}</span></div>
   </div>
 {% endfor %}
 <script>
