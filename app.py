@@ -141,11 +141,10 @@ def openPayments():
     return render_template('PaymentDetails.html')
 
 
-@app.route('/Carts', methods=['GET'])
-def get_cart():
-    items = DatabaseResponse.get_CartItem('3908221662585673')
+@app.route('/Carts/<int:recipientID>', methods=['GET'])
+def get_cart(recipientID):
+    items = DatabaseResponse.get_CartItem(recipientID)
     print(items[0])
-    print("aa")
     return render_template('Carts.html', items=items)
 
 
