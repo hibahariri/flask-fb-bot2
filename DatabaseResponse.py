@@ -100,9 +100,7 @@ def Add_ToCart(CartItem):
     con[0].commit()
     cur.close()
     con[0].close()
-    if r == 1:
-        return "Item has been added to your cart"
-    else:
-        return "cannot insert"
+    RECORD = "INSERTED"
+    return RECORD
 
 
