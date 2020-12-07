@@ -13,16 +13,8 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  background-color: #7EC855;
+  background-color: #ffffff;
   font-family: 'Roboto', sans-serif;
-}
-.title {
-  height: 60px;
-  border-bottom: 1px solid #E1E8EE;
-  padding: 20px 30px;
-  color: #5E6977;
-  font-size: 18px;
-  font-weight: 400;
 }
 .item {
   padding: 20px 30px;
@@ -39,8 +31,7 @@ body {
   padding-top: 30px;
   margin-right: 60px;
 }
-.delete-btn,
-.like-btn {
+.delete-btn {
   display: inline-block;
   Cursor: pointer;
 }
@@ -74,9 +65,9 @@ Let’s add some basic style to  product name and description.
 }
 .description span {
   display: block;
-  font-size: 14px;
+  font-size: 11px;
   color: #43484D;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .description span:first-child {
@@ -91,7 +82,7 @@ Let’s add some basic style to  product name and description.
   width: 83px;
   padding-top: 27px;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   color: #43484D;
   font-weight: 300;
 }
@@ -128,18 +119,13 @@ input:focus {
   outline:0;
 }
 @media (max-width: 800px) {
-  .shopping-cart {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-  }
   .item {
     height: auto;
     flex-wrap: wrap;
     justify-content: center;
   }
   .image img {
-    width: 50%;
+    width: 40%;
   }
   .image,
   .quantity,
