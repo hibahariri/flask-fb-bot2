@@ -131,7 +131,7 @@ def receive_message():
 def success():
     if request.method == 'GET':
         print("done")
-        return render_template('index.html', PaymentDetails="paymentDetails")
+        return render_template('index.html')
     else:
         print(request.form['fname'])
         return "submitted"
