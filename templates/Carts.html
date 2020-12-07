@@ -165,7 +165,7 @@ input:focus {
     function Addone() {
     var qty = document.getElementById("quantity").value;
     var stc = "1";
-    qty = addNum(qty, stc);
+    qty = +qty + +stc;
     document.getElementById("quantity").value = qty;
     }
    (function (d, s, id) {
