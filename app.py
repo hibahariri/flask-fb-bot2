@@ -1,6 +1,6 @@
 import json
 import requests
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jinja
 from pymessenger.bot import Bot
 import apiai
 import DatabaseResponse
@@ -141,6 +141,13 @@ def success():
 def openPayments():
     print("done")
     return render_template('PaymentDetails.html')
+
+
+@app.route('/Cart', methods=['GET'])
+def openPayments():
+    items = DatabaseResponse.get_CartItem('3908221662585673')
+    print(items[0])
+    return render_template('Cart.html', items=items)
 
 
 def verify_fb_token(token_sent):

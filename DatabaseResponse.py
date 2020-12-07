@@ -95,8 +95,9 @@ def Add_ToCart(CartItem):
     print(b)
     con = connect_todb()
     cur = con[0].cursor()
-    r = cur.execute("Insert into Cart(ItemID, userID, Quantity)  values ((select ItemID from item where itemDesc = %s),(Select userID from user where recipientID = %s),1)",
-                    (a.strip(), b.strip()))
+    r = cur.execute(
+        "Insert into Cart(ItemID, userID, Quantity)  values ((select ItemID from item where itemDesc = %s),(Select userID from user where recipientID = %s),1)",
+        (a.strip(), b.strip()))
     con[0].commit()
     cur.close()
     con[0].close()
@@ -107,3 +108,13 @@ def Add_ToCart(CartItem):
     return RECORD
 
 
+def get_CartItem(recipientID):
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute(
+        "Select ItemDesc,CONCAT(size,' ',sizeunit),CONCAT(price,' LBP')  from cart inner join item where cart.itemID = item.itemID and userID = (Select userid from user where recipientID = %s) ",
+        (recipientID.strip(),))
+    records = cur.fetchall()
+    cur.close()
+    con[0].close()
+    return records
