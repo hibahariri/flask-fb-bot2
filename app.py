@@ -10,6 +10,7 @@ ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
 
+recipient_id = ""
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
     "get_started": {
@@ -71,7 +72,7 @@ data2 = {
                     "type": "web_url",
                     "title": "My Profile",
                     "webview_height_ratio": "tall",
-                    "url": "https://fb-botapp2.herokuapp.com/index",
+                    "url": "https://fb-botapp2.herokuapp.com/Carts" ,
                     "messenger_extensions": True
                 }
             ]
@@ -141,9 +142,9 @@ def openPayments():
     return render_template('PaymentDetails.html')
 
 
-@app.route('/Carts/<recipientID>', methods=['GET'])
-def get_cart(recipientID):
-    items = DatabaseResponse.get_CartItem(recipientID)
+@app.route('/Carts', methods=['GET'])
+def get_cart():
+    items = DatabaseResponse.get_CartItem(recipient_id)
     print(items[0])
     return render_template('Carts.html', items=items)
 
