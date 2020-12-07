@@ -151,10 +151,10 @@ input:focus {
        <span>{{ item[1] }}</span>
      </div>
       <div class="quantity">
-      <button class="plus-btn" type="button" name="button">
+      <button class="plus-btn" type="button" name="button"  onclick="Addone()">
         <img src="plus_icon.png" alt="" />
       </button>
-      <input type="text" name="name" value="1">
+      <input type="text" name="name" value="1" id="quantity">
       <button class="minus-btn" type="button" name="button">
         <img src="minus.svg" alt="" />
       </button>
@@ -162,35 +162,10 @@ input:focus {
   </div>
 {% endfor %}
 <script>
-    ('.minus-btn').on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    var $input = $this.closest('div').find('input');
-    var value = parseInt($input.val());
-
-    if (value &amp;amp;gt; 1) {
-        value = value - 1;
-    } else {
-        value = 0;
-    }
-
-  $input.val(value);
-
-});
-('.plus-btn').on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    var $input = $this.closest('div').find('input');
-    var value = parseInt($input.val());
-
-    if (value &amp;amp;lt; 100) {
-        value = value + 1;
-    } else {
-        value =100;
-    }
-
-    $input.val(value);
-});
+   function Addone() {
+   var txt = document.getElementById("quantity").value;
+     txt = "2"
+    document.getElementById("quantity").value = txt; }
 (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
