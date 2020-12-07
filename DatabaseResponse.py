@@ -101,7 +101,7 @@ def Add_ToCart(CartItem):
     cur.close()
     con[0].close()
     if r == 1:
-        RECORD = "INSERTED"
+        RECORD = "Inserted"
     else:
         RECORD = "can't insert"
     return RECORD
