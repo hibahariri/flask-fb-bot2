@@ -48,7 +48,7 @@ data2 = {
                     "type": "web_url",
                     "title": "My Profile",
                     "webview_height_ratio": "tall",
-                    "url": "https://fb-botapp2.herokuapp.com/index",
+                    "url": "https://fb-botapp2.herokuapp.com/Carts",
                     "messenger_extensions": True
                 }
             ]
