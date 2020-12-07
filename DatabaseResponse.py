@@ -112,7 +112,7 @@ def get_CartItem(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "Select ItemDesc,CONCAT(size,' ',sizeunit),CONCAT(price,' LBP')  from cart inner join item where cart.itemID = item.itemID and userID = (Select userid from user where recipientID = %s) ",
+        "Select ItemDesc,CONCAT(size,' ',sizeunit),CONCAT(price,' LBP'), Itemimage from cart inner join item where cart.itemID = item.itemID and userID = (Select userid from user where recipientID = %s) ",
         (recipientID.strip(),))
     records = cur.fetchall()
     cur.close()
