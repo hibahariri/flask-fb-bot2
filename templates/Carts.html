@@ -127,6 +127,31 @@ button:focus,
 input:focus {
   outline:0;
 }
+@media (max-width: 800px) {
+  .shopping-cart {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  .item {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .image img {
+    width: 50%;
+  }
+  .image,
+  .quantity,
+  .description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+  }
+  .buttons {
+    margin-right: 20px;
+  }
+}
 </style>
 </head>
 <body>
@@ -152,5 +177,22 @@ input:focus {
     <div class="total-price"><span>{{ item[2] }}</span></div>
   </div>
 {% endfor %}
+<script>
+    $('.minus-btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+
+    if (value &amp;amp;gt; 1) {
+        value = value - 1;
+    } else {
+        value = 0;
+    }
+
+  $input.val(value);
+
+});
+</script>
 </body>
 </html>
