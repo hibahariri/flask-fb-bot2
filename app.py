@@ -144,7 +144,7 @@ def openPayments():
 
 
 @app.route('/Carts', methods=['GET'])
-def openPayments():
+def get_cart():
     items = DatabaseResponse.get_CartItem('3908221662585673')
     print(items[0])
     return render_template('Carts.html', items=items)
