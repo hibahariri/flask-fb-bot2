@@ -6,7 +6,9 @@
 </head>
 <body>
 <div>
-    <h> hi </h>
+    {% for item in items %}
+       <h2>{{ item[0] }}</h2>
+    {% endfor %}
 </div>
 
 </body>

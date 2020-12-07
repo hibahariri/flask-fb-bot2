@@ -130,7 +130,6 @@ def receive_message():
 @app.route('/index', methods=['GET', 'POST'])
 def success():
     if request.method == 'GET':
-        print("done")
         return render_template('index.html')
     else:
         print(request.form['fname'])
@@ -139,7 +138,6 @@ def success():
 
 @app.route('/PaymentDetails', methods=['GET'])
 def openPayments():
-    print("done")
     return render_template('PaymentDetails.html')
 
 
@@ -147,6 +145,7 @@ def openPayments():
 def get_cart():
     items = DatabaseResponse.get_CartItem('3908221662585673')
     print(items[0])
+    print("aa")
     return render_template('Carts.html', items=items)
 
 
