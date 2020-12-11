@@ -1,11 +1,11 @@
 import json
 import requests
-from flask import Flask, request, render_template,url_for, flash, redirect
+from flask import Flask, request, render_template, url_for, flash, redirect
 from pymessenger.bot import Bot
 import apiai
 import DatabaseResponse
 
-app = Flask(__name__, template_folder="templates")  # Initializing our Flask application
+app = Flask(__name__, template_folder="templates")
 app.config['SECRET_KEY'] = 'akbocTVre'
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
@@ -20,6 +20,8 @@ data = {
 headers = {
     'content-type': 'application/json'
 }
+
+# Add get started button
 
 gsresp = requests.post(fb_url, headers=headers, data=json.dumps(data)).json()
 
@@ -72,7 +74,7 @@ data2 = {
                     "type": "web_url",
                     "title": "My Profile",
                     "webview_height_ratio": "tall",
-                    "url": "https://fb-botapp2.herokuapp.com/Carts" ,
+                    "url": "https://fb-botapp2.herokuapp.com/Carts",
                     "messenger_extensions": True
                 }
             ]
@@ -80,11 +82,13 @@ data2 = {
     ]
 }
 
+# Add persistent menu
 pmresp = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 
 
 # del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data4)).json()
 
+# Receive requests from facebook
 @app.route('/', methods=['GET', 'POST'])
 def receive_message():
     if request.method == 'GET':
@@ -95,6 +99,7 @@ def receive_message():
         for event in output['entry']:
             messaging = event['messaging']
             for message in messaging:
+                global recipient_id
                 recipient_id = message['sender']['id']
                 if message.get('message'):
                     if message['message'].get('quick_reply'):
@@ -107,6 +112,7 @@ def receive_message():
                 if message.get('postback'):
                     messaging_text = message['postback']['payload']
             if messaging_text == 'Get-Started':
+                # send request to facebook to return user information
                 r = requests.get(
                     'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                         recipient_id, ACCESS_TOKEN)).json()
@@ -137,14 +143,16 @@ def success():
         return "submitted"
 
 
+# handles payments web view
 @app.route('/PaymentDetails', methods=['GET'])
 def openPayments():
     return render_template('PaymentDetails.html')
 
 
+# Handles myCart web view
 @app.route('/Carts', methods=['GET'])
 def get_cart():
-    items = DatabaseResponse.get_CartItem('3908221662585673')
+    items = DatabaseResponse.get_CartItem(recipient_id)
     return render_template('Carts.html', items=items)
 
 
@@ -154,6 +162,7 @@ def verify_fb_token(token_sent):
     return 'Invalid verification token'
 
 
+# handles non-text requests from user
 def get_response(action, parameters):
     if action == "get-categories":
         records = DatabaseResponse.get_categories()
@@ -171,14 +180,15 @@ def get_response(action, parameters):
         records = DatabaseResponse.get_items(parameters)
         user_response = [records, "Generic template", "Items"]
     elif action == "Add_ToCart":
-        print("aa")
         records = DatabaseResponse.Add_ToCart(parameters)
         user_response = [records, "text"]
     else:
-        user_response = ["we will show yo our categories 2", "text"]
+        user_response = ["Test", "text"]
     return user_response
 
 
+# handles text messages sent by user
+# retrieve response from Dialog flow
 def get_message(message_sent):
     ai = apiai.ApiAI("5c09984323f1437682ce9c679eb5828f")
     request_api = ai.text_request()
@@ -198,11 +208,11 @@ def get_message(message_sent):
             messages_list = {k: v for d in messages for k, v in d.items()}
             if messages_list['payload'] is not None:
                 custom_payload: dict = messages_list['payload']
-                print(custom_payload)
         user_response = [custom_payload, "quick replies"]
     return user_response
 
 
+# send message back to messenger
 def send_message(recipient_id, response):
     if response[1] == "text":
         bot.send_text_message(recipient_id, response[0])

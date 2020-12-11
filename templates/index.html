@@ -1,67 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-	  <meta charset="UTF-8">
-	  <title> Test </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body >
+   <h1 style="color:blue;" style="font-family:verdana;" style="text-align:center;">Form Demo</h1>
+    <form action="/index" method="post">
+      <fieldset>
+        <legend>Text input</legend>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" size="30" required autofocus><br>
+          <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname"><br>
+          <input type="radio" id="male" name="gender" value="male">
+  <label for="male">Male</label><br>
+  <input type="radio" id="female" name="gender" value="female">
+  <label for="female">Female</label><br>
+          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I have a bike</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" min="1" max="5">
+          <label for="vehicle2"> I have a car</label><br>
+          <input type="number" id="quantity" name="quantity" >
+         <input type="email" id="email" name="email" autocomplete="on"><br><br>
+          <input list="browsers" name="browser">
+  <datalist id="browsers">
+    <option value="Internet Explorer">
+    <option value="Firefox">
+    <option value="Chrome">
+    <option value="Opera">
+    <option value="Safari">
+  </datalist>
+          <input type="submit" value="Submit">
+          <input type="button" value="Submit" style="background-color:#4CAF50;border: none;color: white;padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;">
+          <p style="font-size:18px">
+&#128512; &#128516; &#128525; &#128151;
+</p>
 
-.card-body label{
-	font-size: 14px;
-}
-
-.no-border{
-    border: 0;
-}
-.no-background{
-background-color: #FFFFFF;
-}
-
-  </style>
-  </head>
-  <body >
-  	<div class="container no-border">
-		<div class="row no-border">
-			<div class="col-md-4 offset-md-4 col-10 offset-1 pl-0 pr-0 no-border">
-				<div class="card no-border">
-				  	<div class="card-header no-background ">
-				    	<div class="row">
-							<div class="col-md-5 col-12 pt-2">
-								<h6 class="m-0"><strong>Payment Details</strong></h6>
-							</div>
-						</div>
-				  	</div>
-				  	<div class="card-body">
-				    	<form>
-						  	<div class="form-group">
-						      	<label for="validationTooltipCardNumber"><strong>CARD NUMBER</strong></label>
-						      	<div class="input-group">
-						        	<input type="text" class="form-control " id="validationTooltipCardNumber" placeholder="0000 0000 0000 0000">
-						      </div>
-						  	</div>
-						  	<div class="row">
-						  		<div class="col-md-8 col-12">
-						  			<div class="form-group">
-								    	<label for="exampleInputExpirationDate"><strong>EXPIRATION DATE</strong></label>
-								    	<input type="text" class="form-control" id="exampleInputExpirationDate" placeholder="MM / YY">
-									</div>
-						  		</div>
-							  	<div class="col-md-4 col-12">
-							  		<div class="form-group">
-									    <label for="exampleInputCvcCode"><strong>CVC</strong></label>
-									    <input type="text" class="form-control" id="exampleInputCvcCode" placeholder="CVC">
-									</div>
-							  	</div>
-						  	</div>
-						  	<button class="btn btn-info w-100 pb-2 pt-2">Pay</button>
-						</form>
-				  	</div>
-				</div>
-			</div>
-		</div>
-	</div>
-  <script>
+      </fieldset>
+    </form>
+ <script>
      (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
@@ -73,5 +56,26 @@ background-color: #FFFFFF;
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'Messenger'));
  </script>
-  </body>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Details</title>
+</head>
+<body>
+<h1>"hi"</h1>
+<script>
+     (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'Messenger'));
+ </script>
+</body>
 </html>
