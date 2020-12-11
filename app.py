@@ -91,6 +91,7 @@ pmresp = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 # Receive requests from facebook
 @app.route('/', methods=['GET', 'POST'])
 def receive_message():
+    global recipient_id
     if request.method == 'GET':
         token_sent = request.args.get("hub.verify_token")
         return verify_fb_token(token_sent)
@@ -99,7 +100,6 @@ def receive_message():
         for event in output['entry']:
             messaging = event['messaging']
             for message in messaging:
-                global recipient_id
                 recipient_id = message['sender']['id']
                 if message.get('message'):
                     if message['message'].get('quick_reply'):
