@@ -1,16 +1,16 @@
 import json
 import requests
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template,url_for, flash, redirect
 from pymessenger.bot import Bot
 import apiai
 import DatabaseResponse
 
 app = Flask(__name__, template_folder="templates")  # Initializing our Flask application
+app.config['SECRET_KEY'] = 'akbocTVre'
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
 
-recipient_id = ""
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
     "get_started": {
@@ -144,8 +144,7 @@ def openPayments():
 
 @app.route('/Carts', methods=['GET'])
 def get_cart():
-    items = DatabaseResponse.get_CartItem(recipient_id)
-    print(recipient_id)
+    items = DatabaseResponse.get_CartItem('3908221662585673')
     return render_template('Carts.html', items=items)
 
 
