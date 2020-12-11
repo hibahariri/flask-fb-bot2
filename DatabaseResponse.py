@@ -101,11 +101,10 @@ def Add_ToCart(CartItem):
     con[0].commit()
     cur.close()
     con[0].close()
-    print(r)
     if r == 1:
         RECORD = "Inserted"
     else:
-        RECORD = "can't insert"
+        RECORD = r
     return RECORD
 
 
