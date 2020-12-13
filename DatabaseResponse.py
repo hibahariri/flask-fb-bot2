@@ -101,7 +101,6 @@ def Add_ToCart(CartItem):
     con[0].commit()
     cur.close()
     con[0].close()
-    print("affected rows = {}".format(cur.rowcount))
     if cur.rowcount == 1:
         RECORD = "Inserted"
     else:

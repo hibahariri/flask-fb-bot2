@@ -274,6 +274,7 @@ def send_message(recipient_id, response):
                             }
                         ]})
         bot.send_generic_message(recipient_id, Generic_replies)
+        # the below button is just for testing
     elif response[1] == "Button":
         records = response[0]
         print(records)
