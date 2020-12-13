@@ -76,7 +76,7 @@ data2 = {
                     "type": "web_url",
                     "title": "My Profile",
                     "webview_height_ratio": "tall",
-                    "url": "https://fb-botapp2.herokuapp.com/Carts/" + recipient_id,
+                    "url": "https://fb-botapp2.herokuapp.com/Carts",
                     "messenger_extensions": True
                 }
             ]
@@ -152,9 +152,9 @@ def openPayments():
 
 
 # Handles myCart web view
-@app.route('/Carts/<recipient_id>', methods=['GET'])
+@app.route('/Carts', methods=['GET'])
 def get_cart():
-    items = DatabaseResponse.get_CartItem(recipient_id)
+    items = DatabaseResponse.get_CartItem('3908221662585673')
     return render_template('Carts.html', items=items)
 
 
