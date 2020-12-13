@@ -168,16 +168,16 @@ input:focus {
 {% endfor %}
 <script>
     function Addone() {
-    var qty = document.getElementById("quantity").value;
-    qty = +qty + 1;
+    var qty = parseInt(document.getElementById("quantity").value);
+    qty = qty + 1;
     document.getElementById("quantity").value = qty;
     }
     function minusone() {
-    var qty = document.getElementById("quantity").value;
+    var qty = parseInt(document.getElementById("quantity").value);
     if (qty = 0) {
         qty = qty;
     } else {
-        qty = +qty - 1;
+        qty = qty - 1;
     }
     document.getElementById("quantity").value = qty;
     }
