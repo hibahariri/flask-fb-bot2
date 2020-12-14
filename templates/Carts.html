@@ -146,12 +146,10 @@ input:focus {
 </style>
 </head>
 <body>
-{% with i = 0 %}
-  {% for item in items %}
-    {% with qtyid = "quantity" + i %}
+{% set i = 0 %}
+{% for item in items %}
+    {% set qtyid = "quantity" + i %}
     {% i = i + 1 %}
-    {% endwith %}
-
   <div class="item">
       <div class="image">
       <img src={{ item[3] }} alt="" />
@@ -170,8 +168,8 @@ input:focus {
       </button>
     </div>
   </div>
-  {% endfor %}
-{% endwith %}
+{% endfor %}
+
 <script>
     function Addone(qtyid) {
     var qty = parseInt(document.getElementById(qtyid).value);
