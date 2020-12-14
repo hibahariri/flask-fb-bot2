@@ -153,7 +153,7 @@ input:focus {
 </style>
 </head>
 <body>
-<div class="container-fluid">
+
 {% set int = namespace(i=0) %}
 {% for item in items %}
    {% set qtyid = "quantity" + int.i|string  %}
@@ -183,7 +183,7 @@ input:focus {
     </div>
   </div>
 {% endfor %}
-</div>
+
 <script>
     function Addone(qtyid) {
     var qty = parseInt(document.getElementById(qtyid).value);
