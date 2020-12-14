@@ -164,7 +164,6 @@ input:focus {
         <img src="plus_icon.png" alt="" />
       </button>
       <input type="number" name="name" value={{ item[4] }} id={{ qtyid }} >
-          {% print(qtyid) %}
       <button class="minus-btn" type="button" name="button" onclick="minusone('{{ qtyid }}')">
         <img src="minus.svg" alt="" />
       </button>
@@ -181,9 +180,9 @@ input:focus {
     function minusone(qtyid) {
     var qty = parseInt(document.getElementById(qtyid).value);
     if (qty = 0) {
-        qty = qty;
+        qty = 0;
     } else {
-        qty = qty - 1;
+        qty--;
     }
     document.getElementById(qtyid).value = qty;
     }
