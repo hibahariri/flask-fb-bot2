@@ -150,6 +150,8 @@ input:focus {
 {% for item in items %}
 {% set qtyid = "quantity" + i|string  %}
 {% set i = i + 1 %}
+{% print(qtyid) %}
+{% print(i) %}
   <div class="item">
       <div class="image">
       <img src={{ item[3] }} alt="" />
