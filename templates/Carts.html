@@ -173,6 +173,7 @@ input:focus {
 <script>
     function Addone(qtyid) {
     var qty = parseInt(document.getElementById(qtyid).value);
+    print(qtyid)
     qty = qty + 1;
     document.getElementById(qtyid).value = qty;
     }
