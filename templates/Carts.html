@@ -147,10 +147,10 @@ input:focus {
 </head>
 <body>
 {% with i = 0 %}
-{% for item in items %}
-   {% with qtyid = "quantity" + i %}
-   {% i = i + 1 %}
-   {% endwith %}
+  {% for item in items %}
+    {% with qtyid = "quantity" + i %}
+    {% i = i + 1 %}
+    {% endwith %}
 
   <div class="item">
       <div class="image">
@@ -170,7 +170,7 @@ input:focus {
       </button>
     </div>
   </div>
-{% endfor %}
+  {% endfor %}
 {% endwith %}
 <script>
     function Addone(qtyid) {
