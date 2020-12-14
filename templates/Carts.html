@@ -174,7 +174,7 @@ input:focus {
 <script>
     function Addone(qtyid) {
     var qty = parseInt(document.getElementById(qtyid).value);
-    qty = qty + 1;
+    qty += 1;
     document.getElementById(qtyid).value = qty;
     }
     function minusone(qtyid) {
@@ -182,7 +182,7 @@ input:focus {
     if (qty = 0) {
         qty = 0;
     } else {
-        qty--;
+        qty -= 1;
     }
     document.getElementById(qtyid).value = qty;
     }
