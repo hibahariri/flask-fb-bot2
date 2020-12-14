@@ -146,10 +146,10 @@ input:focus {
 </style>
 </head>
 <body>
-{% with i = 0
-  for item in items
-  with qtyid = "quantity" + i
-   i = i + 1 %}
+{% with i = 0 %}
+{% for item in items %}
+   {% with qtyid = "quantity" + i %}
+   {% i = i + 1 %}
   <div class="item">
       <div class="image">
       <img src={{ item[3] }} alt="" />
