@@ -160,12 +160,12 @@ input:focus {
      </div>
       <div class="quantity">
 
-      <button class="plus-btn" type="button" name="button"  onclick="Addone({{ item[0] }})">
+      <button class="plus-btn" type="button" name="button"  onclick="Addone(\'' + {{ qtyid }} + '\')">
         <img src="plus_icon.png" alt="" />
       </button>
       <input type="number" name="name" value={{ item[4] }} id={{ qtyid }} >
           {% print(qtyid) %}
-      <button class="minus-btn" type="button" name="button" onclick="minusone({{ qtyid }})">
+      <button class="minus-btn" type="button" name="button" onclick="minusone(\'' + {{ qtyid }} + '\')">
         <img src="minus.svg" alt="" />
       </button>
     </div>
