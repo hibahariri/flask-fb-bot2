@@ -143,11 +143,12 @@ input:focus {
 .buttons {
     margin-right: 20px;
   }
-  .quantity
+  .quantity{
     width: 30%;
     margin: 6px 0;
   }
-
+ .qtyinput{ width: 150px;
+ }
 }
 </style>
 </head>
@@ -172,7 +173,7 @@ input:focus {
              <span class="glyphicon glyphicon-minus"></span>
            </button>
           </span>
-        <input type="number" name="quantity"  value={{ item[4] }} id={{ qtyid }} >
+        <input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} >
             <span class="input-group-btn">
        <button class="btn btn-success btn-number" type="button" name="button"  onclick="Addone('{{ qtyid }}')">
          <span class="glyphicon glyphicon-plus"></span>
