@@ -148,7 +148,7 @@ input:focus {
 <body>
 {% set i = 0 %}
 {% for item in items %}
-{% set qtyid = "quantity" + i %}
+{% set qtyid = "quantity" + str(i)  %}
 
   <div class="item">
       <div class="image">
