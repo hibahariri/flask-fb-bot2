@@ -146,9 +146,9 @@ input:focus {
 </style>
 </head>
 <body>
-{% i = 0
+{% with i = 0
   for item in items
-  qtyid = "quantity" + i
+  with qtyid = "quantity" + i
    i = i + 1 %}
   <div class="item">
       <div class="image">
