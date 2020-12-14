@@ -160,11 +160,11 @@ input:focus {
      </div>
       <div class="quantity">
 
-      <button class="plus-btn" type="button" name="button"  onclick="Addone({{ item[4] }})">
+      <button class="plus-btn" type="button" name="button"  onclick="Addone('1')">
         <img src="plus_icon.png" alt="" />
       </button>
-      <input type="number" name="name" value={{ item[4] }} id={{ qtyid }} >
-      <button class="minus-btn" type="button" name="button" onclick="minusone({{ qtyid }})">
+      <input type="number" name="name" value={{ item[4] }} id="1" >
+      <button class="minus-btn" type="button" name="button" onclick="minusone('1')">
         <img src="minus.svg" alt="" />
       </button>
     </div>
@@ -172,9 +172,8 @@ input:focus {
 {% endfor %}
 
 <script>
-    function Addone(qtya) {
+    function Addone(qtyid) {
     var qty = parseInt(document.getElementById(qtyid).value);
-    print(qtya)
     qty = qty + 1;
     document.getElementById(qtyid).value = qty;
     }
