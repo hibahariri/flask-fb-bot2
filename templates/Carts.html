@@ -168,13 +168,13 @@ input:focus {
       <div class="quantity">
         <div class="input-group">
           <span class="input-group-btn">
-          <button class="btn btn-danger btn-number" type="button" name="button"  data-field="quantity" onclick="minusone('{{ qtyid }}')">
+          <button class="btn btn-danger btn-number" type="button" name="button"   onclick="minusone('{{ qtyid }}')">
              <span class="glyphicon glyphicon-minus"></span>
            </button>
           </span>
-        <input type="number" name="quantity" class="form-control input-number" value={{ item[4] }} id={{ qtyid }} >
+        <input type="number" name="quantity"  value={{ item[4] }} id={{ qtyid }} >
             <span class="input-group-btn">
-       <button class="btn btn-success btn-number" type="button" name="button" data-field="quantity" onclick="Addone('{{ qtyid }}')">
+       <button class="btn btn-success btn-number" type="button" name="button"  onclick="Addone('{{ qtyid }}')">
          <span class="glyphicon glyphicon-plus"></span>
        </button>
        </span>
