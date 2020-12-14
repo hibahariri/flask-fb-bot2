@@ -148,10 +148,7 @@ input:focus {
 <body>
 {% set i = 0 %}
 {% for item in items %}
-  {% set qtyid = "quantity" + i|string  %}
-  {% set i = i + 1 %}
-  {% print(qtyid) %}
-  {% print(i) %}
+
   <div class="item">
       <div class="image">
       <img src={{ item[3] }} alt="" />
@@ -161,6 +158,10 @@ input:focus {
        <span>{{ item[1] }}</span>
      </div>
       <div class="quantity">
+          {% set qtyid = "quantity" + i|string  %}
+          {% set i = i + 1 %}
+          {% print(qtyid) %}
+          {% print(i) %}
       <button class="plus-btn" type="button" name="button"  onclick="Addone({{qtyid}})">
         <img src="plus_icon.png" alt="" />
       </button>
