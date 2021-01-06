@@ -191,9 +191,9 @@ input:focus {
     function Addone(qtyid,prixid,unitprice) {
     var qty = parseInt(document.getElementById(qtyid).value);
     qty += 1;
-    var prix = unitprice * qty;
+    var prix = string(unitprice * qty);
     document.getElementById(qtyid).value = qty;
-    document.getElementsByName(prixid)[0].innerhtml = prix;
+    document.getElementsByName(prixid)[0].textContent = prix;
     }
     function minusone(qtyid,prixid,unitprice) {
     var qty = parseInt(document.getElementById(qtyid).value);
