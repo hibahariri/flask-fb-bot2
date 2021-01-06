@@ -175,7 +175,7 @@ input:focus {
           </span>
         <input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} >
             <span class="input-group-btn">
-       <button class="btn btn-success btn-number" type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
+       <button class="btn btn-success btn-number" type="button" name="button"  onclick="Addone('{{ qtyid }}')">
          <span class="glyphicon glyphicon-plus"></span>
        </button>
        </span>
@@ -188,11 +188,11 @@ input:focus {
 {% endfor %}
 
 <script>
-    function Addone(qtyid,prixid,unitprix) {
+    function Addone(qtyid) {
     var qty = parseInt(document.getElementById(qtyid).value);
     qty += 1;
     document.getElementById(qtyid).value = qty;
-    document.getElementByName(prixid).value = 1000;
+    document.getElementByName("price0").value = 1000;
     }
     function minusone(qtyid) {
     var qty = parseInt(document.getElementById(qtyid).value);
