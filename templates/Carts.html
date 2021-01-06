@@ -156,6 +156,7 @@ input:focus {
 {% set int = namespace(i=0) %}
 {% for item in items %}
    {% set qtyid = "quantity" + int.i|string  %}
+   {% set prixid = "price" + int.i|string  %}
    {% set int.i = int.i + 1 %}
   <div class="item">
       <div class="image">
@@ -174,25 +175,27 @@ input:focus {
           </span>
         <input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} >
             <span class="input-group-btn">
-       <button class="btn btn-success btn-number" type="button" name="button"  onclick="Addone('{{ qtyid }}')">
+       <button class="btn btn-success btn-number" type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}',{{ item[2] }})">
          <span class="glyphicon glyphicon-plus"></span>
        </button>
        </span>
         </div>
     </div>
       <div class="price">
-          <span>{{ item[2] }}</span>
+          <span class={{ prixid }} >{{ item[5] }}</span>
       </div>
   </div>
 {% endfor %}
 
 <script>
-    function Addone(qtyid) {
+    function Addone(qtyid,prixid,unitprix) {
     var qty = parseInt(document.getElementById(qtyid).value);
     qty += 1;
+    var prix = unitprix * 1;
     document.getElementById(qtyid).value = qty;
+    document.getElementByClassName(prixid).value = prix;
     }
-    function minusone(qtyid) {
+    function minusone(qtyid,prixid) {
     var qty = parseInt(document.getElementById(qtyid).value);
      if (qty == 0) {
         qty = qty;
