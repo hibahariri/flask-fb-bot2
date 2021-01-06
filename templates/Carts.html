@@ -191,7 +191,7 @@ input:focus {
     function Addone(qtyid,prixid,unitprix) {
     var qty = parseInt(document.getElementById(qtyid).value);
     qty += 1;
-    var prix = unitprix * qty;
+    var prix = 1000;
     document.getElementById(qtyid).value = qty;
     document.getElementByClassName(prixid).value = prix;
     }
