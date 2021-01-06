@@ -133,7 +133,7 @@ input:focus {
     height: auto;
   }
   .image img {
-    width: 25%;
+    width: 35%;
   }
 
   .description {
@@ -144,7 +144,10 @@ input:focus {
     width: 30%;
   }
   .price
-    width: 10%;
+    width: 5%;
+  }
+  .delete{
+  width: 5%;
   }
   .pricetext{
   border: 0;
@@ -160,6 +163,7 @@ input:focus {
 {% for item in items %}
    {% set qtyid = "quantity" + int.i|string  %}
    {% set prixid = "price" + int.i|string  %}
+   {% set delid = "deletion" + int.i|string  %}
    {% set int.i = int.i + 1 %}
   <div class="item">
       <div class="image">
@@ -187,6 +191,9 @@ input:focus {
       <div class="price">
           <input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly >
       </div>
+      <div class="delete">
+          <button name={{ delid }} class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')">x</button>
+       </div>
   </div>
 {% endfor %}
 
@@ -198,6 +205,7 @@ input:focus {
     document.getElementById(qtyid).value = qty;
     document.getElementsByName(prixid)[0].value = prix;
     }
+
     function minusone(qtyid,prixid,unitprice) {
     var qty = parseInt(document.getElementById(qtyid).value);
      if (qty == 0) {
@@ -208,7 +216,14 @@ input:focus {
       document.getElementsByName(prixid)[0].value = prix;
     }
     document.getElementById(qtyid).value = qty;
+
     }
+
+    function removeitem(qtyid,delid){
+    document.getElementById(qtyid).value = 0;
+    document.getElementsByName(delid)[0].style.display == none;
+    }
+
    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
