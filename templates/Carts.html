@@ -182,7 +182,7 @@ input:focus {
         </div>
     </div>
       <div class="price">
-          <span name={{ prixid }}  value={{ item[5] }}></span>
+          <span name={{ prixid }}  >{{ item[5] }}</span>
       </div>
   </div>
 {% endfor %}
@@ -193,7 +193,7 @@ input:focus {
     qty += 1;
     var prix = unitprice * qty;
     document.getElementById(qtyid).value = qty;
-    document.getElementsByName(prixid)[0].value = prix;
+    document.getElementsByName(prixid)[0].innerhtml = prix;
     }
     function minusone(qtyid,prixid,unitprice) {
     var qty = parseInt(document.getElementById(qtyid).value);
