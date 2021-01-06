@@ -193,7 +193,7 @@ input:focus {
     qty += 1;
     var prix = 1000;
     document.getElementById(qtyid).value = qty;
-    document.getElementByClassName(prixid).value = prix;
+    document.getElementByClassName(prixid).innerHTML = prix;
     }
     function minusone(qtyid,prixid) {
     var qty = parseInt(document.getElementById(qtyid).value);
