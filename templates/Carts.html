@@ -220,8 +220,10 @@ input:focus {
     }
 
     function removeitem(qtyid,delid){
-    document.getElementById(qtyid).value = 0;
-    document.getElementsByName(delid)[0].style.display = 'none';
+    var conf = confirm("Remove item from cart?");
+    if (conf)
+    {document.getElementById(qtyid).value = 0;
+    document.getElementsByName(delid)[0].style.display = 'none';}
     }
 
    (function (d, s, id) {
