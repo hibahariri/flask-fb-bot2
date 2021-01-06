@@ -152,10 +152,14 @@ def openPayments():
 
 
 # Handles myCart web view
-@app.route('/Carts', methods=['GET'])
+@app.route('/Carts', methods=['GET', 'POST'])
 def get_cart():
-    items = DatabaseResponse.get_CartItem('3908221662585673')
-    return render_template('Carts.html', items=items)
+    if request.method == 'GET':
+        items = DatabaseResponse.get_CartItem('3908221662585673')
+        return render_template('Carts.html', items=items)
+    else:
+        print(request.form['quantity'][0])
+        return "submitted"
 
 
 def verify_fb_token(token_sent):
