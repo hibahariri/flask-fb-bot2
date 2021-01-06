@@ -144,7 +144,10 @@ input:focus {
     width: 30%;
   }
   .price
-    width: 20%;
+    width: 10%;
+  }
+  .pricetext{
+  border: 0;
   }
  .qtyinput{ width: 30px;
  }
@@ -182,7 +185,7 @@ input:focus {
         </div>
     </div>
       <div class="price">
-          <input type="number" name={{ prixid }} value={{ item[5] }}  readonly >
+          <input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly >
       </div>
   </div>
 {% endfor %}
