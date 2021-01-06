@@ -165,7 +165,7 @@ input:focus {
    {% set prixid = "price" + int.i|string  %}
    {% set delid = "deletion" + int.i|string  %}
    {% set int.i = int.i + 1 %}
-  <div class="item">
+  <div class="item" name={{ delid }}>
       <div class="image">
       <img src={{ item[3] }} alt="" />
     </div>
@@ -192,7 +192,7 @@ input:focus {
           <input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly >
       </div>
       <div class="delete">
-          <button name={{ delid }} class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')">x</button>
+          <button  class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')">x</button>
        </div>
   </div>
 {% endfor %}
