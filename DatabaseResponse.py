@@ -113,6 +113,11 @@ def Update_Cart(itemid, qtyid):
     cur = con[0].cursor()
     i = 0
     for row in itemid:
+        if qtyid[i] == 0 :
+            delflag = "yes"
+            print(delflag)
+        else:
+            delflag = "No"
         r = cur.execute("update Cart SET cart.Quantity = %s where cart.CartID= %s", (qtyid[i], itemid[i]))
         i = i + 1
     con[0].commit()
