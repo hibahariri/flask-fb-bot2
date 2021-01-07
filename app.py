@@ -151,15 +151,14 @@ def openPayments():
     return render_template('PaymentDetails.html')
 
 
-@app.route('/ShippingAddress/<recid>', methods=['GET', 'POST'])
-def fillAddress(recid):
+@app.route('/ShippingAddress/<recid>/<rec>', methods=['GET', 'POST'])
+def fillAddress(recid,rec):
     if request.method == 'GET':
         return render_template('ShippingAddress.html', recid=recid)
     else:
         adr = [request.form['Fullname'],request.form['Address1'],request.form['Address2'],request.form['Phone']]
-        rec = request.args.get('rec')
         print("test")
-        print(rec)
+        print (rec)
         ret = DatabaseResponse.fill_Address(recid,adr,rec)
         return ret
 
