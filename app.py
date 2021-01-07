@@ -160,6 +160,7 @@ def get_cart():
     else:
         # r = request.form['quantity']
         #  for row in r:
+        print("entered scope")
         print(request.form['quantity'][0])
         print(request.form['itemid'][0])
         return "submitted"
