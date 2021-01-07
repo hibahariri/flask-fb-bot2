@@ -156,7 +156,7 @@ def create_order(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "insert into order(userID) values (Select userid from user where recipientID = %s)",(recipientID.strip(),))
+        "insert into order(userID) values (1)")
     cur.execute("SELECT LAST_INSERT_ID()")
     records = cur.fetchall()
     print(records)
