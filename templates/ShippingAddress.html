@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Shipping Address</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+.card-body label{
+	font-size: 14px;
+}
+
+.no-border{
+    border: 0;
+}
+.no-background{
+background-color: #FFFFFF;
+}
+
+  </style>
+</head>
+<body>
+<form action="/ShippingAddress/{{ recid }}" method="post">
+ <div class="container no-border">
+		<div class="row no-border">
+			<div class="col-md-4 offset-md-4 col-10 offset-1 pl-0 pr-0 no-border">
+				<div class="card no-border">
+				  	<div class="card-header no-background ">
+				    	<div class="row">
+							<div class="col-md-5 col-12 pt-2">
+								<h6 class="m-0"><strong>Shipping Address</strong></h6>
+							</div>
+						</div>
+				  	</div>
+				  	<div class="card-body">
+				    	<form>
+						  	<div class="form-group">
+						      	<label for="validationTooltipCardNumber"><strong>CARD NUMBER</strong></label>
+						      	<div class="input-group">
+						        	<input type="text" class="form-control " id="validationTooltipCardNumber" placeholder="0000 0000 0000 0000">
+						      </div>
+						  	</div>
+						  	<div class="row">
+						  		<div class="col-md-8 col-12">
+						  			<div class="form-group">
+								    	<label for="exampleInputExpirationDate"><strong>EXPIRATION DATE</strong></label>
+								    	<input type="text" class="form-control" id="exampleInputExpirationDate" placeholder="MM / YY">
+									</div>
+						  		</div>
+							  	<div class="col-md-4 col-12">
+							  		<div class="form-group">
+									    <label for="exampleInputCvcCode"><strong>CVC</strong></label>
+									    <input type="text" class="form-control" id="exampleInputCvcCode" placeholder="CVC">
+									</div>
+							  	</div>
+						  	</div>
+						  	<button class="btn btn-info w-100 pb-2 pt-2">Confirm</button>
+						</form>
+				  	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'Messenger'));
+</script>
+</body>
+</html>

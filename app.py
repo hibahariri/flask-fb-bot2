@@ -151,6 +151,14 @@ def openPayments():
     return render_template('PaymentDetails.html')
 
 
+@app.route('/ShippingAddress/<recid>', methods=['GET', 'POST'])
+def fillAddress(recid):
+    if request.method == 'GET':
+        return render_template('ShippingAddress.html', recid=recid)
+    else:
+        return "Post"
+
+
 @app.route('/OrderPlacement/<recid>', methods=['GET', 'POST'])
 def PlaceOrder(recid):
     if request.method == 'GET':
@@ -164,8 +172,7 @@ def PlaceOrder(recid):
         return render_template('OrderPlacement.html', recid=recid, Totals=r)
     else:
         DatabaseResponse.create_order(recid)
-        print("done")
-        return recid
+        return redirect(url_for('fillAddress', recid=recid))
 
 
 # Handles myCart web view
