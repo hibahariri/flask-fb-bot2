@@ -154,9 +154,16 @@ def openPayments():
 @app.route('/OrderPlacement/<recid>', methods=['GET', 'POST'])
 def PlaceOrder(recid):
     if request.method == 'GET':
-      r = DatabaseResponse.get_orderpreview(recid)
-      print(r[0])
-      return render_template('OrderPlacement.html',recid=recid,Totals=r)
+        r = DatabaseResponse.get_orderpreview(recid)
+        if r[0][0] > 49000:
+            print(r[0][0])
+            r.append("Free shipping")
+            r.append(r[0][0])
+        else:
+            r.append(5000)
+            r.append(r[0][0] + 5000)
+        print(r)
+        return render_template('OrderPlacement.html', recid=recid, Totals=r)
     else:
         return recid
 
