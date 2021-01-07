@@ -158,7 +158,7 @@ input:focus {
 </style>
 </head>
 <body>
-<form method="post" action="/Carts">
+<form method="post" >
 {% set int = namespace(i=0) %}
 {% for item in items %}
    {% set qtyid = "quantity" + int.i|string  %}
