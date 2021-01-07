@@ -158,6 +158,7 @@ def fillAddress(recid):
     else:
         adr = [request.form['Fullname'],request.form['Address1'],request.form['Address2'],request.form['Phone']]
         rec = request.args.get('rec')
+        print("test")
         print(rec)
         ret = DatabaseResponse.fill_Address(recid,adr,rec)
         return ret
