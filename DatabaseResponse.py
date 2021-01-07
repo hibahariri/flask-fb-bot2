@@ -147,7 +147,23 @@ def get_orderpreview(recipientID):
         "SELECT SUM(price) AS Subtotal from Cart inner join item where cart.ItemID = item.itemID and cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' ",
         (recipientID.strip(),))
     records = cur.fetchall()
+    cur.close()
+    con[0].close()
+    return records
+
+
+def create_order(recipientID):
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute(
+        "insert into order(userID) values (Select userid from user where recipientID = %s)",(recipientID.strip(),))
+    cur.execute("SELECT LAST_INSERT_ID()")
+    records = cur.fetchall()
     print(records)
+    cur.execute(
+        "Update Cart set Cart.itemstatus = 'Placed' where cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' ",
+        (recipientID.strip(),))
+    con[0].commit()
     cur.close()
     con[0].close()
     return records
