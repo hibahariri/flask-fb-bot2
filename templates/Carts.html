@@ -27,111 +27,8 @@ body {
 .no-background{
 background-color: #FFFFFF;
 }
-.item {
-  padding: 20px 30px;
-  height: 120px;
-  display: flex;
-}
 
-.is-active {
-  animation-name: animate;
-  animation-duration: .8s;
-  animation-iteration-count: 1;
-  animation-timing-function: steps(28);
-  animation-fill-mode: forwards;
-}
 
-@keyframes animate {
-  0%   { background-position: left;  }
-  50%  { background-position: right; }
-  100% { background-position: right; }
-}
-.image {
-  margin-right: 50px;
-  width:40%,
-}
-
-Let’s add some basic style to  product name and description.
-.description {
-  padding-top: 10px;
-  margin-right: 60px;
-  width : 25%;
-}
-.description span {
-  display: block;
-  font-size: 12px;
-  color: #43484D;
-  font-weight: 200;
-}
-
-.description span:first-child {
-  margin-bottom: 5px;
-}
-.description span:last-child {
-  font-weight: 300;
-  color: #86939E;
-}
-.total-price {
-  width: 83px;
-  padding-top: 27px;
-  text-align: center;
-  font-size: 14px;
-  color: #43484D;
-  font-weight: 300;
-}
-.quantity {
-  padding-top: 10px;
-  padding-left: 30px;
-  margin-right: 60px;
-  width:35%;
-}
-.quantity input {
-  -webkit-appearance: none;
-  border: none;
-  text-align: center;
-  font-size: 14px;
-  color: #43484D;
-  font-weight: 300;
-}
-
-.minus-btn img {
-  margin-bottom: 3px;
-}
-.plus-btn img {
-  margin-top: 2px;
-}
-
-button:focus,
-input:focus {
-  outline:0;
-}
-@media (max-width: 800px) {
-  .item {
-    height: auto;
-  }
-  .image img {
-    width: 35%;
-  }
-
-  .description {
-    width: 25%;
-
-  }
-  .quantity{
-    width: 30%;
-  }
-  .price
-    width: 5%;
-  }
-  .delete{
-  width: 5%;
-  }
-  .pricetext{
-  border: 0;
-  }
- .qtyinput{ width: 30px;
- }
-}
 </style>
 </head>
 <body>
@@ -165,7 +62,7 @@ input:focus {
               <span>{{ item[1] }}</span>
           </td>
           <td class="quantity"><button  type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">-</button>
-              <<input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} readonly>
+              <input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} readonly>
             <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">+</button>
           </td>
           <td class="price"><input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly > </td>
