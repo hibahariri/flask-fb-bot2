@@ -38,7 +38,9 @@ background-color: #FFFFFF;
 
   .description {
     width: 25%;
-
+ .img{
+ width: 35%;
+ }
   }
   .quantity{
     width: 10%;
@@ -80,7 +82,7 @@ background-color: #FFFFFF;
       <tr class="item" name={{ delid }} >
       <textarea name="itemid" style="display: none">{{ item[6] }}</textarea>
           <td class="image">
-              <img src={{ item[3] }} alt="" />
+              <img class="img" src={{ item[3] }} alt="" />
           </td>
           <td class="description">
               <span>{{ item[0] }}</span>
