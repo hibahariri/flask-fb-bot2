@@ -153,6 +153,7 @@ def openPayments():
 
 @app.route('/OrderPlacement/<recid>', methods=['GET'])
 def PlaceOrder(recid):
+    r = DatabaseResponse.get_orderpreview(recid)
     return render_template('OrderPlacement.html')
 
 
