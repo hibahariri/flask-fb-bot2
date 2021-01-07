@@ -160,8 +160,8 @@ def create_order(recipientID):
     records = cur.fetchall()
     print(records)
     cur.execute(
-        "Update Cart set Cart.itemstatus = 'Placed' where cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' ",
-        (recipientID.strip(),))
+        "Update Cart set Cart.itemstatus = 'Placed', Cart.orderID =%s where cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' ",
+        (records[0][0],recipientID.strip(),))
     con[0].commit()
     cur.close()
     con[0].close()
