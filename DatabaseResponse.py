@@ -171,12 +171,15 @@ def fill_Address(recipientID, addr,orderid):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute("insert into orderaddress(Fullname,Address1,Address2,telephoneNo) values (%s,%s,%s,%s)",(addr[0],addr[1],addr[2],addr[3],) )
+    cur.execute("SELECT LAST_INSERT_ID()")
+    records = cur.fetchall()
+    print(records)
+    print(orderid)
+    cur.execute(
+        "Update order set order.orderStatus = 'Processing', order.AddressID =%s and order.paymentType = 1  where order.OrderID = orderid[0][0] ",
+        (records[0][0],))
     con[0].commit()
     cur.close()
     con[0].close()
-    if cur.rowcount == 1:
-        RECORD = "Inserted"
-    else:
-        RECORD = "can't insert"
-    return RECORD
+    return records
 
