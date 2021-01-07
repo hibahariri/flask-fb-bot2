@@ -158,12 +158,10 @@ def get_cart():
         items = DatabaseResponse.get_CartItem('3908221662585673')
         return render_template('Carts.html', items=items)
     else:
-        # r = request.form['quantity']
-        #  for row in r:
-        print("entered scope")
-        print(request.form['quantity'])
-        print(request.form.getlist('quantity'))
-        return "submitted"
+        qtyid = request.form.getlist('quantity')
+        itemid = request.form.getlist('itemid')
+        r = DatabaseResponse.Update_Cart(itemid,qtyid)
+        return render_template('PaymentDetails.html')
 
 
 def verify_fb_token(token_sent):

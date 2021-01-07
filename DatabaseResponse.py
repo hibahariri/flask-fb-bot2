@@ -108,6 +108,20 @@ def Add_ToCart(CartItem):
     return RECORD
 
 
+def Update_Cart(itemid, qtyid):
+    con = connect_todb()
+    cur = con[0].cursor()
+    i = 0
+    for row in itemid:
+        r = cur.execute("update Cart SET cart.Quantity = %s where cart.CartID= %s", (qtyid[i], itemid[i]))
+        i = i + 1
+    con[0].commit()
+    cur.close()
+    con[0].close()
+    RECORD = "saved"
+    return RECORD
+
+
 def get_CartItem(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
