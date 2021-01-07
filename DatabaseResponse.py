@@ -155,14 +155,23 @@ def get_orderpreview(recipientID):
 def create_order(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
-    cur.execute("insert into heroku_ff6cdbed3d2eb70.order(userID) values (1)",)
+    cur.execute("insert into heroku_ff6cdbed3d2eb70.order(userID) values ((Select userid from user where recipientID = %s))",(recipientID.strip(),) )
     cur.execute("SELECT LAST_INSERT_ID()")
     records = cur.fetchall()
-    print(records)
     cur.execute(
         "Update Cart set Cart.itemstatus = 'Placed', Cart.orderID =%s where cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' ",
-        (records[0][0],recipientID.strip(),))
+        (records[0][0], recipientID.strip(),))
     con[0].commit()
     cur.close()
     con[0].close()
     return records
+
+
+def fill_Address(recipientID, addr):
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute("insert into orderaddress(Fullname,Address1,Address2,telephoneNo) values (%s,%s,%s.%s)",(addr[0],addr[1],addr[2],addr[3],) )
+    con[0].commit()
+    cur.close()
+    con[0].close()
+    return "done"

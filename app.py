@@ -156,7 +156,9 @@ def fillAddress(recid):
     if request.method == 'GET':
         return render_template('ShippingAddress.html', recid=recid)
     else:
-        return "Post"
+        adr =[request.form['fname'],request.form['Address1'],request.form['Address2'],request.form['Phone']]
+        ret = DatabaseResponse.fill_Address(recid,adr)
+        return ret
 
 
 @app.route('/OrderPlacement/<recid>', methods=['GET', 'POST'])
