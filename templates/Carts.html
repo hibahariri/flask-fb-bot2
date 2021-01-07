@@ -166,7 +166,7 @@ input:focus {
    {% set delid = "deletion" + int.i|string  %}
    {% set int.i = int.i + 1 %}
   <div class="item" name={{ delid }}>
-      <input type="number" name="itemid" style="display: none">{{ item[6] }}</input>
+      <textarea name="itemid" style="display: none">{{ item[6] }}</textarea>
       <div class="image">
       <img src={{ item[3] }} alt="" />
     </div>
