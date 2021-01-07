@@ -173,8 +173,8 @@ def fill_Address(recipientID, addr,orderid):
     cur.execute("insert into orderaddress(Fullname,Address1,Address2,telephoneNo) values (%s,%s,%s,%s)",(addr[0],addr[1],addr[2],addr[3],) )
     cur.execute("SELECT LAST_INSERT_ID()")
     records = cur.fetchall()
-    print(records)
-    print(orderid)
+    print(records[0][0])
+    print(orderid[0][0])
     cur.execute(
         "Update order set order.orderStatus = 'Processing', order.AddressID =%s , order.paymentType = 1 where order.OrderID = orderid[0][0] ",
         (records[0][0],))
