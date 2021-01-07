@@ -176,7 +176,7 @@ def fill_Address(recipientID, addr,orderid):
     print(records)
     print(orderid)
     cur.execute(
-        "Update order set order.orderStatus = 'Processing', order.AddressID =%s and order.paymentType ='1'  where order.OrderID = orderid[0][0] ",
+        "Update order set order.orderStatus = 'Processing', order.AddressID =%s , order.paymentType = 1 where order.OrderID = orderid[0][0] ",
         (records[0][0],))
     con[0].commit()
     cur.close()
