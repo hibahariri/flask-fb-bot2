@@ -148,45 +148,32 @@ input:focus {
 						</div>
 				  	</div>
 				  	<div class="card-body">
+                        <table>
 {% set int = namespace(i=0) %}
 {% for item in items %}
    {% set qtyid = "quantity" + int.i|string  %}
    {% set prixid = "price" + int.i|string  %}
    {% set delid = "deletion" + int.i|string  %}
    {% set int.i = int.i + 1 %}
-  <div class="item" name={{ delid }}>
+      <tr class="item" name={{ delid }} >
       <textarea name="itemid" style="display: none">{{ item[6] }}</textarea>
-      <div class="image">
-      <img src={{ item[3] }} alt="" />
-    </div>
-     <div class="description">
-       <span>{{ item[0] }}</span>
-       <span>{{ item[1] }}</span>
-     </div>
-      <div class="quantity">
-        <div class="input-group">
-          <span class="input-group-btn">
-          <button class="btn btn-danger btn-number" type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
-             <span class="glyphicon glyphicon-minus"></span>
-           </button>
-          </span>
-        <input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} readonly>
-            <span class="input-group-btn">
-       <button class="btn btn-success btn-number" type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
-         <span class="glyphicon glyphicon-plus"></span>
-       </button>
-       </span>
-        </div>
-    </div>
-      <div class="price">
-          <input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly >
-      </div>
-      <div class="delete">
-          <button  class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')">x</button>
-       </div>
-  </div>
+          <td class="image">
+              <img src={{ item[3] }} alt="" />
+          </td>
+          <td class="description">
+              <span>{{ item[0] }}</span>
+              <span>{{ item[1] }}</span>
+          </td>
+          <td class="quantity"><button  type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">-</button>
+              <<input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} readonly>
+            <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">+</button>
+          </td>
+          <td class="price"><input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly > </td>
+          <td class="delete"><button  class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')">x</button></td>
+      </tr>
 {% endfor %}
-                        </div>
+  </table>
+                    </div>
 <div class="submit">
     <button type="submit" class="btn btn-info w-100 pb-2 pt-2">save</button>
 </div>
