@@ -6,7 +6,7 @@
     <title>Order Preview</title>
 </head>
 <body>
-<form action="/OrderPlacement" method="post">
+<form action="/OrderPlacement/{{ recid }}" method="post">
     <div>
         <div>
             <h1>Order Preview</h1>
@@ -15,7 +15,7 @@
             <table>
                 <tr>
                     <td><h5>Sub Total</h5></td>
-                    <td> </td>
+                    <td>{{ Totals }} </td>
                 </tr>
                 <tr>
                     <td><h6>Shipping</h6></td>

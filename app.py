@@ -151,11 +151,14 @@ def openPayments():
     return render_template('PaymentDetails.html')
 
 
-@app.route('/OrderPlacement/<recid>', methods=['GET'])
+@app.route('/OrderPlacement/<recid>', methods=['GET', 'POST'])
 def PlaceOrder(recid):
-    r = DatabaseResponse.get_orderpreview(recid)
-    print(r[0])
-    return render_template('OrderPlacement.html')
+    if request.method == 'GET':
+      r = DatabaseResponse.get_orderpreview(recid)
+      print(r[0])
+      return render_template('OrderPlacement.html',recid=recid,Totals=r)
+    else:
+        return recid
 
 
 # Handles myCart web view
