@@ -151,6 +151,11 @@ def openPayments():
     return render_template('PaymentDetails.html')
 
 
+@app.route('/OrderPlacement/<recid>', methods=['GET'])
+def PlaceOrder(recid):
+    return render_template('OrderPlacement.html')
+
+
 # Handles myCart web view
 @app.route('/Carts', methods=['GET', 'POST'])
 def get_cart():
@@ -162,7 +167,7 @@ def get_cart():
         itemid = request.form.getlist('itemid')
         r = DatabaseResponse.Update_Cart(itemid, qtyid)
         # return redirect("PaymentDetails")
-        return redirect(url_for('openPayments', recid='3908221662585673'))
+        return redirect(url_for('PlaceOrder', recid='3908221662585673'))
 
 
 def verify_fb_token(token_sent):
