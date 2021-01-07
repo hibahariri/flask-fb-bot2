@@ -160,8 +160,9 @@ def get_cart():
     else:
         qtyid = request.form.getlist('quantity')
         itemid = request.form.getlist('itemid')
-        r = DatabaseResponse.Update_Cart(itemid,qtyid)
-        return redirect("PaymentDetails")
+        r = DatabaseResponse.Update_Cart(itemid, qtyid)
+        # return redirect("PaymentDetails")
+        return redirect(url_for('openPayments', recid='3908221662585673'))
 
 
 def verify_fb_token(token_sent):
