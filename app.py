@@ -157,7 +157,7 @@ def fillAddress(recid):
         return render_template('ShippingAddress.html', recid=recid)
     else:
         print("inpost")
-        adr = ['Hiba', 'Mathaf', '', '71198308']
+        adr = [request.form['fname'],request.form['Address1'],request.form['Address2'],request.form['Phone']]
         print(adr)
         ret = DatabaseResponse.fill_Address(recid, adr)
         return ret
