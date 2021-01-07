@@ -162,7 +162,7 @@ def get_cart():
         #  for row in r:
         print("entered scope")
         print(request.form['quantity'])
-        print(request.form['itemid'])
+        print(request.form.getlist('quantity'))
         return "submitted"
 
 
