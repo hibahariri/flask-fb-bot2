@@ -156,10 +156,10 @@ def fillAddress(recid):
     if request.method == 'GET':
         return render_template('ShippingAddress.html', recid=recid)
     else:
-        print("inpost")
         adr = [request.form['Fullname'],request.form['Address1'],request.form['Address2'],request.form['Phone']]
-        print(adr)
-        ret = DatabaseResponse.fill_Address(recid, adr)
+        rec = request.args.get('rec')
+        print(rec)
+        ret = DatabaseResponse.fill_Address(recid,adr,rec)
         return ret
 
 
@@ -175,8 +175,8 @@ def PlaceOrder(recid):
             r.append(r[0][0] + 5000)
         return render_template('OrderPlacement.html', recid=recid, Totals=r)
     else:
-        DatabaseResponse.create_order(recid)
-        return redirect(url_for('fillAddress', recid=recid))
+        rec = DatabaseResponse.create_order(recid)
+        return redirect(url_for('fillAddress', recid=recid,rec=rec))
 
 
 # Handles myCart web view
