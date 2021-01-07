@@ -118,7 +118,7 @@ def Update_Cart(itemid, qtyid):
             print(delflag)
         else:
             delflag = "No"
-        r = cur.execute("update Cart SET cart.Quantity = %s where cart.CartID= %s", (qtyid[i], itemid[i]))
+        r = cur.execute("update Cart SET cart.Quantity = %s, cart.Isdeleted = %s  where cart.CartID= %s", (qtyid[i],delflag,itemid[i]))
         i = i + 1
     con[0].commit()
     cur.close()
