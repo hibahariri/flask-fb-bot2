@@ -154,7 +154,7 @@ def openPayments():
 @app.route('/ShippingAddress/<recid>/<rec>', methods=['GET', 'POST'])
 def fillAddress(recid,rec):
     if request.method == 'GET':
-        return render_template('ShippingAddress.html', recid=recid)
+        return render_template('ShippingAddress.html', recid=recid,rec=rec)
     else:
         adr = [request.form['Fullname'],request.form['Address1'],request.form['Address2'],request.form['Phone']]
         print("test")
