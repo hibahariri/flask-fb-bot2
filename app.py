@@ -4,12 +4,17 @@ from flask import Flask, request, render_template, url_for, flash, redirect
 from pymessenger.bot import Bot
 import apiai
 import DatabaseResponse
+import os
 
 app = Flask(__name__, template_folder="templates")
 app.config['SECRET_KEY'] = 'akbocTVre'
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
+
+Images = 'static/images/'
+
+app.config['Images'] = Images
 
 recipient_id = ""
 
@@ -186,7 +191,8 @@ def get_cart():
         items = DatabaseResponse.get_CartItem('3908221662585673')
         if not items:
             print("No Items in Cart")
-            return render_template('NoCart.html')
+            filename = os.path.join(app.config['Images'],'shopping-cart.jpg')
+            return render_template('NoCart.html',img = filename)
         else:
             return render_template('Carts.html', items=items)
 
