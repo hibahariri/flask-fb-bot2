@@ -197,9 +197,8 @@ def get_cart(recid):
     if request.method == 'GET':
         items = DatabaseResponse.get_CartItem(recid)
         if not items:
-            print("No Items in Cart")
-            filename = os.path.join(app.config['Images'], 'favpng_shopping-cart-shiva-lingam.png')
-            return render_template('NoCart.html', filename=filename,recid=recid)
+            filename = os.path.join(app.config['Images'],'favpng_shopping-cart-shiva-lingam.png')
+            return render_template('NoCart.html', filename=filename, recid=recid)
         else:
             return render_template('Carts.html', items=items, recid=recid)
 
