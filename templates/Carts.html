@@ -76,12 +76,12 @@ background-color: #FFFFFF;
   }
   .pricetext{
   text-align: center;
-  width: 60px;
+  width: 70px;
   border: 0;
   }
  .qtyinput{
  text-align: center;
-  width: 30px;
+  width: 25px;
  border: 0;
  }
  }
@@ -157,10 +157,8 @@ background-color: #FFFFFF;
     }
 
     function removeitem(qtyid,delid){
-    var conf = confirm("Remove item from cart?");
-    if (conf)
-    {document.getElementById(qtyid).value = 0;
-    document.getElementsByName(delid)[0].style.display = 'none';}
+    document.getElementById(qtyid).value = 0;
+    document.getElementsByName(delid)[0].style.display = 'none';
     }
 
    (function (d, s, id) {
