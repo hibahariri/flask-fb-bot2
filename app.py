@@ -153,11 +153,11 @@ def openPayments():
     return render_template('PaymentDetails.html')
 
 
-@app.route('/Order', methods=['GET', 'POST'])
-def ShowOrders():
+@app.route('/Order/<recid>', methods=['GET', 'POST'])
+def ShowOrders(recid):
     if request.method == 'GET':
-        Orders = DatabaseResponse.get_Orders('3908221662585673')
-        return render_template('Order.html', Orders=Orders)
+        Orders = DatabaseResponse.get_Orders(recid)
+        return render_template('Order.html', Orders=Orders,recid=recid)
     else:
         print(request.form['fname'])
         return "submitted"
@@ -341,7 +341,7 @@ def send_message(recipient_id, response):
                 "type": "web_url",
                 "title": "My Profile",
                 "webview_height_ratio": "tall",
-                "url": "https://fb-botapp2.herokuapp.com/Carts/" + records,
+                "url": "https://fb-botapp2.herokuapp.com/Order/" + records,
                 "messenger_extensions": True
             },
         ]
