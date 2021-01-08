@@ -46,6 +46,9 @@ input::-webkit-inner-spin-button {
 input:focus{
     outline: none;
 }
+button[type='button']:focus{
+    outline: none;
+}
 .no-background{
 background-color: #FFFFFF;
 }
@@ -81,13 +84,15 @@ background-color: #FFFFFF;
   width: 3%;
   }
   .pricetext{
-
   width: 70px;
   border: 0;
   }
   button[type='button']{
     width: 20px;
     text-align: center;
+    border: 0;
+    text-align: center;
+    background-color: #FFFFFF;
   }
   .delete-btn{
 
@@ -135,7 +140,7 @@ background-color: #FFFFFF;
           </td>
           <td class="price"><input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly > </td>
           <td class="delete"><button  class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')">
-              <img src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Close_Icon_Dark-512.png" alt ="user image" width="20" height="20" ></button></td>
+              <img src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Close_Icon_Dark-512.png" alt ="user image" width="15" height="15" ></button></td>
       </tr>
 {% endfor %}
   </table>

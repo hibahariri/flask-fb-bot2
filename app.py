@@ -15,7 +15,6 @@ bot = Bot(ACCESS_TOKEN)
 Images = 'static/images/'
 app.config['Images'] = Images
 
-
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
     "get_started": {
@@ -157,7 +156,7 @@ def openPayments():
 def ShowOrders(recid):
     if request.method == 'GET':
         Orders = DatabaseResponse.get_Orders(recid)
-        return render_template('Order.html', Orders=Orders,recid=recid)
+        return render_template('Order.html', Orders=Orders, recid=recid)
     else:
         print(request.form['fname'])
         return "submitted"
@@ -197,8 +196,7 @@ def get_cart(recid):
     if request.method == 'GET':
         items = DatabaseResponse.get_CartItem(recid)
         if not items:
-            filename = os.path.join(app.config['Images'], 'shopping-cart.jpg')
-           # filename = os.path.join(app.config['Images'],'favpng_shopping-cart-shiva-lingam.png')
+            filename = os.path.join(app.config['Images'],'favpng_shopping-cart-shiva-lingam.png')
             return render_template('NoCart.html', filename=filename, recid=recid)
         else:
             return render_template('Carts.html', items=items, recid=recid)
