@@ -155,7 +155,7 @@ def get_orderpreview(recipientID):
 def create_order(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
-    cur.execute("insert into heroku_ff6cdbed3d2eb70.order(userID) values ((Select userid from user where recipientID = %s))",(recipientID.strip(),) )
+    cur.execute("insert into heroku_ff6cdbed3d2eb70.order(userID,orderStatus) values ((Select userid from user where recipientID = %s),0)",(recipientID.strip(),) )
     cur.execute("SELECT LAST_INSERT_ID()")
     records = cur.fetchall()
     cur.execute(
