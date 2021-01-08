@@ -179,7 +179,7 @@ def fill_Address(recipientID, addr,orderid):
     cur.execute("SELECT LAST_INSERT_ID()")
     records = cur.fetchall()
     print(records[0][0])
-    print(orderid)
+    print(orderid[0])
     cur.execute(
         "Update order set order.orderStatus = 'Processing', order.AddressID =%s , order.paymentType = 1 where order.OrderID = orderid[0][0] ",
         (records[0][0],))
