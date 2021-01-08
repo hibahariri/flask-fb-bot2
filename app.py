@@ -157,14 +157,14 @@ def openPayments():
 
 
 @app.route('/ShippingAddress/<recid>/<rec>', methods=['GET', 'POST'])
-def fillAddress(recid,rec):
+def fillAddress(recid, rec):
     if request.method == 'GET':
-        return render_template('ShippingAddress.html', recid=recid,rec=rec)
+        return render_template('ShippingAddress.html', recid=recid, rec=rec)
     else:
-        adr = [request.form['Fullname'],request.form['Address1'],request.form['Address2'],request.form['Phone']]
+        adr = [request.form['Fullname'], request.form['Address1'], request.form['Address2'], request.form['Phone']]
         print("test")
-        print (rec)
-        ret = DatabaseResponse.fill_Address(recid,adr,rec)
+        print(rec)
+        ret = DatabaseResponse.fill_Address(recid, adr, rec)
         return ret
 
 
@@ -181,7 +181,7 @@ def PlaceOrder(recid):
         return render_template('OrderPlacement.html', recid=recid, Totals=r)
     else:
         rec = DatabaseResponse.create_order(recid)
-        return redirect(url_for('fillAddress', recid=recid,rec=rec[0][0]))
+        return redirect(url_for('fillAddress', recid=recid, rec=rec[0][0]))
 
 
 # Handles myCart web view
@@ -191,8 +191,8 @@ def get_cart():
         items = DatabaseResponse.get_CartItem('3908221662585673')
         if not items:
             print("No Items in Cart")
-            filename = os.path.join(app.config['Images'],'shopping-cart.jpg')
-            return render_template('NoCart.html',img = filename)
+            filename = os.path.join(app.config['Images'], 'favpng_shopping-cart-shiva-lingam.png')
+            return render_template('NoCart.html', img=filename)
         else:
             return render_template('Carts.html', items=items)
 
