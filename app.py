@@ -16,8 +16,6 @@ Images = 'static/images/'
 
 app.config['Images'] = Images
 
-
-
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
     "get_started": {
@@ -194,23 +192,23 @@ def PlaceOrder(recid):
 
 
 # Handles myCart web view
-@app.route('/Carts', methods=['GET', 'POST'])
-def get_cart():
+@app.route('/Carts/<recid>', methods=['GET', 'POST'])
+def get_cart(recid):
     if request.method == 'GET':
-        items = DatabaseResponse.get_CartItem('3908221662585673')
+        items = DatabaseResponse.get_CartItem(recid)
         if not items:
             print("No Items in Cart")
             filename = os.path.join(app.config['Images'], 'favpng_shopping-cart-shiva-lingam.png')
             return render_template('NoCart.html', img=filename)
         else:
-            return render_template('Carts.html', items=items)
+            return render_template('Carts.html', items=items, recid=recid)
 
     else:
         qtyid = request.form.getlist('quantity')
         itemid = request.form.getlist('itemid')
         r = DatabaseResponse.Update_Cart(itemid, qtyid)
         # return redirect("PaymentDetails")
-        return redirect(url_for('PlaceOrder', recid='3908221662585673'))
+        return redirect(url_for('PlaceOrder', recid=recid))
 
 
 def verify_fb_token(token_sent):
@@ -334,20 +332,20 @@ def send_message(recipient_id, response):
         records = recipient_id
         print(records)
         button = [{
-                    "type": "web_url",
-                    "title": "My Profile",
-                    "webview_height_ratio": "tall",
-                    "url": "https://fb-botapp2.herokuapp.com/Carts" ,
-                    "messenger_extensions": True
-                },
+            "type": "web_url",
+            "title": "My Profile",
+            "webview_height_ratio": "tall",
+            "url": "https://fb-botapp2.herokuapp.com/Carts/" + records,
+            "messenger_extensions": True
+        },
             {
                 "type": "web_url",
                 "title": "My Profile",
                 "webview_height_ratio": "tall",
-                "url": "https://fb-botapp2.herokuapp.com/Carts" ,
+                "url": "https://fb-botapp2.herokuapp.com/Carts/" + records,
                 "messenger_extensions": True
             },
-                  ]
+        ]
         bot.send_button_message(recipient_id, " My Profile ", button)
     else:
         Generic_replies = []
