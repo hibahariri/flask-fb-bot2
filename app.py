@@ -13,8 +13,8 @@ VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
 
 Images = 'static/images/'
-
 app.config['Images'] = Images
+
 
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
@@ -197,7 +197,8 @@ def get_cart(recid):
     if request.method == 'GET':
         items = DatabaseResponse.get_CartItem(recid)
         if not items:
-            filename = os.path.join(app.config['Images'],'favpng_shopping-cart-shiva-lingam.png')
+            filename = os.path.join(app.config['Images'], 'shopping-cart.jpg')
+           # filename = os.path.join(app.config['Images'],'favpng_shopping-cart-shiva-lingam.png')
             return render_template('NoCart.html', filename=filename, recid=recid)
         else:
             return render_template('Carts.html', items=items, recid=recid)
