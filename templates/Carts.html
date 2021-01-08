@@ -5,9 +5,15 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>My Cart</title>
     <style>
+
+    .delete-btn{
+
+  }
+
 @media (max-width: 800px) {
 html,
 body {
@@ -62,7 +68,7 @@ background-color: #FFFFFF;
   }
 
   .description {
-    width: 47%;}
+    width: 45%;}
 
  .img{
  width:80px;
@@ -77,7 +83,7 @@ background-color: #FFFFFF;
   }
   .delete{
   padding-left: 0;
-  width: 3%;
+  width: 5%;
   }
   .pricetext{
   width: 70px;
@@ -91,18 +97,8 @@ background-color: #FFFFFF;
     background-color: #FFFFFF;
 
   }
-  .delete-btn{
-    background-color: #4CAF50;
-  border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  border-radius: 70%;
-  }
-  td{
-  padding-right:2px}
+
+
 
   .delete{
   text-align: center;
@@ -149,7 +145,7 @@ background-color: #FFFFFF;
            <td class="quantity">  <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">+</button>
           </td>
           <td class="price"><input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly > </td>
-          <td class="delete"><button  class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')">x</button></td>
+          <td class="delete"><button  class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')"><i class="fa fa-close"></i></button></td>
       </tr>
 {% endfor %}
   </table>
