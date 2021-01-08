@@ -134,7 +134,8 @@ background-color: #FFFFFF;
            <td class="quantity">  <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">+</button>
           </td>
           <td class="price"><input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly > </td>
-          <td class="delete"><button  class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')">x</button></td>
+          <td class="delete"><button  class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')">
+              <img src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Close_Icon_Dark-512.png" alt ="user image" width="20" height="20" ></button></td>
       </tr>
 {% endfor %}
   </table>
