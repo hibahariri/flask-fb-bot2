@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+   .card-body label{
+	font-size: 14px;
+}
+
+.no-border{
+    border: 0;
+}
+.no-background{
+background-color: #FFFFFF;
+}
+::-webkit-input-placeholder {
+   font-style: italic;
+}
+:-moz-placeholder {
+   font-style: italic;
+}
+::-moz-placeholder {
+   font-style: italic;
+}
+:-ms-input-placeholder {
+   font-style: italic;
+}
+    </style>
+</head>
+<body>
+<form action="/OrderPlacement/{{ recid }}" method="post">
+    <div class="container no-border">
+		<div class="row no-border">
+			<div class="col-md-4 offset-md-4 col-10 offset-1 pl-0 pr-0 no-border">
+				<div class="card no-border">
+				  	<div class="card-header no-background ">
+				    	<div class="row">
+							<div class="col-md-5 col-12 pt-2">
+								<h6 class="m-0"><strong>My Orders</strong></h6>
+							</div>
+						</div>
+				  	</div>
+				  	<div class="card-body">
+            <table>
+                <tr>
+                    <td><h5>Order </h5></td>
+                    <td><h5>Date</h5></td>
+                    <td><h5>Amount</h5></td>
+                    <td><h5>Status</h5></td>
+                </tr>
+                <tr>
+                    <td><h5>Order </h5></td>
+                    <td><h5>Date</h5></td>
+                    <td><h5>Amount</h5></td>
+                    <td><h5>Status</h5></td>
+                </tr>
+            </table>
+        </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'Messenger'));
+</script>
+</body>
+</html>

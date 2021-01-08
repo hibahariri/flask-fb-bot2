@@ -153,7 +153,9 @@ def get_orderpreview(recipientID):
 def create_order(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
-    cur.execute("insert into heroku_ff6cdbed3d2eb70.order(userID,orderStatus) values ((Select userid from user where recipientID = %s),0)",(recipientID.strip(),) )
+    cur.execute(
+        "insert into heroku_ff6cdbed3d2eb70.order(userID,orderStatus) values ((Select userid from user where recipientID = %s),0)",
+        (recipientID.strip(),))
     cur.execute("SELECT LAST_INSERT_ID()")
     records = cur.fetchall()
     cur.execute(
@@ -165,10 +167,11 @@ def create_order(recipientID):
     return records
 
 
-def fill_Address(recipientID, addr ,orderid):
+def fill_Address(recipientID, addr, orderid):
     con = connect_todb()
     cur = con[0].cursor()
-    r = cur.execute("insert into orderaddress(Fullname,Address1,Address2,telephoneNo) values (%s,%s,%s,%s)",(addr[0].strip(),addr[1].strip(),addr[2].strip(),addr[3].strip(),) )
+    r = cur.execute("insert into orderaddress(Fullname,Address1,Address2,telephoneNo) values (%s,%s,%s,%s)",
+                    (addr[0].strip(), addr[1].strip(), addr[2].strip(), addr[3].strip(),))
     if cur.rowcount == 1:
         RECORD = "Inserted"
     else:
@@ -188,3 +191,16 @@ def fill_Address(recipientID, addr ,orderid):
     con[0].close()
     return "Done"
 
+
+def get_Orders(recipientID):
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute(
+        "select OrderID, orderStatus,(SELECT SUM(price) AS Subtotal from Cart inner join item where cart.ItemID = item.itemID and cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No')"
+        " from heroku_ff6cdbed3d2eb70.order where userID =(Select userid from user where recipientID = %s)",
+        (recipientID.strip(), recipientID.strip()))
+    records = cur.fetchall()
+    print(records)
+    cur.close()
+    con[0].close()
+    return records

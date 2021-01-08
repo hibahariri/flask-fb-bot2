@@ -16,7 +16,7 @@ Images = 'static/images/'
 
 app.config['Images'] = Images
 
-recipient_id = ""
+
 
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
@@ -55,11 +55,9 @@ data2 = {
                     "payload": "Opening Hours"
                 },
                 {
-                    "type": "web_url",
+                    "type": "postback",
                     "title": "My Profile",
-                    "webview_height_ratio": "tall",
-                    "url": "https://fb-botapp2.herokuapp.com/Carts/" + recipient_id,
-                    "messenger_extensions": True
+                    "payload": "My Profile"
                 }
             ]
         },
@@ -78,11 +76,9 @@ data2 = {
                     "payload": "Opening Hours"
                 },
                 {
-                    "type": "web_url",
+                    "type": "postback",
                     "title": "My Profile",
-                    "webview_height_ratio": "tall",
-                    "url": "https://fb-botapp2.herokuapp.com/Carts",
-                    "messenger_extensions": True
+                    "payload": "My Profile"
                 }
             ]
         }
@@ -135,6 +131,9 @@ def receive_message():
                 response_message = get_response("get_Items", messaging_text[6:-1])
             elif messaging_text[0:12] == "Add-to-cart(":
                 response_message = get_response("Add_ToCart", messaging_text[12:-1])
+            elif messaging_text == 'My Profile':
+                records = []
+                response_message = [records, "Button"]
             else:
                 response_message = get_message(messaging_text)
             send_message(recipient_id, response_message)
@@ -154,6 +153,16 @@ def success():
 @app.route('/PaymentDetails', methods=['GET'])
 def openPayments():
     return render_template('PaymentDetails.html')
+
+
+@app.route('/Order', methods=['GET', 'POST'])
+def ShowOrders():
+    if request.method == 'GET':
+        Orders = DatabaseResponse.get_Orders('3908221662585673')
+        return render_template('Order.html', Orders=Orders)
+    else:
+        print(request.form['fname'])
+        return "submitted"
 
 
 @app.route('/ShippingAddress/<recid>/<rec>', methods=['GET', 'POST'])
@@ -322,13 +331,24 @@ def send_message(recipient_id, response):
         bot.send_generic_message(recipient_id, Generic_replies)
         # the below button is just for testing
     elif response[1] == "Button":
-        records = response[0]
+        records = recipient_id
         print(records)
-        button = [{"type": "postback",
-                   "title": " ",
-                   "payload": " ",
-                   }, ]
-        bot.send_button_message(recipient_id, " a ", button)
+        button = [{
+                    "type": "web_url",
+                    "title": "My Profile",
+                    "webview_height_ratio": "tall",
+                    "url": "https://fb-botapp2.herokuapp.com/Carts/" ,
+                    "messenger_extensions": True
+                },
+            {
+                "type": "web_url",
+                "title": "My Profile",
+                "webview_height_ratio": "tall",
+                "url": "https://fb-botapp2.herokuapp.com/Carts/" ,
+                "messenger_extensions": True
+            },
+                  ]
+        bot.send_button_message(recipient_id, " My Profile ", button)
     else:
         Generic_replies = []
         records = response[0]
