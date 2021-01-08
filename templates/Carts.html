@@ -24,6 +24,14 @@ body {
 .no-border{
     border: 0;
 }
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 .no-background{
 background-color: #FFFFFF;
 }
@@ -37,7 +45,7 @@ background-color: #FFFFFF;
   }
 
   .description {
-    width: 25%;}
+    width: 35%;}
  .img{
  width:100px;
   height:100px;
@@ -88,7 +96,6 @@ background-color: #FFFFFF;
           </td>
           <td class="description">
               <span>{{ item[0] }}</span>
-              <span>{{ item[1] }}</span>
           </td>
           <td class="quantity"><button  type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">-</button></td>
           <td class="quantity">    <input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} readonly></td>
