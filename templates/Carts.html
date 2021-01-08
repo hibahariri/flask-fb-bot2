@@ -140,9 +140,10 @@ background-color: #FFFFFF;
           <td class="description">
               <span>{{ item[0] }}</span>
           </td>
-          <td class="quantity"><button  type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">-</button></td>
+          <td class="quantity"><button  type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')"><i class="fa fa-minus-circle"></i></button></td>
           <td class="quantity">    <input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} readonly></td>
-           <td class="quantity">  <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">+</button>
+           <td class="quantity">  <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
+           <i class="fa fa-plus-circle"></i></button>
           </td>
           <td class="price"><input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly > </td>
           <td class="delete"><button  class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')"><i class="fa fa-trash"></i></button></td>
