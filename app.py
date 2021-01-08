@@ -186,7 +186,10 @@ def get_cart():
         items = DatabaseResponse.get_CartItem('3908221662585673')
         if not items:
             print("No Items in Cart")
-        return render_template('Carts.html', items=items)
+            return render_template('NoCart.html')
+        else:
+            return render_template('Carts.html', items=items)
+
     else:
         qtyid = request.form.getlist('quantity')
         itemid = request.form.getlist('itemid')
