@@ -167,7 +167,7 @@ def create_order(recipientID):
     return records
 
 
-def fill_Address(recipientID, addr,orderid):
+def fill_Address(recipientID, addr ,orderid):
     con = connect_todb()
     cur = con[0].cursor()
     r = cur.execute("insert into orderaddress(Fullname,Address1,Address2,telephoneNo) values (%s,%s,%s,%s)",(addr[0].strip(),addr[1].strip(),addr[2].strip(),addr[3].strip(),) )
@@ -179,9 +179,9 @@ def fill_Address(recipientID, addr,orderid):
     cur.execute("SELECT LAST_INSERT_ID()")
     records = cur.fetchall()
     print(records[0][0])
-    print(orderid[0])
+    print(orderid)
     cur.execute(
-        "Update order set order.orderStatus = 'Processing', order.AddressID =%s , order.paymentType = 1 where order.OrderID = orderid[0][0] ",
+        "Update order set order.orderStatus = 'Processing', order.AddressID =%s , order.paymentType = 1 where order.OrderID = orderid[0] ",
         (records[0][0],))
     con[0].commit()
     cur.close()

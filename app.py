@@ -176,7 +176,7 @@ def PlaceOrder(recid):
         return render_template('OrderPlacement.html', recid=recid, Totals=r)
     else:
         rec = DatabaseResponse.create_order(recid)
-        return redirect(url_for('fillAddress', recid=recid,rec=rec))
+        return redirect(url_for('fillAddress', recid=recid,rec=rec[0][0]))
 
 
 # Handles myCart web view
