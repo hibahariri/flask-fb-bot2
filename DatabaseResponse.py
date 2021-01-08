@@ -181,7 +181,7 @@ def fill_Address(recipientID, addr ,orderid):
     print(records[0][0])
     print(orderid)
     cur.execute(
-        "Update order set order.orderStatus = 'Processing', order.AddressID =%s, order.paymentType = '1' where order.OrderID =%s ",
+        "Update heroku_ff6cdbed3d2eb70.order set orderStatus = 1, AddressID =%s, order.paymentType = '1' where order.OrderID =%s ",
         (records[0][0], orderid.strip(),))
     con[0].commit()
     cur.close()
