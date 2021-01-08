@@ -332,14 +332,14 @@ def send_message(recipient_id, response):
         print(records)
         button = [{
             "type": "web_url",
-            "title": "My Profile",
+            "title": "My Cart",
             "webview_height_ratio": "tall",
             "url": "https://fb-botapp2.herokuapp.com/Carts/" + records,
             "messenger_extensions": True
         },
             {
                 "type": "web_url",
-                "title": "My Profile",
+                "title": "My Orders",
                 "webview_height_ratio": "tall",
                 "url": "https://fb-botapp2.herokuapp.com/Order/" + records,
                 "messenger_extensions": True
