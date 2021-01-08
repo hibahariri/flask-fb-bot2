@@ -184,7 +184,8 @@ def PlaceOrder(recid):
 def get_cart():
     if request.method == 'GET':
         items = DatabaseResponse.get_CartItem('3908221662585673')
-        print(items)
+        if not items:
+            print("No Items in Cart")
         return render_template('Carts.html', items=items)
     else:
         qtyid = request.form.getlist('quantity')
