@@ -317,7 +317,12 @@ def send_message(recipient_id, response):
             Generic_replies = [{
                 "title": "Your current location",
                 "image_url": response[0][0],
-                "item_url": response[0][1]
+                "item_url": response[0][1],
+                "buttons":[{
+                            "type": "postback",
+                            "title": "show more",
+                            "payload": "",
+                        },]
             }
 
             ]
