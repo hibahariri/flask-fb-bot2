@@ -29,7 +29,7 @@ background-color: #FFFFFF;
 :-ms-input-placeholder {
    font-style: italic;
 }
-button[type='button']{
+button[type='submit']{
     width: 20px;
     text-align: center;
     border: 0;
@@ -42,7 +42,6 @@ button[type='button']{
     </style>
 </head>
 <body>
-<form action="/Order/{{ recid }}" method="post">
     <div class="container no-border">
 		<div class="row no-border">
 			<div class="col-md-4 offset-md-4 col-10 offset-1 pl-0 pr-0 no-border">
@@ -64,21 +63,23 @@ button[type='button']{
                     <td><h6>Status</h6></td>
                     <td><h6>Confirm</h6></td>
                 </tr>
-                 {% set int = namespace(i=0) %}
-{% for Order in Orders %}
-   {% set qtyid = "quantity" + int.i|string  %}
-   {% set int.i = int.i + 1 %}
+   {% set int = namespace(i=0) %}
+   {% for Order in Orders %}
+     {% set ordid = "order" + int.i|string  %}
+     {% set int.i = int.i + 1 %}
+                <form action="/ShippingAddress/recid/{{ Order[0] }}" method="Get">
                 <tr>
                     <td>{{ Order[0] }}</td>
                     <td>{{ Order[3] }}</td>
                     <td>{{ Order[2] }}</td>
                     <td>{{ Order[1] }}</td>
                     {% if Order[1] ==0 %}
-                       <td><button type="button" class ="delete-btn"><i class="fa fa-check"></i></button></td>
+                       <td><button type="submit" class ="delete-btn"><i class="fa fa-check"></i></button></td>
                      {% else %}
                         <td></td>
                     {% endif %}
                 </tr>
+                 </form>
                 {% endfor %}
             </table>
         </div>
@@ -86,7 +87,6 @@ button[type='button']{
 			</div>
 		</div>
 	</div>
-</form>
 <script>
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
