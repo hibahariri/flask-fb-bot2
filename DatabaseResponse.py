@@ -206,3 +206,6 @@ def get_Orders(recipientID):
     cur.close()
     con[0].close()
     return records
+
+def locationparam():
+    return "ok"

@@ -199,7 +199,7 @@ def get_cart(recid):
     if request.method == 'GET':
         items = DatabaseResponse.get_CartItem(recid)
         if not items:
-            filename = os.path.join(app.config['Images'],'favpng_shopping-cart-shiva-lingam.png')
+            filename = os.path.join(app.config['Images'], 'favpng_shopping-cart-shiva-lingam.png')
             return render_template('NoCart.html', filename=filename, recid=recid)
         else:
             return render_template('Carts.html', items=items, recid=recid)
@@ -238,6 +238,12 @@ def get_response(action, parameters):
     elif action == "Add_ToCart":
         records = DatabaseResponse.Add_ToCart(parameters)
         user_response = [records, "text"]
+    elif action == "Send-location":
+        record = DatabaseResponse.locationparam()
+        records = [
+            "https:\/\/maps.googleapis.com\/maps\/api\/staticmap?size=764x400&center=33.877250,35.516510&zoom=25&markers=33.877250,35.516510",
+            "http:\/\/maps.apple.com\/maps?q=33.877250,35.516510&z=16"]
+        user_response = [records, "Generic template", "Location"]
     else:
         user_response = ["Test", "text"]
     return user_response
@@ -302,6 +308,14 @@ def send_message(recipient_id, response):
                                 "payload": "Add-to-cart(" + row[0] + "," + recipient_id + ")",
                             },
                         ]})
+        elif response[2] == "Location":
+            Generic_replies = [{
+                        "title": "Your current location",
+                        "image_url": response[0][0],
+                        "item_url": response[0][1]
+                    }
+
+            ]
         else:
             Generic_replies = []
             records = response[0]
