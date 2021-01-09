@@ -118,7 +118,7 @@ def Update_Cart(itemid, qtyid):
             print(delflag)
         else:
             delflag = "No"
-        r = cur.execute("update Cart SET cart.Quantity = %s, cart.Isdeleted = %s  where cart.CartID= %s",
+        r = cur.execute("update Cart SET cart.Quantity = %s, cart.Isdeleted = %s where cart.CartID= %s",
                         (qtyid[i], delflag, itemid[i]))
         i = i + 1
     con[0].commit()
@@ -154,8 +154,9 @@ def create_order(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "insert into heroku_ff6cdbed3d2eb70.order(userID,orderStatus) values ((Select userid from user where recipientID = %s),0)",
-        (recipientID.strip(),))
+        "insert into heroku_ff6cdbed3d2eb70.order(userID,orderStatus,total) values ((Select userid from user where recipientID = %s),0,"
+        "(SELECT SUM(price * Quantity) AS Subtotal from Cart inner join item where cart.ItemID = item.itemID and cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' and itemstatus ='Opened'))",
+        (recipientID.strip(), recipientID.strip()))
     cur.execute("SELECT LAST_INSERT_ID()")
     records = cur.fetchall()
     cur.execute(
