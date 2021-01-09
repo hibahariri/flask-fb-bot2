@@ -239,6 +239,7 @@ def get_response(action, parameters):
         records = DatabaseResponse.Add_ToCart(parameters)
         user_response = [records, "text"]
     elif action == "Send-location":
+        print("location")
         record = DatabaseResponse.locationparam()
         records = [
             "https:\/\/maps.googleapis.com\/maps\/api\/staticmap?size=764x400&center=33.877250,35.516510&zoom=25&markers=33.877250,35.516510",
