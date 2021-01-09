@@ -45,18 +45,26 @@ background-color: #FFFFFF;
 						</div>
 				  	</div>
 				  	<div class="card-body">
+                        {% set int = namespace(i=0) %}
+{% for Order in Orders %}
+   {% set qtyid = "quantity" + int.i|string  %}
+   {% set prixid = "price" + int.i|string  %}
+   {% set delid = "deletion" + int.i|string  %}
+   {% set int.i = int.i + 1 %}
             <table>
                 <tr>
                     <td><h5>Order </h5></td>
                     <td><h5>Date</h5></td>
                     <td><h5>Amount</h5></td>
                     <td><h5>Status</h5></td>
+                    <td>Complete Order</td>
                 </tr>
                 <tr>
-                    <td><h5>Order </h5></td>
-                    <td><h5>Date</h5></td>
-                    <td><h5>Amount</h5></td>
-                    <td><h5>Status</h5></td>
+                    <td>{{ Order[0] }}</td>
+                    <td>09-01-2021</td>
+                    <td>{{ Order[2] }}</td>
+                    <td>{{ Order[3] }}</td>
+                    <td><button class="btn btn-info w-100 pb-2 pt-2">Confirm</button></td>
                 </tr>
             </table>
         </div>

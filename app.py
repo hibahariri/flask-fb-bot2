@@ -170,6 +170,7 @@ def fillAddress(recid, rec):
         adr = [request.form['Fullname'], request.form['Address1'], request.form['Address2'], request.form['Phone']]
         print("test")
         print(rec)
+        print("entered scope")
         ret = DatabaseResponse.fill_Address(recid, adr, rec)
         return ret
 
