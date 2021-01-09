@@ -67,15 +67,16 @@ button[type='button']{
                  {% set int = namespace(i=0) %}
 {% for Order in Orders %}
    {% set qtyid = "quantity" + int.i|string  %}
-   {% set prixid = "price" + int.i|string  %}
-   {% set delid = "deletion" + int.i|string  %}
    {% set int.i = int.i + 1 %}
                 <tr>
                     <td>{{ Order[0] }}</td>
                     <td>{{ Order[3] }}</td>
                     <td>{{ Order[2] }}</td>
                     <td>{{ Order[1] }}</td>
-                    <td><button type="button" class ="delete-btn"><i class="fa fa-check"></i></button></td>
+                    {% if Order[1] ==0 %}
+                       <td><button type="button" class ="delete-btn"><i class="fa fa-check"></i></button></td>
+                     {% else %}
+                        <td></td>
                 </tr>
                 {% endfor %}
             </table>
