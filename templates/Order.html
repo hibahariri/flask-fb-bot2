@@ -29,6 +29,16 @@ background-color: #FFFFFF;
 :-ms-input-placeholder {
    font-style: italic;
 }
+button[type='button']{
+    width: 20px;
+    text-align: center;
+    border: 0;
+    text-align: center;
+    background-color: #FFFFFF;
+
+  }
+ .fa-check{
+ color:#4bbda6}
     </style>
 </head>
 <body>
@@ -65,7 +75,7 @@ background-color: #FFFFFF;
                     <td>09-01-2021</td>
                     <td>{{ Order[2] }}</td>
                     <td>{{ Order[1] }}</td>
-                    <td><button class="btn btn-info w-100 pb-2 pt-2">Confirm</button></td>
+                    <td><button type="button" class ="delete-btn"><i class="fa fa-check"></i></button></td>
                 </tr>
                 {% endfor %}
             </table>
