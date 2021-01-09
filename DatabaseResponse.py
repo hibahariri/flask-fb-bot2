@@ -198,7 +198,7 @@ def get_Orders(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "select OrderID, orderStatus,(SELECT SUM(price) AS Subtotal from Cart inner join item where cart.ItemID = item.itemID and cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No')"
+        "select OrderID, orderStatus,Total,creatDate"
         " from heroku_ff6cdbed3d2eb70.order where userID =(Select userid from user where recipientID = %s)",
         (recipientID.strip(), recipientID.strip()))
     records = cur.fetchall()
