@@ -263,6 +263,7 @@ def get_message(message_sent):
         user_response = [real_response, "text"]
     elif action is not None:
         parameters = []
+        print("has action")
         user_response = get_response(action, parameters)
     else:
         messages = json_response['result']['fulfillment']['messages']
@@ -309,11 +310,14 @@ def send_message(recipient_id, response):
                             },
                         ]})
         elif response[2] == "Location":
+            print(response[0][0])
+            print(response[0][0])
+            prinyt("enterd scope ")
             Generic_replies = [{
-                        "title": "Your current location",
-                        "image_url": response[0][0],
-                        "item_url": response[0][1]
-                    }
+                "title": "Your current location",
+                "image_url": response[0][0],
+                "item_url": response[0][1]
+            }
 
             ]
         else:
