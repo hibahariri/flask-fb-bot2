@@ -200,7 +200,7 @@ def get_Orders(recipientID):
     cur.execute(
         "select OrderID, orderStatus,Total,creatDate"
         " from heroku_ff6cdbed3d2eb70.order where userID =(Select userid from user where recipientID = %s)",
-        (recipientID.strip(), recipientID.strip()))
+        (recipientID.strip(),))
     records = cur.fetchall()
     print(records)
     cur.close()
