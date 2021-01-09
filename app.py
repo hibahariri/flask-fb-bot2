@@ -242,7 +242,7 @@ def get_response(action, parameters):
         print("location")
         record = DatabaseResponse.locationparam()
         records = [
-            "https:\/\/maps.googleapis.com\/maps\/api\/staticmap?size=764x400&center=33.877250,35.516510&zoom=25&markers=33.877250,35.516510",
+            "https://maps.googleapis.com/maps/api/staticmap?size=764x400&center=33.877250,35.516510&zoom=25&markers=33.877250,35.516510",
             "http:\/\/maps.apple.com\/maps?q=33.877250,35.516510&z=16"]
         user_response = [records, "Generic template", "Location"]
     else:
@@ -317,11 +317,19 @@ def send_message(recipient_id, response):
             Generic_replies = [{
                 "title": "Your current location",
                 "image_url": response[0][0],
-                "item_url": response[0][1],
+                "subtitle":"Location",
+                "default_action": {
+                    "type": "web_url",
+                    "url": response[0][0],
+                    "messenger_extensions": True,
+                    "webview_height_ratio": "tall"
+                },
                 "buttons":[{
-                            "type": "postback",
-                            "title": "show more",
-                            "payload": "",
+                            "type": "web_url",
+                            "title": "My Cart",
+                            "webview_height_ratio": "tall",
+                            "url": "http:\/\/maps.apple.com\/maps?q=33.877250,35.516510&z=16",
+                             "messenger_extensions": True
                         },]
             }
 
