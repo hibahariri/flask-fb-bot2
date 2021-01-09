@@ -142,7 +142,7 @@ def get_orderpreview(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "SELECT SUM(price) AS Subtotal from Cart inner join item where cart.ItemID = item.itemID and cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' ",
+        "SELECT SUM(price * Quantity) AS Subtotal from Cart inner join item where cart.ItemID = item.itemID and cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' and itemstatus ='Opened'",
         (recipientID.strip(),))
     records = cur.fetchall()
     cur.close()
