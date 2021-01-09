@@ -313,7 +313,7 @@ def send_message(recipient_id, response):
         elif response[2] == "Location":
             print(response[0][0])
             print(response[0][0])
-            prinyt("enterd scope ")
+            print("enterd scope ")
             Generic_replies = [{
                 "title": "Your current location",
                 "image_url": response[0][0],
