@@ -155,6 +155,7 @@ def openPayments():
 @app.route('/Order/<recid>', methods=['GET', 'POST'])
 def ShowOrders(recid):
     if request.method == 'GET':
+        print("Orders scope")
         Orders = DatabaseResponse.get_Orders(recid)
         return render_template('Order.html', Orders=Orders, recid=recid)
     else:
