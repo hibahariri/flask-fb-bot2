@@ -311,29 +311,22 @@ def send_message(recipient_id, response):
                             },
                         ]})
         elif response[2] == "Location":
-            print(response[0][0])
-            print(response[0][0])
-            print("enterd scope ")
-            Generic_replies = [{
-                "title": "Your current location",
-                "image_url": response[0][0],
-                "subtitle":"Location",
-                "default_action": {
-                    "type": "web_url",
-                    "url": response[0][0],
-                    "messenger_extensions": True,
-                    "webview_height_ratio": "tall"
-                },
-                "buttons":[{
-                            "type": "web_url",
-                            "title": "My Cart",
-                            "webview_height_ratio": "tall",
-                            "url": "http:\/\/maps.apple.com\/maps?q=33.877250,35.516510&z=16",
-                             "messenger_extensions": True
-                        },]
-            }
-
-            ]
+            Generic_replies = []
+            records = response[0]
+            for row in records:
+                Generic_replies.append({
+                    "title": "Location",
+                    "image_url": "https://res-2.cloudinary.com/spinneys/image/upload/c_limit,dpr_2.0,f_auto,h_1800,q_auto,w_1800/v1/media/catalog/product/5/0/502927-v001-1_2.jpg",
+                    "buttons":
+                        [
+                            {
+                                "type": "postback",
+                                "title": "show more",
+                                "webview_height_ratio": "tall",
+                                "url": "http:\/\/maps.apple.com\/maps?q=33.877250,35.516510&z=16",
+                                "messenger_extensions": True
+                            },
+                        ]})
         else:
             Generic_replies = []
             records = response[0]
