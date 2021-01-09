@@ -5,6 +5,7 @@ from pymessenger.bot import Bot
 import apiai
 import DatabaseResponse
 import os
+from datetime import date
 
 app = Flask(__name__, template_folder="templates")
 app.config['SECRET_KEY'] = 'akbocTVre'
