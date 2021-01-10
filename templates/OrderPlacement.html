@@ -82,6 +82,14 @@ background-color: #FFFFFF;
         js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'Messenger'));
+    function addCommas(n){
+    var rx=  /(\d+)(\d{3})/;
+    return String(n).replace(/^\d+/, function(w){
+        while(rx.test(w)){
+            w= w.replace(rx, '$1,$2');
+        }
+        return w;
+    });
 </script>
 </body>
 </html>
