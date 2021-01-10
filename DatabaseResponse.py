@@ -133,7 +133,7 @@ def get_CartItem(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "Select ItemDesc,CONCAT(size,' ',sizeunit),price, Itemimage, Quantity, (price * Quantity),CartID from cart inner join item where cart.itemID = item.itemID and userID = (Select userid from user where recipientID = %s) and Isdeleted ='No' and itemstatus = 'Opened' ",
+        "Select ItemDesc,CONCAT(size,' ',sizeunit),price, Itemimage, Quantity, FORMAT((price * Quantity),0),CartID from cart inner join item where cart.itemID = item.itemID and userID = (Select userid from user where recipientID = %s) and Isdeleted ='No' and itemstatus = 'Opened' ",
         (recipientID.strip(),))
     records = cur.fetchall()
     return records
@@ -143,7 +143,7 @@ def get_orderpreview(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "SELECT SUM(price * Quantity) AS Subtotal from Cart inner join item where cart.ItemID = item.itemID and cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' and itemstatus ='Opened'",
+        "SELECT FORMAT(SUM(price * Quantity),0) AS Subtotal from Cart inner join item where cart.ItemID = item.itemID and cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' and itemstatus ='Opened'",
         (recipientID.strip(),))
     records = cur.fetchall()
     cur.close()
@@ -199,7 +199,7 @@ def get_Orders(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "select OrderID, orderStatus,Total,creatDate"
+        "select OrderID, orderStatus,FORMAT(Total,0),creatDate"
         " from heroku_ff6cdbed3d2eb70.order where userID =(Select userid from user where recipientID = %s) ORDER BY creatDate DESC",
         (recipientID.strip(),))
     records = cur.fetchall()
