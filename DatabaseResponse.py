@@ -67,6 +67,7 @@ def get_products(subcatID):
 def get_brands(ProductID):
     con = connect_todb()
     cur = con[0].cursor()
+    print(ProductID)
     cur.execute(
         "Select DISTINCT BrandName from brand inner join item where brand.BrandID = item.brandID and productID =(Select productID from product where productsname = %s) ",
         (ProductID.strip(),))
