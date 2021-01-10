@@ -30,16 +30,6 @@ background-color: #FFFFFF;
    font-style: italic;
 }
     </style>
-    <script>
-       function addCommas(n){
-    var rx=  /(\d+)(\d{3})/;
-    return String(n).replace(/^\d+/, function(w){
-        while(rx.test(w)){
-            w= w.replace(rx, '$1,$2');
-        }
-        return w;
-    });
-    </script>
 </head>
 <body>
 <form action="/OrderPlacement/{{ recid }}" method="post">

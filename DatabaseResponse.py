@@ -1,6 +1,7 @@
 import mysql.connector
 from datetime import date
 
+
 def connect_todb():
     try:
         db_con = mysql.connector.connect(
@@ -136,6 +137,8 @@ def get_CartItem(recipientID):
         "Select ItemDesc,CONCAT(size,' ',sizeunit),price, Itemimage, Quantity,(price * Quantity),CartID from cart inner join item where cart.itemID = item.itemID and userID = (Select userid from user where recipientID = %s) and Isdeleted ='No' and itemstatus = 'Opened' ",
         (recipientID.strip(),))
     records = cur.fetchall()
+    cur.close()
+    con[0].close()
     return records
 
 
@@ -158,7 +161,7 @@ def create_order(recipientID):
     cur.execute(
         "insert into heroku_ff6cdbed3d2eb70.order(userID,orderStatus,subTotal,Shipping,Total,creatDate) values ((Select userid from user where recipientID = %s),0,"
         "(SELECT SUM(price * Quantity)  from Cart inner join item where cart.ItemID = item.itemID and cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' and itemstatus ='Opened'),(IF(subTotal>49000,0,5000)),(subTotal + Shipping),%s)",
-        (recipientID.strip(), recipientID.strip(),today))
+        (recipientID.strip(), recipientID.strip(), today))
     cur.execute("SELECT LAST_INSERT_ID()")
     records = cur.fetchall()
     cur.execute(
@@ -207,6 +210,7 @@ def get_Orders(recipientID):
     cur.close()
     con[0].close()
     return records
+
 
 def locationparam():
     return "ok"
