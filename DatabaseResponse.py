@@ -69,7 +69,7 @@ def get_brands(ProductID):
     cur = con[0].cursor()
     print(ProductID)
     cur.execute(
-        "Select DISTINCT BrandName from brand inner join item where brand.BrandID = item.brandID and productID =(Select productID from product where productsname = %s) ",
+        "Select DISTINCT BrandName from brand inner join item ON brand.BrandID = item.brandID where productID =(Select productID from product where productsname = %s) ",
         (ProductID.strip(),))
     records = cur.fetchall()
     cur.close()
