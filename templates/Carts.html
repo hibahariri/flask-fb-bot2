@@ -100,7 +100,7 @@ background-color: #FFFFFF;
   button[type='button']{
     width: 8px;
     align-content: center;
-
+    border: 0;
     margin-left: 0;
     margin-right: 0;
     padding-left: 0;
@@ -163,8 +163,8 @@ color: red}
               <span>{{ item[0] }}</span>
           </td>
           <td class="quantity" style="margin-right: 0" style="padding: 0"><button  type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')"><i class="fa fa-minus-circle"></i></button></td>
-          <td style="margin-left: 0" class="quantity">    <input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} readonly></td>
-           <td class="quantity" style="padding: 0>  <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
+          <td style="margin-left: 0"  tyle="padding: 0" class="quantity">    <input type="number" name="quantity"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} readonly></td>
+           <td class="quantity" style="padding: 0">  <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
            <i class="fa fa-plus-circle"></i></button>
           </td>
           <td class="price"><input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly > </td>
