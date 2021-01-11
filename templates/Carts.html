@@ -107,9 +107,6 @@ background-color: #FFFFFF;
     background-color: #FFFFFF;
 
   }
-input[type="number"] {
-    padding: 1px 0px;
-}
 
 .fa {
     font-size: small;}
@@ -121,6 +118,22 @@ margin-left: 0;
 .fa-trash{
 color: red}
 
+.col11{
+margin-right: 0;
+padding-right: 0;
+}
+
+.col12{
+margin-right: 0;
+}
+
+.col21{
+margin-left: 0;
+padding-left: 0;
+}
+.col22{
+margin-left: 0;
+}
   .delete{
   text-align: center;
   }
@@ -162,8 +175,8 @@ color: red}
           <td class="description">
               <span>{{ item[0] }}</span>
           </td>
-          <td class="quantity" style="margin-right: 0" style="padding-right: 0"><button  style="margin-right: 0" type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')"><i class="fa fa-minus-circle"></i></button></td>
-          <td style="margin-left: 0"  style="padding-left: 0" class="quantity">    <input type="number" name="quantity" style="margin-left: 0"  class ="qtyinput" value={{ item[4] }} id={{ qtyid }} readonly></td>
+          <td class="quantity col11" ><button  class="col12"  type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')"><i class="fa fa-minus-circle"></i></button></td>
+          <td  class="quantity col21">    <input type="number" name="quantity "  class ="qtyinput col22" value={{ item[4] }} id={{ qtyid }} readonly></td>
            <td class="quantity"style="padding: 0">  <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
            <i class="fa fa-plus-circle"></i></button>
           </td>
