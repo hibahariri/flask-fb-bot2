@@ -176,12 +176,19 @@ margin-left: 0;
               <span>{{ item[0] }}</span>
           </td>
           <td class="quantity col11" >
-               <button class="text-success" type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
+              <span class="input-group-btn">
+                  <button type="button" class="btn btn-danger btn-number"  data-type="minus" onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
+                <span class="glyphicon glyphicon-minus"></span>
+                </button></span> <input type="number" name="quantity "   value={{ item[4] }} id={{ qtyid }} readonly><span class="input-group-btn">
+                <button type="button" class="btn btn-success btn-number" data-type="plus" onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
+                <span class="glyphicon glyphicon-plus"></span>
+                </button></span>
+             <!--  <button class="text-success" type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
            <i class="fa fa-plus-circle"></i></button>
-              <button  class="text-danger col12"  type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')"><i class="fa fa-minus-circle"></i></button>
+              <button  class="text-danger col12"  type="button" name="button"   onclick="minusone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')"><i class="fa fa-minus-circle"></i></button>-->
           </td>
-          <td  class="quantity col21">    <input type="number" name="quantity "  class ="qtyinput col22" value={{ item[4] }} id={{ qtyid }} readonly></td>
-          <!--<td class="quantity"style="padding: 0">  <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
+          <!--<td  class="quantity col21">    <input type="number" name="quantity "  class ="qtyinput col22" value={{ item[4] }} id={{ qtyid }} readonly></td>
+          <td class="quantity"style="padding: 0">  <button  type="button" name="button"  onclick="Addone('{{ qtyid }}','{{ prixid }}','{{ item[2] }}')">
            <i class="fa fa-plus-circle"></i></button>
           </td>-->
           <td class="price"><input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly > </td>
