@@ -114,6 +114,7 @@ def Update_Cart(itemid, qtyid):
     con = connect_todb()
     cur = con[0].cursor()
     i = 0
+    print(qtyid)
     for row in itemid:
         if int(qtyid[i]) == 0:
             delflag = "yes"
