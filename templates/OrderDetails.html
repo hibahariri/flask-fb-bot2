@@ -19,11 +19,12 @@
                 {% for item in items %}
                 {% set ordid = "order" + int.i|string  %}
                 {% set int.i = int.i + 1 %}
+                {% print(item) %}
                  <tr>
                     <td><img class="img" src={{ items[1] }} alt="" /></td>
-                    <td>{{ items[0] }}</td>
-                    <td>{{ items[3] }}</td>
-                     <td>{{ items[2] }}</td>
+                     <td><span>{{ items[0] }}</span></td>
+                    <td><span>{{ items[3] }}</span></td>
+                     <td><span>{{ items[2] }}</span></td>
                     <td>L.L.</td>
                  </tr>
           {% endfor %}
