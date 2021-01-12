@@ -51,6 +51,9 @@ button[type='submit']{
   }
  .fa-check{
  color:#4bbda6}
+
+ a{
+color: Black;}
     </style>
 </head>
 <body>
@@ -66,7 +69,6 @@ button[type='submit']{
 						</div>
 				  	</div>
 				  	<div class="card-body">
-
             <table>
                 <tr>
                     <td><h6>Order </h6></td>
@@ -83,7 +85,7 @@ button[type='submit']{
      {% set int.i = int.i + 1 %}
                 <form action="/ShippingAddress/recid/{{ Order[0] }}" method="Get">
                 <tr class="Hovertr">
-                    <td><a href="https://www.robertcooper.me/table-row-links">{{ Order[0] }}</a></td>
+                    <td><a href="{{ url_for('get_cart', recid=recid) }}">{{ Order[0] }}</a></td>
                     <td>{{ Order[3] }}</td>
                     <td>{{ Order[2] }}</td>
                     <td>{{ Order[1] }}</td>
