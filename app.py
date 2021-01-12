@@ -171,7 +171,7 @@ def fillAddress(recid, rec):
     else:
         adr = [request.form['Fullname'], request.form['Address1'], request.form['Address2'], request.form['Phone']]
         ret = DatabaseResponse.fill_Address(recid, adr, rec)
-        return render_template('OrderConfirmed.html')
+        return render_template('OrderConfirmed.html', rec=rec)
 
 
 @app.route('/OrderPlacement/<recid>', methods=['GET', 'POST'])
