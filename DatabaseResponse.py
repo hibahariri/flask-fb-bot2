@@ -166,8 +166,9 @@ def create_order(recipientID):
     cur.execute("SELECT LAST_INSERT_ID()")
     records = cur.fetchall()
     cur.execute(
-        "Update Cart set Cart.itemstatus = 'Placed', Cart.orderID =%s where cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' ",
+        "Update Cart set Cart.itemstatus = 'Placed', Cart.orderID =%s where cart.userID =(Select userid from user where recipientID = %s) and Isdeleted ='No' and itemstatus ='Opened'",
         (records[0][0], recipientID.strip(),))
+    print(records[0][0])
     con[0].commit()
     cur.close()
     con[0].close()
