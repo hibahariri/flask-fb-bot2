@@ -173,7 +173,7 @@ def fillAddress(recid, rec):
         ret = DatabaseResponse.fill_Address(recid, adr, rec)
         filename = os.path.join(app.config['Images'], 'Deliveryscooter.png')
         print(filename)
-        return render_template('OrderConfirmed.html',filename=filename)
+        return render_template('OrderConfirmed.html')
 
 
 @app.route('/OrderPlacement/<recid>', methods=['GET', 'POST'])
