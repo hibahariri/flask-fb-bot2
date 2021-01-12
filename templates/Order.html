@@ -10,6 +10,12 @@
    .card-body label{
 	font-size: 14px;
 }
+tr:hover {
+  background: #f2f3ff;
+  outline: none;
+  cursor: pointer;
+}
+
 tr
 {
    border-bottom: 1px solid #D3D3D3;
@@ -69,6 +75,7 @@ button[type='submit']{
                     <td><h6>Amount</h6></td>
                     <td><h6>Status</h6></td>
                     <td><h6>Confirm</h6></td>
+
                 </tr>
    {% set int = namespace(i=0) %}
    {% for Order in Orders %}
