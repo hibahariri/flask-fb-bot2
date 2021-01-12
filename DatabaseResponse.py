@@ -226,4 +226,4 @@ def get_orderitems(orderid):
     print(records)
     cur.close()
     con[0].close()
-    return "ok"
+    return records
