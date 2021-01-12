@@ -152,9 +152,12 @@ def success():
 def openPayments():
     return render_template('PaymentDetails.html')
 
+
 @app.route('/OrderDetails/<ordid>', methods=['GET'])
 def openOrder(ordid):
-    return render_template('OrderDetails.html')
+    items = DatabaseResponse.get_orderitems(ordid)
+    return render_template('OrderDetails.html',items=items)
+
 
 @app.route('/Order/<recid>', methods=['GET', 'POST'])
 def ShowOrders(recid):

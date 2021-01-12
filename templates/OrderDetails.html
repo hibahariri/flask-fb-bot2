@@ -6,6 +6,27 @@
     <title>Order Details</title>
 </head>
 <body>
-  <p>Hello</p>
+
+      <table>
+                <tr>
+                    <td></td>
+                    <td>Desc.</td>
+                    <td>Qty</td>
+                    <td>Amount</td>
+                    <td></td>
+                </tr>
+                {% set int = namespace(i=0) %}
+                {% for item in items %}
+                {% set ordid = "order" + int.i|string  %}
+                {% set int.i = int.i + 1 %}
+                 <tr>
+                    <td>{{ items[1] }} </td>
+                    <td>{{ items[0] }}</td>
+                    <td>{{ items[3] }}</td>
+                     <td>{{ items[2] }}</td>
+                    <td>L.L.</td>
+                 </tr>
+          {% endfor %}
+            </table>
 </body>
 </html>

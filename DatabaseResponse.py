@@ -215,3 +215,15 @@ def get_Orders(recipientID):
 
 def locationparam():
     return "ok"
+
+
+def get_orderitems(orderid):
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute("Select ItemDesc, Itemimage, price, Quantity from cart inner join item on cart.ItemID = item.itemID where cart.Isdeleted = 'No' and cart.orderID= %s",
+                           (orderid.strip(),))
+    records = cur.fetchall()
+    print(records)
+    cur.close()
+    con[0].close()
+    return "ok"
