@@ -29,6 +29,13 @@ background-color: #FFFFFF;
 :-ms-input-placeholder {
    font-style: italic;
 }
+.BtCart{
+ padding-top :13px;
+ text-align:center;
+}
+.BtCart a{
+color: Black;
+  font-size: 14px;}
     </style>
 </head>
 <body>
@@ -66,6 +73,10 @@ background-color: #FFFFFF;
         <div>
             <button type="submit" class="btn btn-info w-100 pb-2 pt-2"> Place Order </button>
               </div>
+                    <div class="BtCart">
+                        <a href="{{ url_for('get_cart', recid=recid }}">Back to My Cart</a>
+                        <!--<p><u></u></p>-->
+                    </div>
 				</div>
 			</div>
 		</div>
