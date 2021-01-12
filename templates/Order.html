@@ -10,12 +10,10 @@
    .card-body label{
 	font-size: 14px;
 }
-tr:hover {
+.Hovertr:hover {
   background: #f2f3ff;
   outline: none;
-  cursor: pointer;
 }
-
 tr
 {
    border-bottom: 1px solid #D3D3D3;
@@ -47,8 +45,9 @@ button[type='submit']{
     text-align: center;
     border: 0;
     text-align: center;
-    background-color: #FFFFFF;
 
+   cursor: pointer;
+   background-color: Transparent;
   }
  .fa-check{
  color:#4bbda6}
@@ -75,6 +74,7 @@ button[type='submit']{
                     <td><h6>Amount</h6></td>
                     <td><h6>Status</h6></td>
                     <td><h6>Confirm</h6></td>
+                    <td></td>
 
                 </tr>
    {% set int = namespace(i=0) %}
@@ -82,13 +82,13 @@ button[type='submit']{
      {% set ordid = "order" + int.i|string  %}
      {% set int.i = int.i + 1 %}
                 <form action="/ShippingAddress/recid/{{ Order[0] }}" method="Get">
-                <tr>
-                    <td>{{ Order[0] }}</td>
+                <tr class="Hovertr">
+                    <td><a href="https://www.robertcooper.me/table-row-links">{{ Order[0] }}</a></td>
                     <td>{{ Order[3] }}</td>
                     <td>{{ Order[2] }}</td>
                     <td>{{ Order[1] }}</td>
                     {% if Order[1] ==0 %}
-                       <td><button type="submit" class ="delete-btn"><i class="fa fa-check"></i></button></td>
+                       <td><button type="submit" ><i class="fa fa-check"></i></button></td>
                      {% else %}
                         <td></td>
                     {% endif %}
