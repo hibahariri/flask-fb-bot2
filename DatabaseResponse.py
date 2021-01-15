@@ -243,7 +243,7 @@ def get_orderAmount(orderid):
     return records
 
 
-def get_orderAddres(orderid):
+def get_orderAddress(orderid):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
