@@ -172,7 +172,7 @@ def ShowOrders(recid):
         print(pages)
         chunks = np.array_split(Orders, pages)
         for array in chunks:
-            print(list(array))
+            print(array)
         return render_template('Order.html', Orders=Orders, recid=recid)
     else:
         print(request.form['fname'])
