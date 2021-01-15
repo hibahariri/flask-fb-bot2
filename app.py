@@ -6,6 +6,7 @@ import apiai
 import DatabaseResponse
 import os
 from datetime import date
+import math
 
 app = Flask(__name__, template_folder="templates")
 app.config['SECRET_KEY'] = 'akbocTVre'
@@ -166,7 +167,7 @@ def ShowOrders(recid):
     if request.method == 'GET':
         print("Orders scope")
         Orders = DatabaseResponse.get_Orders(recid)
-        pages = len(Orders) // 20
+        pages = math.ceil(len(Orders) / 15)
         print(pages)
         return render_template('Order.html', Orders=Orders, recid=recid)
     else:
