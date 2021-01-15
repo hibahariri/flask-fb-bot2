@@ -71,7 +71,11 @@ color: Black;}
 						</div>
 				  	</div>
 				  	<div class="card-body">
-            <table>
+           {% set int = namespace(i=0) %}
+           {% for chunk in chunks %}
+               {% set pageid = "page" + int.i|string  %}
+               {% set int.i = int.i + 1 %}
+            <table id={{ pageid }}>
                 <tr>
                     <td><h6>Order </h6></td>
                     <td><h6>Date</h6></td>
@@ -79,10 +83,8 @@ color: Black;}
                     <td><h6>Status</h6></td>
                     <td><h6>Confirm</h6></td>
                 </tr>
-                {% set int = namespace(i=0) %}
-                {% for Order in Orders %}
-                {% set ordid = "order" + int.i|string  %}
-                {% set int.i = int.i + 1 %}
+                <!--{% for Order in Orders %}-->
+                 {% for Order in chunk %}
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <tr class="Hovertr">
                     <td><a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">{{ Order[0] }}</a></td>
