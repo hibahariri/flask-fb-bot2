@@ -45,10 +45,12 @@ button[type='submit']{
     text-align: center;
     border: 0;
     text-align: center;
-
    cursor: pointer;
    background-color: Transparent;
   }
+
+  button[type='submit']:focus{
+  outline:none;}
  .fa-check{
  color:#4bbda6}
 
@@ -77,10 +79,10 @@ color: Black;}
                     <td><h6>Status</h6></td>
                     <td><h6>Confirm</h6></td>
                 </tr>
-   {% set int = namespace(i=0) %}
-   {% for Order in Orders %}
-     {% set ordid = "order" + int.i|string  %}
-     {% set int.i = int.i + 1 %}
+                {% set int = namespace(i=0) %}
+                {% for Order in Orders %}
+                {% set ordid = "order" + int.i|string  %}
+                {% set int.i = int.i + 1 %}
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <tr class="Hovertr">
                     <td><a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">{{ Order[0] }}</a></td>
