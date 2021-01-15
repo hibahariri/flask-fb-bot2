@@ -4,26 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Order Details</title>
+    <style>
+        .image{
+         width:35%;}
+        .Desc{
+         width:45%;}
+        .Qty{
+         width:5%;}
+        .amount{
+         width:10%;}
+    </style>
 </head>
 <body>
 
       <table>
                 <tr>
-                    <td></td>
-                    <td>Desc.</td>
-                    <td>Qty</td>
-                    <td>Amount</td>
-                    <td></td>
+                    <th class="image"></th>
+                    <th class="Desc">Desc.</th>
+                    <th class="Qty">Qty</th>
+                    <th class="amount">Amount</th>
+                    <th></th>
                 </tr>
                 {% set int = namespace(i=0) %}
                 {% for item in items %}
                 {% set ordid = "order" + int.i|string  %}
                 {% set int.i = int.i + 1 %}
                  <tr>
-                    <td><img class="img" src={{ items[0][1] }} alt="" /></td>
-                     <td><span>{{ items[0][0] }}</span></td>
-                    <td><span>{{ items[0][3] }}</span></td>
-                     <td><span>{{ items[0][2] }}</span></td>
+                    <td  class="image"><img class="img" src={{ items[0][1] }} alt="" /></td>
+                     <td class="Desc"><span>{{ items[0][0] }}</span></td>
+                    <td class="Qty"><span>{{ items[0][3] }}</span></td>
+                     <td class="amount"><span>{{ items[0][2] }}</span></td>
                     <td>L.L.</td>
                  </tr>
           {% endfor %}
