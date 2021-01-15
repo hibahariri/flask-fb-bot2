@@ -35,10 +35,10 @@
                 {% set ordid = "order" + int.i|string  %}
                 {% set int.i = int.i + 1 %}
                  <tr>
-                    <td  class="image"><img class="img" src={{ items[0][1] }} alt="" /></td>
-                     <td class="Desc"><span>{{ items[0][0] }}</span></td>
-                    <td class="Qty"><span>{{ items[0][3] }}</span></td>
-                     <td class="amount"><span>{{ items[0][2] }}</span></td>
+                    <td  class="image"><img class="img" src={{ item[1] }} alt="" /></td>
+                     <td class="Desc"><span>{{ item[0] }}</span></td>
+                    <td class="Qty"><span>{{ item[3] }}</span></td>
+                     <td class="amount"><span>{{ item[2] }}</span></td>
                     <td>L.L.</td>
                  </tr>
           {% endfor %}
