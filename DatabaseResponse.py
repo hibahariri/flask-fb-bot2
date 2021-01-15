@@ -221,10 +221,21 @@ def locationparam():
 def get_orderitems(orderid):
     con = connect_todb()
     cur = con[0].cursor()
-    cur.execute("Select ItemDesc, Itemimage, price, Quantity from cart inner join item on cart.ItemID = item.itemID where cart.Isdeleted = 'No' and cart.orderID= %s",
-                           (orderid.strip(),))
+    cur.execute(
+        "Select ItemDesc, Itemimage, price, Quantity from cart inner join item on cart.ItemID = item.itemID where cart.Isdeleted = 'No' and cart.orderID= %s",
+        (orderid.strip(),))
     records = cur.fetchall()
     print(records)
+    cur.close()
+    con[0].close()
+    return records
+
+
+def get_orderAmount(orderid):
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute("Select FORMAT(subTotal,0),FORMAT(Shipping,0),FORMAT(Total,0) from heroku_ff6cdbed3d2eb70.order where OrderID =%s", (orderid.strip(),))
+    records = cur.fetchall()
     cur.close()
     con[0].close()
     return records
