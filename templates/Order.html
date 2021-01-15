@@ -70,6 +70,7 @@ color: Black;}
 							</div>
 						</div>
 				  	</div>
+                    </div>
 				  	<div class="card-body">
            {% set int = namespace(i=0) %}
            {% for chunk in chunks %}
@@ -102,9 +103,15 @@ color: Black;}
             </table>
         {% endfor %}
         </div>
-				</div>
-			</div>
 		</div>
+		</div>
+        <div class="pagination" >
+          {% set int = namespace(i=1) %}
+          {% for chunk in chunks %}
+            <button type ="button">{{ i }}</button>
+            {% set int.i = int.i + 1 %}
+          {% endfor %}
+        </div>
 	</div>
 <script>
     (function (d, s, id) {
