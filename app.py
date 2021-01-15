@@ -177,6 +177,8 @@ def fillAddress(recid, rec):
     if request.method == 'GET':
         return render_template('ShippingAddress.html', recid=recid, rec=rec)
     else:
+        print("order is")
+        print(rec)
         adr = [request.form['Fullname'], request.form['Address1'], request.form['Address2'], request.form['Phone']]
         ret = DatabaseResponse.fill_Address(recid, adr, rec)
         return render_template('OrderConfirmed.html', rec=rec)
