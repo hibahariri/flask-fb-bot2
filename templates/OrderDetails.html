@@ -16,13 +16,26 @@
          width:10%;
          content-align:center;}
         .img{
-        width :80px;
-        height:80px;}
+         width :80px;
+         height:80px;}
+        .Container{
+         position: relative;
+         min-height: 100vh;
+        }
+        .conetntwrap{
+         padding-bottom: 30px;
+        }
+        .footer{
+         position: absolute;
+         bottom: 0;
+         width: 100%;
+         height: 30px;}
     </style>
 </head>
 <body>
-
-      <table>
+  <div class="Container">
+      <div class="conetntwrap">
+        <table class="OrderItems">
                 <tr>
                     <th class="image"></th>
                     <th class="Desc">Desc.</th>
@@ -42,6 +55,13 @@
                     <td>L.L.</td>
                  </tr>
           {% endfor %}
-            </table>
+        </table>
+        <table class="Ordersum">
+        </table>
+      </div>
+      <div>
+          <footer class="footer">Back to order</footer>
+      </div>
+  </div>
 </body>
 </html>
