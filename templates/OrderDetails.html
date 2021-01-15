@@ -59,11 +59,11 @@
         <table class="Ordersum">
             <th>Order Summary</th>
             <tr><td>subtotal</td>
-                <td>{{ Totals[0] }}</td></tr>
+                <td>{{ Totals[0][0] }}</td></tr>
             <tr><td>Shipping</td>
-                <td>{{ Totals[1] }}</td></tr>
+                <td>{{ Totals[0][1] }}</td></tr>
             <tr><td>Total</td>
-                <td>{{ Totals[2] }}</td></tr>
+                <td>{{ Totals[0][2] }}</td></tr>
         </table>
       </div>
       <div>
