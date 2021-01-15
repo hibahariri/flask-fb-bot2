@@ -83,7 +83,7 @@ color: Black;}
      {% set int.i = int.i + 1 %}
                 <form action="/ShippingAddress/recid/Order[0]" method="Get">
                 <tr class="Hovertr">
-                    <td><a href="{{ url_for('openOrder', ordid=Order[0]) }}">{{ Order[0] }}</a></td>
+                    <td><a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">{{ Order[0] }}</a></td>
                     <td>{{ Order[3] }}</td>
                     <td>{{ Order[2] }}</td>
                     <td>{{ Order[1] }}</td>

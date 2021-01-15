@@ -153,7 +153,7 @@ def openPayments():
     return render_template('PaymentDetails.html')
 
 
-@app.route('/OrderDetails/<ordid>', methods=['GET'])
+@app.route('/OrderDetails/<recid>/<ordid>', methods=['GET'])
 def openOrder(ordid):
     items = DatabaseResponse.get_orderitems(ordid)
     return render_template('OrderDetails.html',items=items)
