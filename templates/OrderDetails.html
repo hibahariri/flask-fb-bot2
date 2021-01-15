@@ -19,7 +19,6 @@
                 {% for item in items %}
                 {% set ordid = "order" + int.i|string  %}
                 {% set int.i = int.i + 1 %}
-                {% print(item) %}
                  <tr>
                     <td><img class="img" src={{ items[0][1] }} alt="" /></td>
                      <td><span>{{ items[0][0] }}</span></td>
