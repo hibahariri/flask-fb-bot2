@@ -5,3 +5,4 @@ pymessenger==0.0.7.0
 apiai~=1.2.3
 requests~=2.23.0
 mysql-connector-python~=8.0.21
+numpy~=1.18.5

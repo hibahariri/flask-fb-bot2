@@ -7,6 +7,7 @@ import DatabaseResponse
 import os
 from datetime import date
 import math
+import numpy as np
 
 app = Flask(__name__, template_folder="templates")
 app.config['SECRET_KEY'] = 'akbocTVre'
@@ -169,6 +170,9 @@ def ShowOrders(recid):
         Orders = DatabaseResponse.get_Orders(recid)
         pages = math.ceil(len(Orders) / 15)
         print(pages)
+        chunks = np.array_split(Orders, pages)
+        for array in chunks:
+            print(list(array))
         return render_template('Order.html', Orders=Orders, recid=recid)
     else:
         print(request.form['fname'])
