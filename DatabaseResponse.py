@@ -234,7 +234,21 @@ def get_orderitems(orderid):
 def get_orderAmount(orderid):
     con = connect_todb()
     cur = con[0].cursor()
-    cur.execute("Select FORMAT(subTotal,0),FORMAT(Shipping,0),FORMAT(Total,0) from heroku_ff6cdbed3d2eb70.order where OrderID =%s", (orderid.strip(),))
+    cur.execute(
+        "Select FORMAT(subTotal,0),FORMAT(Shipping,0),FORMAT(Total,0) from heroku_ff6cdbed3d2eb70.order where OrderID =%s",
+        (orderid.strip(),))
+    records = cur.fetchall()
+    cur.close()
+    con[0].close()
+    return records
+
+
+def get_orderAddres(orderid):
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute(
+        "Select Fullname,Address1,Address2,telephoneNo from heroku_ff6cdbed3d2eb70.order inner join orderaddress on heroku_ff6cdbed3d2eb70.order.AddressID = orderaddress.AddressID  where OrderID =%s",
+        (orderid.strip(),))
     records = cur.fetchall()
     cur.close()
     con[0].close()
