@@ -169,10 +169,7 @@ def ShowOrders(recid):
         print("Orders scope")
         Orders = DatabaseResponse.get_Orders(recid)
         pages = math.ceil(len(Orders) / 15)
-        print(pages)
         chunks = np.array_split(Orders, pages)
-        for array in chunks:
-            print(array)
         return render_template('Order.html', Orders=Orders, recid=recid,chunks=chunks)
     else:
         print(request.form['fname'])

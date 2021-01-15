@@ -72,10 +72,7 @@ color: Black;}
 				  	</div>
                     </div>
 				  	<div class="card-body">
-           {% set int = namespace(i=0) %}
-           {% for chunk in chunks %}
-               {% set int.i = int.i + 1 %}
-            <table id={{ i }}>
+            <table>
                 <tr>
                     <td><h6>Order </h6></td>
                     <td><h6>Date</h6></td>
@@ -83,8 +80,7 @@ color: Black;}
                     <td><h6>Status</h6></td>
                     <td><h6>Confirm</h6></td>
                 </tr>
-
-                 {% for Order in chunk %}
+                 {% for Order in Orders %}
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <tr class="Hovertr">
                     <td><a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">{{ Order[0] }}</a></td>
@@ -100,22 +96,11 @@ color: Black;}
                  </form>
                 {% endfor %}
             </table>
-        {% endfor %}
         </div>
 		</div>
 		</div>
-        <div class="pagination" >
-          {% set int = namespace(i=1) %}
-          {% for chunk in chunks %}
-            <button type ="button"  onclick="showpage('{{ i }}')">{{ i }}</button>
-            {% set int.i = int.i + 1 %}
-          {% endfor %}
-        </div>
 	</div>
 <script>
-    function showpage(i){
-    document.getElementById(i).style.display ='none'
-     }
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
