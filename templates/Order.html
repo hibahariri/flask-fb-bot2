@@ -83,7 +83,7 @@ color: Black;}
                     <td><h6>Status</h6></td>
                     <td><h6>Confirm</h6></td>
                 </tr>
-                <!--{% for Order in Orders %}-->
+
                  {% for Order in chunk %}
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <tr class="Hovertr">
@@ -100,7 +100,7 @@ color: Black;}
                  </form>
                 {% endfor %}
             </table>
-          {% endfor %}
+        {% endfor %}
         </div>
 				</div>
 			</div>
