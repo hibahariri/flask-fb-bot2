@@ -204,7 +204,7 @@ def get_Orders(recipientID):
     con = connect_todb()
     cur = con[0].cursor()
     cur.execute(
-        "select OrderID, orderStatus,FORMAT(Total,0),DATE_FORMAT(creatDate,'%D %M %Y')"
+        "select OrderID, orderStatus,FORMAT(Total,0),DATE_FORMAT(creatDate,'%d %b %y')"
         " from heroku_ff6cdbed3d2eb70.order where userID =(Select userid from user where recipientID = %s) ORDER BY creatDate DESC",
         (recipientID.strip(),))
     records = cur.fetchall()
