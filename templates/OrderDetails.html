@@ -44,7 +44,7 @@
       <div class="conetntwrap">
           <div style="border-bottom: 1px solid #D3D3D3">
               <table class="OrderItems">
-                <tr class="borderbtm">
+                <tr >
                     <th class="image"></th>
                     <th class="Desc">Desc.</th>
                     <th class="Qty">Qty</th>
@@ -62,17 +62,27 @@
                {% endfor %}
         </table>
           </div>
-          </div>
+        <div style="border-bottom: 1px solid #D3D3D3" >
+            <table class="OrderSum">
+                <th>Order Summary</th>
+                <tr><td >Sub Total</td>
+                <td >{{ Totals[0][0] }}</td></tr>
+                <tr><td >Shipping</td>
+                <td >{{ Totals[0][1] }} </td></tr>
+            <tr><td >Total</td>
+                <td>{{ Totals[0][2] }}</td></tr>
+            </table>
+        </div>
           <div >
             <table class="OrderAdr" >
             <th>Shipping Address</th>
-            <tr><td style="width:50%">Full name</td>
-                <td style="width:50%">{{ Adr[0][0] }}</td></tr>
-            <tr><td style="width:50%">Address</td>
-                <td style="width:50%"><span>{{ Adr[0][1] }}</span>
+            <tr><td >Full name</td>
+                <td >{{ Adr[0][0] }}</td></tr>
+            <tr><td >Address</td>
+                <td ><span>{{ Adr[0][1] }}</span>
                 </td></tr>
-            <tr><td style="width:50%">Telephone</td>
-                <td style="width:50%">{{ Adr[0][3] }}</td></tr>
+            <tr><td >Telephone</td>
+                <td>{{ Adr[0][3] }}</td></tr>
          </table>
           </div>
       </div>
