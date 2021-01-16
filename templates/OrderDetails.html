@@ -33,31 +33,34 @@
          td{
          font-variant-numeric: oldstyle-nums;
          }
+         .borderbtm
+         {
+          border-bottom: 1px solid #D3D3D3;
+         }
+         div {
+           white-space: pre;
+         }
     </style>
 </head>
 <body>
   <div class="Container">
       <div class="conetntwrap">
         <table class="OrderItems">
-                <tr>
+                <tr class="borderbtm">
                     <th class="image"></th>
                     <th class="Desc">Desc.</th>
                     <th class="Qty">Qty</th>
                     <th class="amount">Amount</th>
-                    <th></th>
                 </tr>
-                {% set int = namespace(i=0) %}
                 {% for item in items %}
-                {% set ordid = "order" + int.i|string  %}
-                {% set int.i = int.i + 1 %}
-                 <tr>
+                 <tr class="borderbtm">
                     <td  class="image"><img class="img" src={{ item[1] }} alt="" /></td>
-                     <td class="Desc"><span>{{ item[0] }}</span></td>
+                     <td class="Desc"><span>{{ item[0] }}</span>
+                                       <span>{{ item[3] }}</span></td>
                     <td class="Qty"><span>{{ item[3] }}</span></td>
-                     <td class="amount"><span>{{ item[2] }}</span></td>
-                    <td>L.L.</td>
+                     <td class="amount"><span>{{ item[2] }} L.L.</span></td>
                  </tr>
-          {% endfor %}
+               {% endfor %}
         </table>
         <table class="Ordersum">
             <th>Order Summary</th>
