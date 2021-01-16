@@ -52,7 +52,7 @@
                     <th></th>
                 </tr>
                 {% for item in items %}
-                 <tr class="borderbtm">
+                 <tr>
                     <td  class="image"><img class="img" src={{ item[1] }} alt="" /></td>
                      <td class="Desc"><span>{{ item[0] }}</span></td>
                     <td class="Qty"><span>{{ item[3] }}</span></td>
@@ -66,11 +66,11 @@
             <table class="OrderSum">
                 <th>Order Summary</th>
                 <tr><td >Sub Total</td>
-                <td >{{ Totals[0][0] }}</td></tr>
+                <td >{{ Totals[0][0] }} L.L.</td></tr>
                 <tr><td >Shipping</td>
-                <td >{{ Totals[0][1] }} </td></tr>
+                <td >{{ Totals[0][1] }} L.L.</td></tr>
             <tr><td >Total</td>
-                <td>{{ Totals[0][2] }}</td></tr>
+                <td>{{ Totals[0][2] }} L.L.</td></tr>
             </table>
         </div>
           <div >
@@ -87,7 +87,7 @@
           </div>
       </div>
       <div>
-          <footer class="footer"><a href="{{ url_for('ShowOrders', recid=recid) }}">Back to orders</a></footer>
+          <footer class="footer"><a href="{{ url_for('ShowOrders', recid=recid) }}"><img src="/static/images/Back.png" alt ="user image" width="40" height="30"></a></footer>
       </div>
   </div>
 </body>
