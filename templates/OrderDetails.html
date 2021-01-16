@@ -33,10 +33,9 @@
          td{
          font-variant-numeric: oldstyle-nums;
          }
-         tr.borderbtm td
-         {
-          border-bottom: 1px solid #D3D3D3;
-         }
+         a {
+         color:black;
+         text-decoration:none;}
     </style>
 </head>
 <body>
@@ -87,7 +86,7 @@
           </div>
       </div>
       <div>
-          <footer class="footer"><a href="{{ url_for('ShowOrders', recid=recid) }}"><img src="/static/images/Back.png" alt ="user image" width="40" height="30"></a></footer>
+          <footer class="footer"><a href="{{ url_for('ShowOrders', recid=recid) }}">Back to orders</a></footer>
       </div>
   </div>
 </body>
