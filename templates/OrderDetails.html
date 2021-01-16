@@ -37,6 +37,11 @@
          {
           border-bottom: 1px solid #D3D3D3;
          }
+         tr.borderbtmtbl td{
+         border-bottom: 1px solid #D3D3D3;
+         }
+         td{
+         margin-right:0;}
     </style>
 </head>
 <body>
@@ -64,7 +69,7 @@
                 <td>{{ Totals[0][0] }} L.L.</td></tr>
             <tr><td>Shipping</td>
                 <td>{{ Totals[0][1] }}  L.L.</td></tr>
-            <tr><td>Total</td>
+            <tr class="borderbtmtbl"><td>Total</td>
                 <td>{{ Totals[0][2] }}  L.L.</td></tr>
         </table>
         <table class="OrderAdr" style="display:none">
