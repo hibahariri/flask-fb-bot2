@@ -62,47 +62,17 @@
                {% endfor %}
         </table>
           </div>
-        <table class="OrderItems">
-                <tr class="borderbtm">
-                    <th class="image"></th>
-                    <th class="Desc">Desc.</th>
-                    <th class="Qty">Qty</th>
-                    <th class="amount">Amount</th>
-                    <th></th>
-                </tr>
-                {% for item in items %}
-                 <tr class="borderbtm">
-                    <td  class="image"><img class="img" src={{ item[1] }} alt="" /></td>
-                     <td class="Desc"><span>{{ item[0] }}</span></td>
-                    <td class="Qty"><span>{{ item[3] }}</span></td>
-                     <td class="amount"><span>{{ item[2] }}</span></td>
-                     <td>L.L.</td>
-                 </tr>
-               {% endfor %}
-        </table>
-          <div style="border-bottom: 1px solid #D3D3D3">
-           <table class="Ordersum" >
-            <th>Order Summary</th>
-            <tr><td >subtotal</td>
-                <td>{{ Totals[0][0] }} L.L.</td></tr>
-            <tr><td>Shipping</td>
-                <td>{{ Totals[0][1] }}  L.L.</td></tr>
-            <tr><td>Total</td>
-                <td>{{ Totals[0][2] }}  L.L.</td></tr>
-        </table>
           </div>
-
-          <div style="border-bottom: 1px solid #D3D3D3">
+          <div >
             <table class="OrderAdr" >
             <th>Shipping Address</th>
-            <tr><td>Full name</td>
-                <td>{{ Adr[0][0] }}</td></tr>
-            <tr><td>Address</td>
-                <td><span>{{ Adr[0][1] }}</span>
-                    <span>{{ Adr[0][2] }}</span>
+            <tr><td style="width:50%">Full name</td>
+                <td style="width:50%">{{ Adr[0][0] }}</td></tr>
+            <tr><td style="width:50%">Address</td>
+                <td style="width:50%"><span>{{ Adr[0][1] }}</span>
                 </td></tr>
-            <tr><td>Telephone</td>
-                <td>{{ Adr[0][3] }}</td></tr>
+            <tr><td style="width:50%">Telephone</td>
+                <td style="width:50%">{{ Adr[0][3] }}</td></tr>
          </table>
           </div>
       </div>
