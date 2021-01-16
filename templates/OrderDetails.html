@@ -37,9 +37,6 @@
          {
           border-bottom: 1px solid #D3D3D3;
          }
-         div {
-           white-space: pre;
-         }
     </style>
 </head>
 <body>
@@ -55,8 +52,7 @@
                 {% for item in items %}
                  <tr class="borderbtm">
                     <td  class="image"><img class="img" src={{ item[1] }} alt="" /></td>
-                     <td class="Desc"><span>{{ item[0] }}</span>
-                                       <span>{{ item[3] }}</span></td>
+                     <td class="Desc"><span>{{ item[0] }}</span></td>
                     <td class="Qty"><span>{{ item[3] }}</span></td>
                      <td class="amount"><span>{{ item[2] }} L.L.</span></td>
                  </tr>
