@@ -37,16 +37,31 @@
          {
           border-bottom: 1px solid #D3D3D3;
          }
-         tr.borderbtmtbl td{
-         border-bottom: 1px solid #D3D3D3;
-         }
-         td{
-         margin-right:0;}
     </style>
 </head>
 <body>
   <div class="Container">
       <div class="conetntwrap">
+          <div style="border-bottom: 1px solid #D3D3D3">
+              <table class="OrderItems">
+                <tr class="borderbtm">
+                    <th class="image"></th>
+                    <th class="Desc">Desc.</th>
+                    <th class="Qty">Qty</th>
+                    <th class="amount">Amount</th>
+                    <th></th>
+                </tr>
+                {% for item in items %}
+                 <tr class="borderbtm">
+                    <td  class="image"><img class="img" src={{ item[1] }} alt="" /></td>
+                     <td class="Desc"><span>{{ item[0] }}</span></td>
+                    <td class="Qty"><span>{{ item[3] }}</span></td>
+                     <td class="amount"><span>{{ item[2] }}</span></td>
+                     <td>L.L.</td>
+                 </tr>
+               {% endfor %}
+        </table>
+          </div>
         <table class="OrderItems">
                 <tr class="borderbtm">
                     <th class="image"></th>
@@ -65,16 +80,20 @@
                  </tr>
                {% endfor %}
         </table>
-        <table class="Ordersum" style="float:right">
+          <div style="border-bottom: 1px solid #D3D3D3">
+           <table class="Ordersum" >
             <th>Order Summary</th>
-            <tr><td style="float:left">subtotal</td>
-                <td style="float:right">{{ Totals[0][0] }} L.L.</td></tr>
-            <tr><td style="float:left">Shipping</td>
-                <td style="float:right">{{ Totals[0][1] }}  L.L.</td></tr>
-            <tr class="borderbtmtbl"><td style="float:left">Total</td>
-                <td style="float:right">{{ Totals[0][2] }}  L.L.</td></tr>
+            <tr><td >subtotal</td>
+                <td>{{ Totals[0][0] }} L.L.</td></tr>
+            <tr><td>Shipping</td>
+                <td>{{ Totals[0][1] }}  L.L.</td></tr>
+            <tr><td>Total</td>
+                <td>{{ Totals[0][2] }}  L.L.</td></tr>
         </table>
-        <table class="OrderAdr" style="display:none">
+          </div>
+
+          <div style="border-bottom: 1px solid #D3D3D3">
+            <table class="OrderAdr" >
             <th>Shipping Address</th>
             <tr><td>Full name</td>
                 <td>{{ Adr[0][0] }}</td></tr>
@@ -84,7 +103,8 @@
                 </td></tr>
             <tr><td>Telephone</td>
                 <td>{{ Adr[0][3] }}</td></tr>
-        </table>
+         </table>
+          </div>
       </div>
       <div>
           <footer class="footer"><a href="{{ url_for('ShowOrders', recid=recid) }}">Back to orders</a></footer>
