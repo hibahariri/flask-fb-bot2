@@ -33,7 +33,7 @@
          td{
          font-variant-numeric: oldstyle-nums;
          }
-         .borderbtm
+         tr.borderbtm td
          {
           border-bottom: 1px solid #D3D3D3;
          }
@@ -58,7 +58,7 @@
                  </tr>
                {% endfor %}
         </table>
-        <table class="Ordersum">
+        <table class="Ordersum" style="float:right">
             <th>Order Summary</th>
             <tr><td>subtotal</td>
                 <td>{{ Totals[0][0] }} L.L.</td></tr>
@@ -67,7 +67,7 @@
             <tr><td>Total</td>
                 <td>{{ Totals[0][2] }}  L.L.</td></tr>
         </table>
-        <table class="OrderAdr">
+        <table class="OrderAdr" style="display:none">
             <th>Shipping Address</th>
             <tr><td>Full name</td>
                 <td>{{ Adr[0][0] }}</td></tr>
