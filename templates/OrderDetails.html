@@ -53,24 +53,26 @@
                     <th class="Desc">Desc.</th>
                     <th class="Qty">Qty</th>
                     <th class="amount">Amount</th>
+                    <th></th>
                 </tr>
                 {% for item in items %}
                  <tr class="borderbtm">
                     <td  class="image"><img class="img" src={{ item[1] }} alt="" /></td>
                      <td class="Desc"><span>{{ item[0] }}</span></td>
                     <td class="Qty"><span>{{ item[3] }}</span></td>
-                     <td class="amount"><span>{{ item[2] }} L.L.</span></td>
+                     <td class="amount"><span>{{ item[2] }}</span></td>
+                     <td>L.L.</td>
                  </tr>
                {% endfor %}
         </table>
         <table class="Ordersum" style="float:right">
             <th>Order Summary</th>
-            <tr><td>subtotal</td>
-                <td>{{ Totals[0][0] }} L.L.</td></tr>
-            <tr><td>Shipping</td>
-                <td>{{ Totals[0][1] }}  L.L.</td></tr>
-            <tr class="borderbtmtbl"><td>Total</td>
-                <td>{{ Totals[0][2] }}  L.L.</td></tr>
+            <tr><td style="float:left">subtotal</td>
+                <td style="float:right">{{ Totals[0][0] }} L.L.</td></tr>
+            <tr><td style="float:left">Shipping</td>
+                <td style="float:right">{{ Totals[0][1] }}  L.L.</td></tr>
+            <tr class="borderbtmtbl"><td style="float:left">Total</td>
+                <td style="float:right">{{ Totals[0][2] }}  L.L.</td></tr>
         </table>
         <table class="OrderAdr" style="display:none">
             <th>Shipping Address</th>
