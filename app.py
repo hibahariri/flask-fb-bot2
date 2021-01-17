@@ -273,7 +273,8 @@ def get_message(message_sent):
         real_response = json_response['result']['fulfillment']['speech']
         user_response = [real_response, "text"]
     elif action is not None:
-        parameters = []
+        parameters = result.get('parameters')
+        print(parameters)
         print("has action")
         user_response = get_response(action, parameters)
     else:

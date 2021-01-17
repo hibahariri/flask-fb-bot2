@@ -85,8 +85,7 @@ td { white-space:pre }
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <tr>
                     <td><a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">{{ Order[0] }}</a></td>
-                    <td>{{ Order[3] }}
-                        {{ Order[2] }}</td>
+                    <td>{{ Order[3] }}</td>
                     <td>{{ Order[2] }}</td>
                     <td>{{ Order[4] }}</td>
                     {% if Order[1] ==0 %}
