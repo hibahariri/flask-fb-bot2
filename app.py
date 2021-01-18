@@ -275,6 +275,7 @@ def get_message(message_sent):
     elif action is not None:
         parameters = result.get('parameters')
         print(parameters)
+        print(parameters.get('product-type'))
         print("has action")
         user_response = get_response(action, parameters)
     else:
