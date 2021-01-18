@@ -43,6 +43,18 @@ def get_categories():
     return records
 
 
+def get_category(category):
+    con = connect_todb()
+    cur = con[0].cursor()
+    cur.execute(
+        "Select cat_name,cat_description,cat_image, (select GROUP_CONCAT(subcatName SEPARATOR ', ') from subcategory where catID = cat_id) from category where cat_name =%s",
+        (category.strip(),))
+    records = cur.fetchall()
+    cur.close()
+    con[0].close()
+    return records
+
+
 def get_subcat():
     con = connect_todb()
     cur = con[0].cursor()

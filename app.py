@@ -248,6 +248,10 @@ def get_response(action, parameters):
     elif action == "Add_ToCart":
         records = DatabaseResponse.Add_ToCart(parameters)
         user_response = [records, "text"]
+    elif action == "get-category":
+        parameters = parameters.get('product-type')
+        records = DatabaseResponse.get_category(parameters)
+        user_response = [records, "Generic template", "Categories"]
     elif action == "Send-location":
         print("location")
         record = DatabaseResponse.locationparam()
@@ -275,7 +279,6 @@ def get_message(message_sent):
     elif action is not None:
         parameters = result.get('parameters')
         print(parameters)
-        print(parameters.get('product-type'))
         print("has action")
         user_response = get_response(action, parameters)
     else:
