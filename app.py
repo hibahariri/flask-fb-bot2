@@ -170,7 +170,7 @@ def ShowOrders(recid):
         Orders = DatabaseResponse.get_Orders(recid)
         pages = math.ceil(len(Orders) / 15)
         chunks = np.array_split(Orders, pages)
-        return render_template('Order.html', Orders=Orders, recid=recid,chunks=chunks)
+        return render_template('Order.html', Orders=Orders, recid=recid, chunks=chunks)
     else:
         print(request.form['fname'])
         return "submitted"
@@ -251,7 +251,7 @@ def get_response(action, parameters):
         records = DatabaseResponse.get_items(parameters)
         user_response = [records, "Generic template", "Items"]
     elif action == "get-Items":
-        parameters =[parameters.get('product-brand'),parameters.get('products')]
+        parameters = parameters.get('product-brand') + "," + parameters.get('products')
         print(parameters)
         records = DatabaseResponse.get_items(parameters)
         user_response = [records, "Generic template", "Items"]
