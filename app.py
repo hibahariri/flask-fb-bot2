@@ -322,6 +322,13 @@ def send_message(recipient_id, response):
             "text": "Choose from our availbale " + text,
             "quick_replies": quick_replies
         })
+        button = [{
+            "type": "postback",
+            "title": "My Cart",
+            "payload":"Hi",
+        },
+        ]
+        bot.send_button_message(recipient_id, " ", button)
     elif response[1] == "Generic template":
         if response[2] == "Items":
             Generic_replies = []
@@ -382,10 +389,8 @@ def send_message(recipient_id, response):
                             }
                         ]})
         bot.send_generic_message(recipient_id, Generic_replies)
-        # the below button is just for testing
     elif response[1] == "Button":
         records = recipient_id
-        print(records)
         button = [{
             "type": "web_url",
             "title": "My Cart",
