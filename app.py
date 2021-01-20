@@ -314,8 +314,12 @@ def send_message(recipient_id, response):
             else:
                 payload = response[2] + row[0] + "," + response[3] + ")"
             quick_replies.append({"content_type": "text", "title": row[0], "payload": payload, })
+        if response[2] == "Items(":
+            text = "Brands"
+        else:
+            text = "Products"
         bot.send_message(recipient_id, {
-            "text": "Pick a category:",
+            "text": "Choose from our availbale " + text,
             "quick_replies": quick_replies
         })
     elif response[1] == "Generic template":
