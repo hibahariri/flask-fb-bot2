@@ -74,7 +74,7 @@
         </div>
        <div >
             {% if not Adr %}
-              Fill Address information <a href="{{ url_for('fillAddress', recid=recid, ordid=Order[0]) }}">here</a> and submit your order now.
+              Fill Address information <a href="{{ url_for('fillAddress', recid=recid, ordid=ordid[0][0]) }}">here</a> and submit your order now.
             {% else %}
              <table class="OrderAdr" >
             <th>Shipping Address</th>
