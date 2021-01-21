@@ -58,12 +58,13 @@ button[type='submit']{
 color: Black;}
 
  .itemrow{
- border-radius: 25px;
+ border-radius: 20px;
  border: 1px solid #D3D3D3;
- height:50px;
+ height:100px;
  margin-top:10px;
  }
-
+.itemrow:last-child{
+margin-bottom:10px;}
 
     </style>
 </head>
@@ -92,23 +93,23 @@ color: Black;}
                 </table>
                  {% for Order in Orders %}
                  <div class="itemrow">
-                <table style="width:100%" style="margin-top:8px">
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
+                <table style="width:100%; margin-top:8px" >
                 <tr>
-
-                    <td><a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">{{ Order[0] }}</a></td>
-                    <td>{{ Order[3] }}</td>
-                    <td>{{ Order[2] }}</td>
-                    <td>{{ Order[4] }}</td>
+                    <td><a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">{{ Order[0] }}</a></td></tr>
+                  <tr><td>{{ Order[3] }}</td></tr>
+                  <tr>  <td>{{ Order[2] }}</td></tr>
+                  <tr>  <td>{{ Order[4] }}</td></tr>
                     {% if Order[1] ==0 %}
-                       <td><button type="submit" ><i class="fa fa-check"></i></button></td>
+                      <tr> <td><button type="submit" ><i class="fa fa-check"></i></button></td><tr>
                      {% else %}
-                        <td></td>
+                      <tr>  <td></td></tr>
                     {% endif %}
 
-                </tr>
+
+                 </table>
                  </form>
-                    </table>
+
              </div>
                 {% endfor %}
         </div>
