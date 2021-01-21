@@ -60,6 +60,8 @@ color: Black;}
  .itemrow{
  border-radius: 25px;
  border: 1px solid #D3D3D3;
+ height:50px;
+ margin-top:10px;
  }
 
 
@@ -90,7 +92,7 @@ color: Black;}
                 </table>
                  {% for Order in Orders %}
                  <div class="itemrow">
-                <table>
+                <table style="width:100%" style="margin-top:8px">
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <tr>
 
