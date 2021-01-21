@@ -72,22 +72,7 @@
                 <td>{{ Totals[0][2] }} L.L.</td></tr>
             </table>
         </div>
-          <div >
-            {% if not Adr %}
-              Fill Address information here and submit your order now.
-            {% else %}
-             <table class="OrderAdr" >
-            <th>Shipping Address</th>
-            <tr><td >Full name</td>
-                <td >{{ Adr[0][0] }}</td></tr>
-            <tr><td >Address</td>
-                <td ><span>{{ Adr[0][1] }}</span>
-                </td></tr>
-            <tr><td >Telephone</td>
-                <td>{{ Adr[0][3] }}</td></tr>
-         </table>
-             {% endif %}
-          </div>
+
       </div>
       <div>
           <footer class="footer"><a href="{{ url_for('ShowOrders', recid=recid) }}">Back to orders</a></footer>
