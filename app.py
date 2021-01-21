@@ -322,13 +322,6 @@ def send_message(recipient_id, response):
             "text": "Choose from our availbale " + text,
             "quick_replies": quick_replies
         })
-        button = [{
-            "type": "postback",
-            "title": "My Cart",
-            "payload":"Hi",
-        },
-        ]
-        bot.send_button_message(recipient_id, " ", button)
     elif response[1] == "Generic template":
         if response[2] == "Items":
             Generic_replies = []

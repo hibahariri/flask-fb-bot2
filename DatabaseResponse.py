@@ -109,6 +109,9 @@ def Add_ToCart(CartItem):
     print(b)
     con = connect_todb()
     cur = con[0].cursor()
+    cur.execute("SELECT stock FROM heroku_ff6cdbed3d2eb70.item where ItemDesc=%s",(a.strip(),))
+    records = cur.fetchall()
+    print(records)
     r = cur.execute(
         "Insert into Cart(ItemID, userID, Quantity,Isdeleted,itemstatus)  values ((select ItemID from item where itemDesc = %s),(Select userID from user where recipientID = %s),1,'No','Opened')",
         (a.strip(), b.strip()))
@@ -116,7 +119,7 @@ def Add_ToCart(CartItem):
     cur.close()
     con[0].close()
     if cur.rowcount == 1:
-        RECORD = "Inserted"
+        RECORD = "Item has been added to your cart"
     else:
         RECORD = "can't insert"
     return RECORD
