@@ -10,7 +10,7 @@
    .card-body label{
 	font-size: 14px;
 }
-.Hovertr:hover {
+.itemrow:hover {
   background: #f2f3ff;
   outline: none;
 }
@@ -62,9 +62,9 @@ color: Black;}
  border: 1px solid #D3D3D3;
  height:100px;
  margin-top:10px;
- -webkit-box-shadow: 0 0 5px 2px #D3D3D3;
-  -moz-box-shadow: 0 0 5px 2px #D3D3D3;
-   box-shadow: 0 0 5px 2px #D3D3D3;
+ -webkit-box-shadow: 0 0 6px 1px #D3D3D3;
+  -moz-box-shadow: 0 0 6px 1px #D3D3D3;
+   box-shadow: 0 0 6px 1px #D3D3D3;
  }
 .itemrow:last-child{
 margin-bottom:10px;}
@@ -95,25 +95,21 @@ margin-bottom:10px;}
                 </tr>
                 </table>
                  {% for Order in Orders %}
+                 <a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">
                  <div class="itemrow">
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <table style="width:50%; margin-top:8px;float: left" >
                 <tr>
-                    <td><a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}"># {{ Order[0] }}</a></td></tr>
+                    <td># {{ Order[0] }}</td></tr>
                   <tr><td>{{ Order[3] }}</td></tr>
                   <tr>  <td>{{ Order[2] }}</td></tr>
                  </table>
                   <table style="width:50%;margin-top:8px;float: left">
                       <tr>  <td>{{ Order[4] }}</td></tr>
-                    {% if Order[1] ==0 %}
-                      <tr> <td><button type="submit" ><i class="fa fa-check"></i></button></td><tr>
-                     {% else %}
-                      <tr>  <td></td></tr>
-                    {% endif %}
                   </table>
                  </form>
-
              </div>
+              </a>
                 {% endfor %}
         </div>
 		</div>
