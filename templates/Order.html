@@ -61,7 +61,19 @@ color: Black;}
  }
 .itemrow:last-child{
 margin-bottom:10px;}
-
+ ul{
+ display:flex;}
+ ul li{
+ list-style:none;
+ background:#eee;
+ padding:8px 20px;
+ margin:5px;
+ letter-spacing:1px;
+ cursor:pointer;
+ }
+ ul li.active{
+ color:#fff
+ }
     </style>
 </head>
 <body>
@@ -78,18 +90,15 @@ margin-bottom:10px;}
 				  	</div>
                     </div>
 				  	<div class="card-body" style="padding:0">
-            <table style="width:100%">
-                <tr>
-                    <td><h6>Order </h6></td>
-                    <td><h6>Date</h6></td>
-                    <td><h6>Amount</h6></td>
-                    <td><h6>Status</h6></td>
-                    <td><h6>Confirm</h6></td>
-                </tr>
-                </table>
+                 <ul>
+                     <li class="list active" data-filter="All" onclick="getOrders('All')">All</li>
+                     <li class="list" data-filter="Processing" onclick="getOrders('Processing')">Processing</li>
+                     <li class="list" data-filter="Open" onclick="getOrders('Open')">Open</li>
+                     <li class="list" data-filter="Delivered" onclick="getOrders('Delivered')">Delivered</li>
+                 </ul>
                  {% for Order in Orders %}
                  <a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">
-                 <div class="itemrow">
+                 <div class="itemrow Processing">
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <table style="width:50%; margin-top:8px;float: left" >
                 <tr>
@@ -111,6 +120,13 @@ margin-bottom:10px;}
 		</div>
 	</div>
 <script>
+    function getOrders(class){
+    var  e = document.querySelectorAll("div:not(.Processing)")
+    for (let i = 0; i < e.length; i++) {
+     Elem =  e.item(i)
+     Elem.style.display = 'none'
+      }
+    }
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
