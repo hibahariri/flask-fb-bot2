@@ -160,7 +160,7 @@ def openOrder(recid, ordid):
     items = DatabaseResponse.get_orderitems(ordid)
     Totals = DatabaseResponse.get_orderAmount(ordid)
     Adr = DatabaseResponse.get_orderAddress(ordid)
-    return render_template('OrderDetails.html', recid=recid, items=items, Totals=Totals, Adr=Adr)
+    return render_template('OrderDetails.html', recid=recid, items=items, Totals=Totals, Adr=Adr,ordid=ordid)
 
 
 @app.route('/Order/<recid>', methods=['GET', 'POST'])
