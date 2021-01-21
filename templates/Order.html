@@ -61,19 +61,7 @@ color: Black;}
  }
 .itemrow:last-child{
 margin-bottom:10px;}
- ul{
- display:flex;}
- ul li{
- list-style:none;
- background:#eee;
- padding:8px 20px;
- margin:5px;
- letter-spacing:1px;
- cursor:pointer;
- }
- ul li.active{
- color:#fff
- }
+
     </style>
 </head>
 <body>
@@ -90,14 +78,8 @@ margin-bottom:10px;}
 				  	</div>
                     </div>
 				  	<div class="card-body" style="padding:0">
-                 <ul>
-                     <li class="list active" data-filter="All" onclick="getOrders('All')">All</li>
-                     <li class="list" data-filter="Processing" onclick="getOrders('Processing')">Processing</li>
-                     <li class="list" data-filter="Open" onclick="getOrders('Open')">Open</li>
-                     <li class="list" data-filter="Delivered" onclick="getOrders('Delivered')">Delivered</li>
-                 </ul>
                  {% for Order in Orders %}
-                 <a class="Processing" href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">
+                 <a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">
                  <div class="itemrow">
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <table style="width:50%; margin-top:8px;float: left" >
@@ -120,11 +102,6 @@ margin-bottom:10px;}
 		</div>
 	</div>
 <script>
-    function getOrders(class){
-      document.querySelectorAll(".Processing").forEach(function(el) {
-        el.style.display = 'none';
-        });
-    }
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
