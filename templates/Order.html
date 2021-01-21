@@ -56,7 +56,13 @@ button[type='submit']{
 
  a{
 color: Black;}
-td { white-space:pre }
+
+ .itemrow{
+ border-radius: 25px;
+ border: 1px solid #D3D3D3;
+ }
+
+
     </style>
 </head>
 <body>
@@ -81,9 +87,13 @@ td { white-space:pre }
                     <td><h6>Status</h6></td>
                     <td><h6>Confirm</h6></td>
                 </tr>
+                </table>
                  {% for Order in Orders %}
+                 <div class="itemrow">
+                <table>
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <tr>
+
                     <td><a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">{{ Order[0] }}</a></td>
                     <td>{{ Order[3] }}</td>
                     <td>{{ Order[2] }}</td>
@@ -93,10 +103,12 @@ td { white-space:pre }
                      {% else %}
                         <td></td>
                     {% endif %}
+
                 </tr>
                  </form>
+                    </table>
+             </div>
                 {% endfor %}
-            </table>
         </div>
 		</div>
 		</div>
