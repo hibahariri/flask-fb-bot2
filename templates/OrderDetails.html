@@ -73,7 +73,10 @@
             </table>
         </div>
           <div >
-            <table class="OrderAdr" >
+            {% if not Adr %}
+              Fill Address information here and submit your order now.
+            {% else %}
+             <table class="OrderAdr" >
             <th>Shipping Address</th>
             <tr><td >Full name</td>
                 <td >{{ Adr[0][0] }}</td></tr>
@@ -83,6 +86,7 @@
             <tr><td >Telephone</td>
                 <td>{{ Adr[0][3] }}</td></tr>
          </table>
+             {% endif %}
           </div>
       </div>
       <div>
