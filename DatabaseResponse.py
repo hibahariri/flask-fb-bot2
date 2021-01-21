@@ -192,6 +192,7 @@ def create_order(recipientID):
 
 
 def fill_Address(recipientID, addr, orderid):
+    print(orderid)
     con = connect_todb()
     cur = con[0].cursor()
     r = cur.execute("insert into orderaddress(Fullname,Address1,Address2,telephoneNo) values (%s,%s,%s,%s)",

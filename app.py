@@ -157,6 +157,7 @@ def openPayments():
 
 @app.route('/OrderDetails/<recid>/<ordid>', methods=['GET'])
 def openOrder(recid, ordid):
+    print(ordid)
     items = DatabaseResponse.get_orderitems(ordid)
     Totals = DatabaseResponse.get_orderAmount(ordid)
     Adr = DatabaseResponse.get_orderAddress(ordid)
@@ -179,6 +180,7 @@ def ShowOrders(recid):
 @app.route('/ShippingAddress/<recid>/<rec>', methods=['GET', 'POST'])
 def fillAddress(recid, rec):
     if request.method == 'GET':
+        print(rec)
         return render_template('ShippingAddress.html', recid=recid, rec=rec)
     else:
         adr = [request.form['Fullname'], request.form['Address1'], request.form['Address2'], request.form['Phone']]
