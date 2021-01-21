@@ -97,8 +97,8 @@ margin-bottom:10px;}
                      <li class="list" data-filter="Delivered" onclick="getOrders('Delivered')">Delivered</li>
                  </ul>
                  {% for Order in Orders %}
-                 <a href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">
-                 <div class="itemrow Processing">
+                 <a class="Processing" href="{{ url_for('openOrder', recid=recid, ordid=Order[0]) }}">
+                 <div class="itemrow">
                 <form action="/ShippingAddress/{{ recid }}/{{ Order[0] }}" method="Get">
                 <table style="width:50%; margin-top:8px;float: left" >
                 <tr>
@@ -121,7 +121,7 @@ margin-bottom:10px;}
 	</div>
 <script>
     function getOrders(class){
-    var  e = document.querySelectorAll("div:not(.Processing)")
+    var  e = document.querySelectorAll("a:not(.All)")
     for (let i = 0; i < e.length; i++) {
      Elem =  e.item(i)
      Elem.style.display = 'none'
