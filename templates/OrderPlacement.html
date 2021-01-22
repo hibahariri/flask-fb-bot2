@@ -9,6 +9,7 @@
     <style>
        .card-body label{
 	font-size: 14px;
+	font-family: 'Times New Roman', sans-serif;
 }
 
 .no-border{
@@ -54,16 +55,16 @@ color: Black;
 				  	<div class="card-body">
             <table style="width:100%;font-variant-numeric: oldstyle-nums;">
                 <tr>
-                    <td>Sub Total</td>
-                    <td>{{ Totals[0][0] }}  L.L.</td>
+                    <td >Sub Total</td>
+                    <td style="float:right; font-size:20px">{{ Totals[0][0] }}  L.L.</td>
                 </tr>
                 <tr>
                     <td>Shipping</td>
-                    <td>{{ Totals[1] }}  </td>
+                    <td style="float:right; font-size:17px">{{ Totals[1] }}  </td>
                 </tr>
                 <tr>
                    <td>Total</td>
-                    <td>{{ Totals[2] }}  L.L.</td>
+                    <td style="float:right; font-size:20px">{{ Totals[2] }}  L.L.</td>
                 </tr>
 
             </table>
