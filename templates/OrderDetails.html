@@ -73,14 +73,14 @@
         <div style="border-bottom: 1px solid #D3D3D3;margin-top:10px;" >
             <table class="OrderSum" style="width:100%">
                 <th>Order Summary</th>
-                <tr><td >Sub Total</td>
+                <tr style="height:30px;"><td style="width:75%;padding-left:20px;">Sub Total</td>
                 <td class="colum2">{{ Totals[0][0] }}</td>
                 <td class="colum3">L.L.</td>
                 </tr>
-                <tr><td >Shipping</td>
+                <tr style="height:30px;"><td style="width:75%;padding-left:20px;">Shipping</td>
                 <td class="colum2">{{ Totals[0][1] }}</td>
                 <td class="colum3">L.L.</td>   </tr>
-            <tr><td >Total</td>
+            <tr style="height:30px;"><td style="width:75%;padding-left:20px;">Total</td>
                 <td class="colum2">{{ Totals[0][2] }}</td>
                 <td class="colum3">L.L.</td>
             </tr>
@@ -92,13 +92,13 @@
             {% else %}
              <table class="OrderAdr" >
             <th>Shipping Address</th>
-            <tr><td >Full name</td>
-                <td >{{ Adr[0][0] }}</td></tr>
-            <tr><td >Address</td>
-                <td ><span>{{ Adr[0][1] }}</span>
+            <tr style="height:30px;" ><td style="padding-left:20px;">Full name</td>
+                <td style="float:right">{{ Adr[0][0] }}</td></tr>
+            <tr style="height:30px;"><td style="padding-left:20px;">Address</td>
+                <td style="float:right"><span>{{ Adr[0][1] }}</span>
                 </td></tr>
-            <tr><td >Telephone</td>
-                <td>{{ Adr[0][3] }}</td></tr>
+            <tr style="height:30px;"><td style="padding-left:20px;">Telephone</td>
+                <td style="float:right">{{ Adr[0][3] }}</td></tr>
          </table>
              {% endif %}
           </div>
