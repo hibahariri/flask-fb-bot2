@@ -29,7 +29,8 @@
          position: absolute;
          bottom: 0;
          width: 100%;
-         height: 30px;}
+         height: 30px;
+         text-align:center;}
          td{
          font-variant-numeric: oldstyle-nums;
          }
@@ -72,7 +73,6 @@
           </div>
         <div style="border-bottom: 1px solid #D3D3D3;margin-top:10px;" >
             <table class="OrderSum" style="width:100%">
-                <th>Order Summary</th>
                 <tr style="height:30px;"><td style="width:75%;padding-left:20px;">Sub Total</td>
                 <td class="colum2">{{ Totals[0][0] }}</td>
                 <td class="colum3">L.L.</td>
@@ -90,15 +90,14 @@
             {% if not Adr %}
               Fill Address information <a href="{{ url_for('fillAddress', recid=recid, rec=ordid) }}">here</a> and submit your order now.
             {% else %}
-             <table class="OrderAdr" >
-            <th>Shipping Address</th>
+             <table class="OrderAdr" style="width:100%">
             <tr style="height:30px;" ><td style="padding-left:20px;">Full name</td>
-                <td style="float:right">{{ Adr[0][0] }}</td></tr>
+                <td style="float:right;width:50%;">{{ Adr[0][0] }}</td></tr>
             <tr style="height:30px;"><td style="padding-left:20px;">Address</td>
-                <td style="float:right"><span>{{ Adr[0][1] }}</span>
+                <td style="float:right;width:50%;"><span>{{ Adr[0][1] }}</span>
                 </td></tr>
             <tr style="height:30px;"><td style="padding-left:20px;">Telephone</td>
-                <td style="float:right">{{ Adr[0][3] }}</td></tr>
+                <td style="float:right;width:50%;">{{ Adr[0][3] }}</td></tr>
          </table>
              {% endif %}
           </div>
