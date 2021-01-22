@@ -256,6 +256,7 @@ def get_response(action, parameters):
         parameters = parameters.get('product-brand') + "," + parameters.get('products')
         print(parameters)
         records = DatabaseResponse.get_items(parameters)
+        print(records)
         user_response = [records, "Generic template", "Items"]
     elif action == "Add_ToCart":
         records = DatabaseResponse.Add_ToCart(parameters)
