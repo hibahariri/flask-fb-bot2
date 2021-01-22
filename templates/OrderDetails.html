@@ -23,7 +23,7 @@
          min-height: 100vh;
         }
         .conetntwrap{
-         padding-bottom: 50px;
+         padding-bottom: 70px;
         }
         .footer{
          position: absolute;
@@ -88,7 +88,7 @@
         </div>
        <div style="margin-top:10px;">
             {% if not Adr %}
-              Fill Address information <a href="{{ url_for('fillAddress', recid=recid, rec=ordid) }}">here</a> and submit your order now.
+               <a href="{{ url_for('fillAddress', recid=recid, rec=ordid) }}"><img src="/static/images/Home.png" width="20" height="20">Fill Address</a>
             {% else %}
              <table class="OrderAdr" style="width:100%">
             <tr style="height:30px;" ><td style="padding-left:20px;">Full name</td>
