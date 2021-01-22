@@ -257,7 +257,7 @@ def get_response(action, parameters):
         print(parameters)
         records = DatabaseResponse.get_items(parameters)
         if not records:
-            records = "We couldn't find what you're looking for"
+            records = "Sorry we couldn't find what you're looking for"
             user_response = [records, "text"]
         else:
             user_response = [records, "Generic template", "Items"]
