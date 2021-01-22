@@ -161,7 +161,7 @@ def openOrder(recid, ordid):
     items = DatabaseResponse.get_orderitems(ordid)
     Totals = DatabaseResponse.get_orderAmount(ordid)
     Adr = DatabaseResponse.get_orderAddress(ordid)
-    return render_template('OrderDetails.html', recid=recid, items=items, Totals=Totals, Adr=Adr,ordid=ordid)
+    return render_template('OrderDetails.html', recid=recid, items=items, Totals=Totals, Adr=Adr, ordid=ordid)
 
 
 @app.route('/Order/<recid>', methods=['GET', 'POST'])
@@ -256,8 +256,11 @@ def get_response(action, parameters):
         parameters = parameters.get('product-brand') + "," + parameters.get('products')
         print(parameters)
         records = DatabaseResponse.get_items(parameters)
-        print(records)
-        user_response = [records, "Generic template", "Items"]
+        if not records:
+            records = "We couldn't find what you're looking for"
+            user_response = [records, "text"]
+        else:
+            user_response = [records, "Generic template", "Items"]
     elif action == "Add_ToCart":
         records = DatabaseResponse.Add_ToCart(parameters)
         user_response = [records, "text"]
