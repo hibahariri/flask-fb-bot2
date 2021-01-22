@@ -36,6 +36,10 @@
          a {
          color:black;
          text-decoration:none;}
+         .colum23{
+         content-align:center;
+         float:right;
+         }
     </style>
 </head>
 <body>
@@ -61,18 +65,23 @@
                {% endfor %}
         </table>
           </div>
-        <div style="border-bottom: 1px solid #D3D3D3" >
-            <table class="OrderSum">
+        <div style="border-bottom: 1px solid #D3D3D3;margin-top:10px;" >
+            <table class="OrderSum" style="width:100%">
                 <th>Order Summary</th>
                 <tr><td >Sub Total</td>
-                <td >{{ Totals[0][0] }} L.L.</td></tr>
+                <td class="colum23">{{ Totals[0][0] }</td>
+                <td class="colum23">L.L.</td>
+                </tr>
                 <tr><td >Shipping</td>
-                <td >{{ Totals[0][1] }} L.L.</td></tr>
+                <td class="colum23">{{ Totals[0][1] }}</td>
+                <td class="colum23">L.L.</td>   </tr>
             <tr><td >Total</td>
-                <td>{{ Totals[0][2] }} L.L.</td></tr>
+                <td class="colum23">{{ Totals[0][2] }}</td>
+                <td class="colum23">L.L.</td>
+            </tr>
             </table>
         </div>
-       <div >
+       <div style="margin-top:10px;">
             {% if not Adr %}
               Fill Address information <a href="{{ url_for('fillAddress', recid=recid, rec=ordid) }}">here</a> and submit your order now.
             {% else %}
