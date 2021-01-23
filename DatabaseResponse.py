@@ -270,3 +270,16 @@ def get_orderAddress(orderid):
     cur.close()
     con[0].close()
     return records
+
+
+def delete_Cartitem(cartid):
+    con = connect_todb()
+    cur = con[0].cursor()
+    delflag = "yes"
+    r = cur.execute("update Cart SET cart.Quantity = 0, cart.Isdeleted = %s where cart.CartID= %s",
+                    (delflag, cartid,))
+    con[0].commit()
+    cur.close()
+    con[0].close()
+    RECORD = "saved"
+    return RECORD

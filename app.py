@@ -164,6 +164,12 @@ def openOrder(recid, ordid):
     return render_template('OrderDetails.html', recid=recid, items=items, Totals=Totals, Adr=Adr, ordid=ordid)
 
 
+@app.route('/deleteOrder/<recid>/<cartid>', methods=['GET'])
+def deleteOrder(recid, cartid):
+    DatabaseResponse.delete_Cartitem(cartid)
+    return redirect(url_for('get_cart', recid=recid))
+
+
 @app.route('/Order/<recid>', methods=['GET', 'POST'])
 def ShowOrders(recid):
     if request.method == 'GET':
