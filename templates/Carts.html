@@ -187,7 +187,9 @@ margin-left: 0;
            <i class="fa fa-plus-circle"></i></button>
           </td>
           <td class="price"><input type="number" class ="pricetext" name={{ prixid }} value={{ item[5] }}  readonly > </td>
+          <form>
           <td class="delete"><button  class ="delete-btn" type="button" onclick="removeitem('{{ qtyid }}','{{ delid }}')"><i class="fa fa-trash"></i></button></td>
+           </form>
       </tr>
 {% endfor %}
   </table>
