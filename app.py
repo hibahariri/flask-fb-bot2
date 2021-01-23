@@ -15,9 +15,6 @@ ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
 
-Images = 'static/images/'
-app.config['Images'] = Images
-
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
     "get_started": {
@@ -29,7 +26,6 @@ headers = {
 }
 
 # Add get started button
-
 gsresp = requests.post(fb_url, headers=headers, data=json.dumps(data)).json()
 
 data4 = {
@@ -46,7 +42,7 @@ data2 = {
             "call_to_actions": [
                 {
                     "type": "postback",
-                    "title": "Our Departments",
+                    "title": "Our Categories",
                     "payload": "what do you sell"
                 },
                 {
@@ -67,7 +63,7 @@ data2 = {
             "call_to_actions": [
                 {
                     "type": "postback",
-                    "title": "Our Departments",
+                    "title": "Our Categories",
                     "payload": "what do you sell"
                 },
                 {
@@ -88,8 +84,6 @@ data2 = {
 # Add persistent menu
 pmresp = requests.post(fb_url, headers=headers, data=json.dumps(data2)).json()
 
-
-# del_icbr = requests.delete(fb_url, headers=headers, data=json.dumps(data4)).json()
 
 # Receive requests from facebook
 @app.route('/', methods=['GET', 'POST'])
@@ -140,40 +134,19 @@ def receive_message():
     return "Message Processed"
 
 
-@app.route('/index', methods=['GET', 'POST'])
-def success():
-    if request.method == 'GET':
-        return render_template('index.html')
-    else:
-        print(request.form['fname'])
-        return "submitted"
-
-
-# handles payments web view
-@app.route('/PaymentDetails', methods=['GET'])
-def openPayments():
-    return render_template('PaymentDetails.html')
-
-
+# handles Order details web view
 @app.route('/OrderDetails/<recid>/<ordid>', methods=['GET'])
 def openOrder(recid, ordid):
-    print(ordid)
     items = DatabaseResponse.get_orderitems(ordid)
     Totals = DatabaseResponse.get_orderAmount(ordid)
     Adr = DatabaseResponse.get_orderAddress(ordid)
     return render_template('OrderDetails.html', recid=recid, items=items, Totals=Totals, Adr=Adr, ordid=ordid)
 
 
-@app.route('/deleteOrder/<recid>/<cartid>', methods=['GET'])
-def deleteOrder(recid, cartid):
-    DatabaseResponse.delete_Cartitem(cartid)
-    return redirect(url_for('get_cart', recid=recid))
-
-
+# handles Orders web view
 @app.route('/Order/<recid>', methods=['GET', 'POST'])
 def ShowOrders(recid):
     if request.method == 'GET':
-        print("Orders scope")
         Orders = DatabaseResponse.get_Orders(recid)
         pages = math.ceil(len(Orders) / 15)
         chunks = np.array_split(Orders, pages)
@@ -183,10 +156,10 @@ def ShowOrders(recid):
         return "submitted"
 
 
+# handles Shipping Address web view
 @app.route('/ShippingAddress/<recid>/<rec>', methods=['GET', 'POST'])
 def fillAddress(recid, rec):
     if request.method == 'GET':
-        print(rec)
         return render_template('ShippingAddress.html', recid=recid, rec=rec)
     else:
         adr = [request.form['Fullname'], request.form['Address1'], request.form['Address2'], request.form['Phone']]
