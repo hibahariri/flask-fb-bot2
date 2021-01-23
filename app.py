@@ -14,6 +14,8 @@ app.config['SECRET_KEY'] = 'akbocTVre'
 ACCESS_TOKEN = 'EAAjWhObmBKgBANob0vUZBCjzaokbhx60vOQ7s2VmfWMi1G1vmIjSTZAY3ZAxk8V1fyoa4pFBHP8p4qZBsinyFEiCnvUVbSgi60YgNORoGajzCWfFrWfwZC2m0MIZBBcgXZBM4J5jfPpnIxyed6RLR13NkpZBc8IO6xPZAJXkkfbT1g77Tb9jl0BaghpJtP6YHBGIZD'
 VERIFY_TOKEN = 'abcVerTok'
 bot = Bot(ACCESS_TOKEN)
+Images = 'static/images/'
+app.config['Images'] = Images
 
 fb_url = "https://graph.facebook.com/v2.6/me/messenger_profile?access_token={}".format(ACCESS_TOKEN)
 data = {
