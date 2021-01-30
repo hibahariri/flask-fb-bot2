@@ -229,10 +229,12 @@ margin-left: 0;
     var table = document.getElementById('carttable');
     var rows = table.getElementsByTagName("tr");
     count = rows.length;
+    var rowCount = 0;
     for (var i = 0; i < rows.length; i++) {
     if (rows[i].style.display == 'none') {
-             window.alert('yes');
+             rowCount++;
             }
+    window.alert(rowCount)
     }
     }
 
