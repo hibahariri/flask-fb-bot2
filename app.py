@@ -173,6 +173,7 @@ def fillAddress(recid, rec):
 def PlaceOrder(recid):
     if request.method == 'GET':
         r = DatabaseResponse.get_orderpreview(recid)
+        print(r[0][0])
         if r[0][0] > 49000:
             r.append("Free shipping")
             r.append(r[0][0])
