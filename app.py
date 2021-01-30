@@ -174,6 +174,7 @@ def PlaceOrder(recid):
     if request.method == 'GET':
         r = DatabaseResponse.get_orderpreview(recid)
         if r[0][0] is None:
+            r[0][0] = 0
             r.append(0)
             r.append(0)
         else:
