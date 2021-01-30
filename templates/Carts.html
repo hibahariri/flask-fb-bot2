@@ -163,7 +163,7 @@ margin-left: 0;
 							</div>
 						</div>
 				  	</div>
-				  	<div class="card-body">
+				  	<div class="card-body" id ="cardbody">
                         <table id="carttable">
 {% set int = namespace(i=0) %}
 {% for item in items %}
@@ -237,7 +237,8 @@ margin-left: 0;
     }
     if (rowCount == count){
     window.alert(rowCount);
-    window.alert(count);}
+    document.getElementById("cardbody").innerHTML = "whatever";
+   }
 
     }
 
