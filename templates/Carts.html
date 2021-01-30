@@ -164,7 +164,7 @@ margin-left: 0;
 						</div>
 				  	</div>
 				  	<div class="card-body">
-                        <table>
+                        <table id="carttable">
 {% set int = namespace(i=0) %}
 {% for item in items %}
    {% set qtyid = "quantity" + int.i|string  %}
@@ -226,6 +226,10 @@ margin-left: 0;
     function removeitem(qtyid,delid){
     document.getElementById(qtyid).value = 0;
     document.getElementsByName(delid)[0].style.display = 'none';
+    rowcount = document.getElementById('carttable').childNodes.length;
+    if (rowcount == 0){
+    document.write(5 + 6);
+    }
     }
 
    (function (d, s, id) {
