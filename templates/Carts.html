@@ -226,8 +226,11 @@ margin-left: 0;
     function removeitem(qtyid,delid){
     document.getElementById(qtyid).value = 0;
     document.getElementsByName(delid)[0].style.display = 'none';
+    var table = document.getElementById('carttable');
+    var rows = table.getElementsByTagName("tr")
     rowcount = document.getElementById('carttable').childNodes.length;
-    window.alert(rowcount);
+    count = rows.length
+    window.alert(count);
     }
 
    (function (d, s, id) {
