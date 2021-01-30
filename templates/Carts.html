@@ -192,6 +192,7 @@ margin-left: 0;
       </tr>
 {% endfor %}
   </table>
+            <div id ="Noitems" style="font-size:18px;text-align:center;height:140px;margin-top:50px;display:none"><p>Your cart is empty do you want to save</p></div>
                     </div>
 <div class="submit">
     <button type="submit" class="btn btn-info w-100 pb-2 pt-2">save</button>
@@ -236,8 +237,7 @@ margin-left: 0;
             }
     }
     if (rowCount == count){
-    window.alert(rowCount);
-    document.getElementById("cardbody").innerHTML = "whatever";
+    document.getElementById("Noitems").style.display = 'block';
    }
 
     }
