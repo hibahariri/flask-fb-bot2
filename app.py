@@ -173,13 +173,16 @@ def fillAddress(recid, rec):
 def PlaceOrder(recid):
     if request.method == 'GET':
         r = DatabaseResponse.get_orderpreview(recid)
-        print(r[0][0])
-        if r[0][0] > 49000:
-            r.append("Free shipping")
-            r.append(r[0][0])
+        if r[0][0] is None:
+            r.append(0)
+            r.append(0)
         else:
-            r.append(5000)
-            r.append(r[0][0] + 5000)
+            if r[0][0] > 49000:
+                r.append("Free shipping")
+                r.append(r[0][0])
+            else:
+                r.append(5000)
+                r.append(r[0][0] + 5000)
         return render_template('OrderPlacement.html', recid=recid, Totals=r)
     else:
         rec = DatabaseResponse.create_order(recid)
