@@ -116,7 +116,7 @@ def receive_message():
                     'https://graph.facebook.com/{}?fields=first_name,last_name,profile_pic&access_token={}'.format(
                         recipient_id, ACCESS_TOKEN)).json()
                 f_name = r['first_name']
-                greeting_text1 = "hello " + f_name
+                greeting_text1 = "hello " + f_name + ", please type what you want or choose an option from the menu"
                 response_message = [greeting_text1, "text"]
                 DatabaseResponse.store_name(f_name, recipient_id)
             elif messaging_text[0:9] == "Products:":
