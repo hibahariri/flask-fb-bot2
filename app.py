@@ -231,8 +231,12 @@ def get_response(action, parameters):
         user_response = [records, "quick replies", "Items(", parameters]
     elif action == "get-brand":
         parameters = parameters.get('products')
-        records = DatabaseResponse.get_brands(parameters)
-        user_response = [records, "quick replies", "Items(", parameters]
+        if parameters == '':
+            records = "Sorry we couldn't find what you're looking for"
+            user_response = [records, "text"]
+        else:
+            records = DatabaseResponse.get_brands(parameters)
+            user_response = [records, "quick replies", "Items(", parameters]
     elif action == "get_Items":
         print(parameters)
         records = DatabaseResponse.get_items(parameters)
@@ -251,8 +255,12 @@ def get_response(action, parameters):
         user_response = [records, "text"]
     elif action == "get-category":
         parameters = parameters.get('product-type')
-        records = DatabaseResponse.get_category(parameters)
-        user_response = [records, "Generic template", "Categories"]
+        if parameters == '':
+            records = "Sorry I didn't understand what do you want"
+            user_response = [records, "text"]
+        else:
+            records = DatabaseResponse.get_category(parameters)
+            user_response = [records, "Generic template", "Categories"]
     elif action == "Send-location":
         print("location")
         record = DatabaseResponse.locationparam()
